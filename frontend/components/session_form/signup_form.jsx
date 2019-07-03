@@ -9,6 +9,7 @@ class SignupForm extends React.Component {
       email: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.error_array=this.error_array.bind(this);
   }
 
   update(field) {
@@ -26,15 +27,19 @@ class SignupForm extends React.Component {
   renderErrors() {
     return (
       <ul>
-        {this.props.errors.map((error, i) => (
+        {/* {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
           </li>
-        ))}
+        ))} */}
+        {Object.keys(this.props.errors).map(message => 
+          <li>{message}</li>)}
       </ul>
     );
   }
-
+  error_array(message){
+    return this.props.errors[message] || [];  
+  }
   render() {
     return (
       <div className="login-form-container">
@@ -42,7 +47,7 @@ class SignupForm extends React.Component {
           Welcome to Bandvamp!
           <br />
           Please {this.props.formType} or {this.props.navLink}
-          {this.renderErrors()}
+          {/* {this.renderErrors()} */}
           <div className="login-form">
             <br />
             <label>Username:
@@ -52,6 +57,8 @@ class SignupForm extends React.Component {
                 className="login-input"
               />
             </label>
+            {this.error_array("username").map(ele =>
+              <div> {ele} </div>)}
             <br />
             <label>Email:
               <input type="text"
@@ -60,6 +67,8 @@ class SignupForm extends React.Component {
                 className="login-input"
               />
             </label>
+            {this.error_array("email").map(ele =>
+              <div> {ele} </div>)}
             <br />
             <label>Password:
               <input type="password"
@@ -68,6 +77,8 @@ class SignupForm extends React.Component {
                 className="login-input"
               />
             </label>
+            {this.error_array("password").map(ele =>
+              <div> {ele} </div>)}
             <br />
             <input className="session-submit" type="submit" value={this.props.formType} />
           </div>
