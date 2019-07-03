@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { login, logout } from '../actions/session_actions';
-import AuthNav from './auth_nav';
+import HeaderNav from './header_nav';
 const mapStateToProps = state => ({
   user_id: state.session.id
 });
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
   });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthNav);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderNav);

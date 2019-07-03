@@ -37,3 +37,22 @@ time, mark, audio, video {
 a {
   text-decoration: none;
 }
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100vw;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.header-logo{
+  margin: 1vw;
+  padding: 1vw;
+}
+
+.header-links{
+  margin: 1vw;
+  padding: 1vw;
+}
