@@ -1,15 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-class SignupForm extends React.Component {
+class BandSignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
-      email: ''
+      email: '',
+      band_name: '',
+      toggled: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.error_array=this.error_array.bind(this);
+    this.error_array = this.error_array.bind(this);
+    this.emptyBandName = this.emptyBandName.bind(this);
+    this.emptyBandNameMessage = this.emptyBandNameMessage.bind(this);
   }
 
   update(field) {
@@ -20,25 +25,27 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({toggled: true});
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    if (!this.emptyBandName()){
+    this.props.processForm(user);}
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {/* {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))} */}
-        {Object.keys(this.props.errors).map(message => 
-          <li>{message}</li>)}
-      </ul>
-    );
+  
+  error_array(message) {
+    return this.props.errors[message] || [];
   }
-  error_array(message){
-    return this.props.errors[message] || [];  
+  emptyBandName(){
+    return (this.state.band_name.length === 0);
+  }
+  emptyBandNameMessage (){
+  
+    if (!this.emptyBandName() || !this.state.toggled){
+      return (<div></div>)
+    }
+    else {
+      return (<div>Please enter the name of your band/artist</div>)
+    }
   }
   render() {
     return (
@@ -46,8 +53,8 @@ class SignupForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="login-form-box">
           Welcome to Bandvamp!
           <br />
-          Please {this.props.formType} or {this.props.navLink}
-          {/* {this.renderErrors()} */}
+          Please {this.props.formType} or <Link to="/login">log in instead</Link>
+          
           <div className="login-form">
             <br />
             <label>Username:
@@ -70,6 +77,15 @@ class SignupForm extends React.Component {
             {this.error_array("email").map(ele =>
               <div>email {ele}</div>)}
             <br />
+            <label>Band Name:
+              <input type="text"
+                value={this.state.band_name}
+                onChange={this.update('band_name')}
+                className="login-input"
+              />
+            </label>
+            {this.emptyBandNameMessage()}
+            <br />
             <label>Password:
               <input type="password"
                 value={this.state.password}
@@ -88,4 +104,4 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+export default BandSignupForm;

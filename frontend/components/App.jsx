@@ -1,9 +1,9 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import LogInFormContainer from './session_form/login_form_container';
-import SignUpFormContainer from './session_form/signup_form_container';
-import AuthNavContainer from './auth_nav_container'
+import FanSignupContainer from './session_form/fan_signup_container';
+import BandSignupContainer from './session_form/band_signup_container';
+import AuthNavContainer from './auth_nav_container';
 import {
   Route,
   Redirect,
@@ -16,7 +16,7 @@ const App = () => (
   <div>
     <AuthNavContainer path="/" />
     <AuthRoute exact path="/login" component={LogInFormContainer} />
-    <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+    <AuthRoute exact path="/signup" component={BandSignupContainer} />
   </div >
 )
 
