@@ -6,7 +6,8 @@ if (props.user_id === null){
   return (
     <div>
     <Link to="/login">Login</Link> &nbsp; &nbsp;
-    <Link to="/signup">Signup</Link>
+    <Link to="/signup">Signup</Link> &nbsp; &nbsp;
+    <button onClick={() => props.demo()}>Demo Login</button>
     </div>
   )
 }

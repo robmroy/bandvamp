@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
   const store = configureStore(preloadedState);
+  window.getSession = () => store.getState().session;
   window.signup = APIUtil.signup;
   window.logout=logout;
   window.getState = store.getState;
