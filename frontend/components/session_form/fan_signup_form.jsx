@@ -45,9 +45,8 @@ class FanSignupForm extends React.Component {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to Bandvamp!
+          Sign up for a Bandvamp fan account
           <br />
-          Please {this.props.formType} or <Link to="/login">log in instead</Link>
           {/* {this.renderErrors()} */}
           <div className="login-form">
             <br />
@@ -82,6 +81,8 @@ class FanSignupForm extends React.Component {
               <div>password {ele}</div>)}
             <br />
             <input className="session-submit" type="submit" value={this.props.formType} />
+            <br />
+            Already have an account? <Link to="/login">Log in.</Link>
           </div>
         </form>
       </div>
