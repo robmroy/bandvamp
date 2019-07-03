@@ -58,7 +58,7 @@ class SignupForm extends React.Component {
               />
             </label>
             {this.error_array("username").map(ele =>
-              <div> {ele} </div>)}
+              <div>username {ele}</div>)}
             <br />
             <label>Email:
               <input type="text"
@@ -68,7 +68,7 @@ class SignupForm extends React.Component {
               />
             </label>
             {this.error_array("email").map(ele =>
-              <div> {ele} </div>)}
+              <div>email {ele}</div>)}
             <br />
             <label>Password:
               <input type="password"
@@ -78,7 +78,7 @@ class SignupForm extends React.Component {
               />
             </label>
             {this.error_array("password").map(ele =>
-              <div> {ele} </div>)}
+              <div>password {ele}</div>)}
             <br />
             <input className="session-submit" type="submit" value={this.props.formType} />
           </div>
