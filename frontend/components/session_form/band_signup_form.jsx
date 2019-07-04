@@ -54,8 +54,8 @@ class BandSignupForm extends React.Component {
   render() {
     return (
       <div className="modal-form">
+        <div className="login-header">Sign up for a Bandvamp artist account</div>
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Sign up for a Bandvamp artist account
           <br />
           
           <div className="login-form">

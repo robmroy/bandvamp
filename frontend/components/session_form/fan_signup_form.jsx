@@ -50,7 +50,7 @@ class FanSignupForm extends React.Component {
     return (
       <div className="modal-form">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Sign up for a Bandvamp fan account
+          <div className="login-header">Sign up for a Bandvamp fan account</div>
           <br />
           {/* {this.renderErrors()} */}
           <div className="login-form">
@@ -96,12 +96,15 @@ class FanSignupForm extends React.Component {
               (<span className="errors">password {ele}</span>))}
             <br />
             </div>
-
-            <input className="session-submit" type="submit" value={this.props.formType} />
-            <br />
-            Already have an account? 
-            <Link to="/login"> Log in.</Link>
+           
+          <div className="input">
+              <input className="session-submit" type="submit" value={this.props.formType} />
+            </div>
+            
+           <div className="login-hint"> Already have an account?
+            <Link to="/login"> Log in.</Link> </div>
           </div>
+
         </form>
       </div>
     );
