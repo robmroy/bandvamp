@@ -55,6 +55,9 @@ a:hover {
   padding: 1vw;
 }
 
+button {
+  margin: 1vw;
+}
 .header-links{
   margin: 1vw;
   padding: 1vw;
@@ -82,4 +85,12 @@ a:hover {
 
 .input {
   margin: 1vw;
+}
+
+.errors {
+  color: red;
+}
+
+.red-border {
+  border: 1px solid red;
 }

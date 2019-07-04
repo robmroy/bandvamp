@@ -18,9 +18,10 @@ if (props.user_id === null){
 }
 else {
   return (
-    <div>{logoElement}
+    <div className="header-nav">{logoElement}
   <button onClick={() => props.logout()}>logout</button>
     </div>
+    
   )
 }
 };

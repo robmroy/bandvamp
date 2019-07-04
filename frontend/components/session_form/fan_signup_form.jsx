@@ -10,7 +10,8 @@ class FanSignupForm extends React.Component {
       email: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.error_array=this.error_array.bind(this);
+    this.errorArray=this.errorArray.bind(this);
+    this.hasErr=this.hasErr.bind(this);
   }
 
   update(field) {
@@ -38,8 +39,12 @@ class FanSignupForm extends React.Component {
       </ul>
     );
   }
-  error_array(message){
+  errorArray(message){
     return this.props.errors[message] || [];  
+  }
+
+  hasErr(message){
+    return (this.errorArray(message).length > 0);
   }
   render() {
     return (
@@ -50,36 +55,48 @@ class FanSignupForm extends React.Component {
           {/* {this.renderErrors()} */}
           <div className="login-form">
             <br />
-            <label>Username:
+            <div className="input">
+            <label>Username <br/>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                className="login-input"
+                  className={this.hasErr('username') ? "red-border" : ""}
               />
             </label>
-            {this.error_array("username").map(ele =>
-              <div>username {ele}</div>)}
+              <br />
+            {this.errorArray("username").map(ele =>
+              <span className="errors">username {ele}</span>)}
             <br />
-            <label>Email: 
+            </div>
+
+            <div className="input">
+            <label>Email <br />
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className="login-input"
+                className={this.hasErr('email') ? "red-border" : ""}
               />
             </label>
-            {this.error_array("email").map(ele =>
-              <div>email {ele}</div>)}
+              <br />
+            {this.errorArray("email").map(ele =>
+              <span className="errors">email {ele}</span>)}
             <br />
-            <label>Password:
+            </div>
+
+            <div className="input">
+            <label>Password <br />
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="login-input"
+                className={this.hasErr('password') ? "red-border" : ""}
               />
             </label>
-            {this.error_array("password").map(ele =>
-              <div>password {ele}</div>)}
+              <br />
+            {this.errorArray("password").map(ele =>
+              (<span className="errors">password {ele}</span>))}
             <br />
+            </div>
+
             <input className="session-submit" type="submit" value={this.props.formType} />
             <br />
             Already have an account? <Link to="/login">Log in.</Link>

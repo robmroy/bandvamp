@@ -12,9 +12,10 @@ class BandSignupForm extends React.Component {
       toggled: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.error_array = this.error_array.bind(this);
+    this.errorArray = this.errorArray.bind(this);
     this.emptyBandName = this.emptyBandName.bind(this);
     this.emptyBandNameMessage = this.emptyBandNameMessage.bind(this);
+    this.hasErr = this.hasErr.bind(this);
   }
 
   update(field) {
@@ -32,8 +33,11 @@ class BandSignupForm extends React.Component {
   }
 
   
-  error_array(message) {
+  errorArray(message) {
     return this.props.errors[message] || [];
+  }
+  hasErr(message){
+    return (this.errorArray(message).length > 0);
   }
   emptyBandName(){
     return (this.state.band_name.length === 0);
@@ -44,7 +48,7 @@ class BandSignupForm extends React.Component {
       return;
     }
     else {
-      return (<> <br/> Please enter the name of your band/artist </>);
+      return (<span className="errors"> <br/> Please enter the name of your band/artist </span>);
     }
   }
   render() {
@@ -54,10 +58,8 @@ class BandSignupForm extends React.Component {
           Sign up for a Bandvamp artist account
           <br />
           
-          
           <div className="login-form">
             <br />
-
 
             <div className="input">
               <label>Band Name
@@ -65,7 +67,7 @@ class BandSignupForm extends React.Component {
                 <input type="text"
                   value={this.state.band_name}
                   onChange={this.update('band_name')}
-                  className="login-input"
+                  className={this.emptyBandNameMessage() ? "red-border" : ""}
                 />
               </label>
 
@@ -78,11 +80,11 @@ class BandSignupForm extends React.Component {
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                className="login-input"
+                  className={this.hasErr('username') ? "red-border" : ""}
               />
             </label>
-            {this.state.username ? "" : this.error_array("username").map(ele =>
-              <div>username {ele}</div>)}
+              {this.state.username ? <br /> : this.errorArray("username").map(ele =>
+                <span className="errors"><br />username {ele}</span>)}
             <br />
           </div>
 
@@ -92,12 +94,12 @@ class BandSignupForm extends React.Component {
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className="login-input"
+                  className={this.hasErr('email') ? "red-border" : ""}
               />
             </label>
-            {this.state.email? "" : this.error_array("email").map(ele =>
-              <div>email {ele}</div>)}
-            <br />
+            {this.state.email? " " : this.errorArray("email").map(ele =>
+              <span className="errors"><br />email {ele}</span>)}
+            
             </div>
 
           
@@ -107,11 +109,11 @@ class BandSignupForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="login-input"
+                  className={this.hasErr('password') ? "red-border" : ""}
               />
             </label>
-            {this.state.password.length > 5 ? "" : this.error_array("password").map(ele =>
-              <div>password {ele}</div>)}
+            {this.state.password.length > 5 ? " " : this.errorArray("password").map(ele =>
+              <span className="errors"><br />password {ele}</span>)}
             <br />
           </div>
 
