@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HeaderNav = props => {
-  const logoElement = (<div className="header-logo">bandvamp</div>)
+  const logoElement = (<div className="header-logo">Bandvamp</div>)
 if (props.user_id === null){
   return (
     <div className="header-nav">
