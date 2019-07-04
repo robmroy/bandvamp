@@ -43,7 +43,7 @@ class FanSignupForm extends React.Component {
   }
   render() {
     return (
-      <div className="login-form-container">
+      <div className="modal-form">
         <form onSubmit={this.handleSubmit} className="login-form-box">
           Sign up for a Bandvamp fan account
           <br />
@@ -60,7 +60,7 @@ class FanSignupForm extends React.Component {
             {this.error_array("username").map(ele =>
               <div>username {ele}</div>)}
             <br />
-            <label>Email:
+            <label>Email: 
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}

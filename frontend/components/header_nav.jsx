@@ -10,7 +10,7 @@ if (props.user_id === null){
       <div className="header-links">
     <Link to="/login">Login</Link> &nbsp; &nbsp;
     <Link to="/signup">Signup</Link> &nbsp; &nbsp;
-    <button onClick={() => props.demo()}>Demo login</button>
+    <button className="demo-button" onClick={() => props.demo()}>Demo login</button>
       </div>
      
     </div>

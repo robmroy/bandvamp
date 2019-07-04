@@ -3,7 +3,7 @@ import React from 'react';
 
 const selectSignup = () => {
   return (
-    <div>
+    <div className="modal-form">
     <Link to="/signup/band" >Signup as an artist</Link> &nbsp; &nbsp;
     <Link to="/signup/fan" >Signup as a fan</Link>
     </div>

@@ -41,15 +41,15 @@ class BandSignupForm extends React.Component {
   emptyBandNameMessage (){
   
     if (!this.emptyBandName() || !this.state.toggled){
-      return (<div></div>)
+      return;
     }
     else {
-      return (<div>Please enter the name of your band/artist</div>)
+      return (<> <br/> Please enter the name of your band/artist </>);
     }
   }
   render() {
     return (
-      <div className="login-form-container">
+      <div className="modal-form">
         <form onSubmit={this.handleSubmit} className="login-form-box">
           Sign up for a Bandvamp artist account
           <br />
@@ -57,45 +57,64 @@ class BandSignupForm extends React.Component {
           
           <div className="login-form">
             <br />
-            <label>Username:
+
+
+            <div className="input">
+              <label>Band Name
+              <br />
+                <input type="text"
+                  value={this.state.band_name}
+                  onChange={this.update('band_name')}
+                  className="login-input"
+                />
+              </label>
+
+              {this.emptyBandNameMessage()}
+              <br />
+            </div>
+          <div className="input">
+            <label >Username
+              <br/>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="login-input"
               />
             </label>
-            {this.error_array("username").map(ele =>
+            {this.state.username ? "" : this.error_array("username").map(ele =>
               <div>username {ele}</div>)}
             <br />
-            <label>Email:
+          </div>
+
+          <div className="input">
+            <label>Email
+              <br/>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="login-input"
               />
             </label>
-            {this.error_array("email").map(ele =>
+            {this.state.email? "" : this.error_array("email").map(ele =>
               <div>email {ele}</div>)}
             <br />
-            <label>Band Name:
-              <input type="text"
-                value={this.state.band_name}
-                onChange={this.update('band_name')}
-                className="login-input"
-              />
-            </label>
-            {this.emptyBandNameMessage()}
-            <br />
-            <label>Password:
+            </div>
+
+          
+          <div className="input">
+            <label>Password
+              <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
               />
             </label>
-            {this.error_array("password").map(ele =>
+            {this.state.password.length > 5 ? "" : this.error_array("password").map(ele =>
               <div>password {ele}</div>)}
             <br />
+          </div>
+
             <input className="session-submit" type="submit" value={this.props.formType} />
             <br /> 
             Already have an account? <Link to="/login">Log in.</Link>
