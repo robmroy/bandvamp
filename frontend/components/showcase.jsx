@@ -7,7 +7,8 @@ class Showcase extends React.Component {
   }
 
   render(){
-    return (<div> <img src='assets/luna_y_sol.png'/> </div>);
+    
+     return <img src={window.lunaURL}/> ;
   }
 }
 
