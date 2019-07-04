@@ -6,7 +6,7 @@ import BandSignupForm from './band_signup_form';
 const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
-    formType: 'signup'
+    formType: 'Sign up'
   };
 };
 

@@ -83,7 +83,7 @@ class BandSignupForm extends React.Component {
                   className={this.hasErr('username') ? "red-border" : ""}
               />
             </label>
-              {this.state.username ? <br /> : this.errorArray("username").map(ele =>
+              {this.state.username ? " " : this.errorArray("username").map(ele =>
                 <span className="errors"><br />username {ele}</span>)}
             <br />
           </div>
@@ -117,10 +117,14 @@ class BandSignupForm extends React.Component {
             <br />
           </div>
 
-            <input className="session-submit" type="submit" value={this.props.formType} />
-            <br /> 
-            Already have an account? <Link to="/login">Log in.</Link>
+            <div className="input">
+              <input className="session-submit" type="submit" value={this.props.formType} />
+            </div>
+            
+           <div className="login-hint"> Already have an account?
+            <Link to="/login"> Log in.</Link> </div>
           </div>
+            
         </form>
 
       </div>
