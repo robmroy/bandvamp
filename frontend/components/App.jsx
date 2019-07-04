@@ -16,12 +16,14 @@ import {
 
 const App = () => (
   <div>
-    <HeaderNavContainer path="/" />
+    <Switch>
     <AuthRoute exact path="/login" component={LogInFormContainer} />
+    <><HeaderNavContainer path="/" />
     <AuthRoute exact path="/signup" component={SelectSignup} />
     <AuthRoute exact path="/signup/band" component={BandSignupContainer} />
     <AuthRoute exact path="/signup/fan" component={FanSignupContainer} />
-    <Showcase path='/' />
+    <Showcase path='/' /> </>
+    </Switch>
   </div >
 )
 
