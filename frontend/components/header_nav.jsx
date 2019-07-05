@@ -11,8 +11,10 @@ if (props.user_id === null){
     <div className="header-nav">
       {logoElement}
       <div className="header-links">
-    <Link to="/login">Login</Link> &nbsp; &nbsp;
-    <Link to="/signup">Signup</Link> &nbsp; &nbsp;
+      <Link to="/signup" 
+      className="black-link">sign up</Link> &nbsp; &nbsp;
+    <Link to="/login" className="black-link">log in</Link> &nbsp; &nbsp;
+   
     <button className="demo-button" onClick={() => props.demo()}>Demo login</button>
       </div>
      

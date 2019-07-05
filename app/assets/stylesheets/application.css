@@ -86,6 +86,10 @@ button {
   border: 1px solid #000;
 }
 
+.selector-modal{
+  height: 320px;
+}
+
 
 .login-form{
   padding: 0px 40px;
@@ -226,10 +230,62 @@ input {
   height: 120px;
   background-color: #477987;
   color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 30px;
 }
+
+.height-33-wrapper {
+  width: 100%;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.button-link{
+  width: 250px;
+  height: 33px;
+  display: block;
+  border-radius: 3px;
+  padding: 8px 0 7px 0;
+  margin: 25px;;
+  font-size: 15px;
+  font-weight: 500;
+  box-sizing: border-box;
+  overflow: auto;
+  display:flex;
+  justify-content: center;
+}
+
+.pad60{
+  height: 60px;
+}
+
+.a1c6 {
+  border: #00A1C6 1px solid;
+  color: #00A1C6;
+}
+
+.pea-green{
+  border: #6E943B 1px solid;
+  color: #6E943B;
+}
+
+.black-link{
+  color: #161113;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 /* 
 TODO: 
+Spruce up the signup selector a bit. 
+Add a search bar
+inputs should have blue outline when active
 If user takes link from band signup to fan signup,
 persist user info.
-Spruce up the signup selector a bit. 
-Add a search bar*/
+Work on the modal: make background gray and unclickable,
+and make modal closeable.
+
+*/
