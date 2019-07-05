@@ -50,13 +50,15 @@ class SignupForm extends React.Component {
     
     return (
       <div className="login-page">
+        <div className = "login-page-top">
         {logoElement}
+        </div>
       
       <div className="login-content">
 
         <div className="login-form-box">
           <div className="login-header">Log in</div>
-          
+          <div className="login-divider"></div>
          
           <form onSubmit={this.handleSubmit} className="login-form">
             <br />

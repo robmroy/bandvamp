@@ -93,6 +93,9 @@ button {
   align-items: center;
 }
 
+.login-page{
+  background-color: #F3F3F3;
+}
 .signup-header{
   text-align: center;
   color: #2e3332;
@@ -146,7 +149,7 @@ input {
 
 .login-content{
   width: 650px;
-  min-height: 550px;
+  min-height: 380px;
   margin: 0 auto;
   padding: 40px 0px 60px;
   display: flex;
@@ -156,8 +159,15 @@ input {
 .login-header{
   margin: 15px 0px auto;
   text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
 }
 
+.login-divider{
+  margin: 36px 0px 28px;
+  border-top: 2px dotted #ccc;
+}
 .login-input{
   width: 300px;
   margin: 0px 155px 0 0;
@@ -177,6 +187,13 @@ input {
   justify-content: center;
 }
 
+.login-page-top{
+  background-color: #DDDDDD;
+  width: 100%;
+  height: 90px;
+  padding: 10px;
+  box-sizing: border-box;
+}
 .login-submit {
   background-color: #00A1C6;
   color: #fff;
@@ -205,7 +222,7 @@ input {
 }
 /* 
 TODO: 
-Finish login page.
+Remove blank strip at top of login page?
 If user takes link from band signup to fan signup,
 persist user info.
 Spruce up the signup selector a bit. 
