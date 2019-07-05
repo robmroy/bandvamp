@@ -18,6 +18,10 @@ class BandSignupForm extends React.Component {
     this.hasErr = this.hasErr.bind(this);
   }
 
+  componentWillUnmount(){
+    this.props.clearErrors();
+  }
+  
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
