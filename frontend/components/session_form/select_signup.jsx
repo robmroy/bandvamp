@@ -23,6 +23,8 @@ class selectSignup extends React.Component {
           {/* <button onClick={this.routeToBand}
           className="selector-button">Signup as an artist</button>
           <button onClick={this.routeToFan}>Signup as a fan</button> */}
+          <div className="signup-header">
+            Sign up for a Bandvamp account</div>
         <div className="height-33-wrapper">
         <Link to="/signup/band" className="button-link a1c6">
           Signup as an artist</Link>

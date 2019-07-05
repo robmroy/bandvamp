@@ -87,7 +87,7 @@ button {
 }
 
 .selector-modal{
-  height: 320px;
+  height: 270px;
 }
 
 
@@ -249,7 +249,7 @@ input {
   display: block;
   border-radius: 3px;
   padding: 8px 0 7px 0;
-  margin: 25px;;
+  margin: 45px 0;
   font-size: 15px;
   font-weight: 500;
   box-sizing: border-box;
