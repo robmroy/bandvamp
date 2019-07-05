@@ -89,9 +89,10 @@ button {
 .login-form{
   padding: 0px 40px;
   color: #333;
+  align-items: center;
 }
 
-.login-header{
+.signup-header{
   text-align: center;
   color: #2e3332;
   font-size: 18px;
@@ -142,3 +143,47 @@ input {
   text-align: center;
 }
 
+.login-content{
+  width: 650px;
+  min-height: 550px;
+  margin: 0 auto;
+  padding: 40px 0px 60px;
+  display: flex;
+  align-items: center;
+}
+
+.login-header{
+  margin: 15px 0px auto;
+  text-align: center;
+}
+
+.login-input{
+  width: 300px;
+  margin: 0px 155px 0 0;
+}
+
+.login-label{
+  width: 155px;
+  text-align: right;
+  margin-right: 16px;
+  vertical-align: middle;
+  padding:7px 0px;
+}
+
+.input-wrapper{
+  width: 650px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-submit {
+  background-color: #00A1C6;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin: 15px 0 0 20px ;
+  width: 300px;
+  
+}

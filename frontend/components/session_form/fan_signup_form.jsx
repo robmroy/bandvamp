@@ -50,7 +50,7 @@ class FanSignupForm extends React.Component {
     return (
       <div className="modal-form">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <div className="login-header">Sign up for a Bandvamp fan account</div>
+          <div className="signup-header">Sign up for a Bandvamp fan account</div>
           <br />
           {/* {this.renderErrors()} */}
           <div className="login-form">

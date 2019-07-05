@@ -41,15 +41,15 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="modal-form">
+      <div className="login-content">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to Bandvamp!
-          <br />
-          Please {this.props.formType} or {this.props.navLink}
+          <div className="login-header">Log in</div>
           
           <div className="login-form">
             <br />
-            <label>Username:
+
+            <label className="input-wrapper">
+              <span className="login-label">Username</span>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
@@ -57,17 +57,22 @@ class SignupForm extends React.Component {
               />
             </label>
             <br />
-            <label>Password:
-              <input type="password"
+            <label className="input-wrapper">
+              <span className="login-label">Password</span>
+              <input type="text"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
               />
             </label>
             <br />
+            <span className="input-wrapper">
             {this.props.errors.login}
+            </span>
             <br />
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <div className="input-wrapper">
+              <input className="login-submit" type="submit" value={this.props.formType} />
+            </div>
           </div>
         </form>
       </div>
