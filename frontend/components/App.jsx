@@ -6,6 +6,7 @@ import BandSignupContainer from './session_form/band_signup_container';
 import SelectSignup from './session_form/select_signup';
 import HeaderNavContainer from './header_nav_container';
 import Showcase from './showcase.jsx';
+import Footer from './footer.jsx';
 import {
   Route,
   Redirect,
@@ -24,6 +25,7 @@ const App = () => (
     <AuthRoute exact path="/signup/fan" component={FanSignupContainer} />
     <Showcase path='/' /> </>
     </Switch>
+    <Footer path='/' />
   </div >
 )
 

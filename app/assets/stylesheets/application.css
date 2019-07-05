@@ -220,9 +220,15 @@ input {
   width: 26px;
   height: 15px;
 }
+
+.footer{
+  width: 100%;
+  height: 120px;
+  background-color: #477987;
+  color: #fff;
+}
 /* 
 TODO: 
-Remove blank strip at top of login page?
 If user takes link from band signup to fan signup,
 persist user info.
 Spruce up the signup selector a bit. 
