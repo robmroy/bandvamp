@@ -137,7 +137,7 @@ input {
 
 .login-hint {
   width: 100%;
-  margin: 23px 0 0 0;
+  margin: 23px 0 30px 0;
   font-size: 12px;
   color: #818285;
   text-align: center;
@@ -187,3 +187,8 @@ input {
   width: 300px;
   
 }
+/* 
+TODO: Finish login page.
+If user takes link from band signup to fan signup,
+persist user info.
+Spruce up the signup selector a bit. */

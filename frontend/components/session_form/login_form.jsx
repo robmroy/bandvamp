@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -42,10 +44,12 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="login-content">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
+
+        <div className="login-form-box">
           <div className="login-header">Log in</div>
           
-          <div className="login-form">
+         
+          <form onSubmit={this.handleSubmit} className="login-form">
             <br />
 
             <label className="input-wrapper">
@@ -73,9 +77,15 @@ class SignupForm extends React.Component {
             <div className="input-wrapper">
               <input className="login-submit" type="submit" value={this.props.formType} />
             </div>
-          </div>
-        </form>
+          </form>
+        <div>
+        
+        <div className="login-hint"> Don't have an account? Sign up 
+        as an <Link to="/signup/band">artist </Link>
+        or a  <Link to="/signup/fan">fan</Link>.</div>
+        </div>
       </div>
+    </div>
     );
   }
 }

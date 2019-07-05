@@ -105,11 +105,13 @@ class FanSignupForm extends React.Component {
               <input className="session-submit" type="submit" value={this.props.formType} />
             </div>
             
-           <div className="login-hint"> Already have an account?
-            <Link to="/login"> Log in.</Link> </div>
+          
           </div>
 
         </form>
+
+        <div className="login-hint"> Already have an account?
+            <Link to="/login"> Log in.</Link> </div>
       </div>
     );
   }

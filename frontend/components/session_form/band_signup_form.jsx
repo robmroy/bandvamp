@@ -21,7 +21,7 @@ class BandSignupForm extends React.Component {
   componentWillUnmount(){
     this.props.clearErrors();
   }
-  
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -52,7 +52,10 @@ class BandSignupForm extends React.Component {
       return;
     }
     else {
-      return (<span className="errors"> <br/> Please enter the name of your band/artist </span>);
+      return (<><span className="errors"> <br/> 
+      Please enter your band name.</span> <br/> (
+        Or, 
+       <Link to="/signup/fan"> sign up as a fan</Link>.)</>);
     }
   }
   render() {
@@ -87,7 +90,7 @@ class BandSignupForm extends React.Component {
                   className={this.hasErr('username') ? "red-border" : ""}
               />
             </label>
-              {this.state.username ? " " : this.errorArray("username").map(ele =>
+              {this.errorArray("username").map(ele =>
                 <span className="errors"><br />username {ele}</span>)}
             <br />
           </div>
@@ -101,7 +104,9 @@ class BandSignupForm extends React.Component {
                   className={this.hasErr('email') ? "red-border" : ""}
               />
             </label>
-            {this.state.email? " " : this.errorArray("email").map(ele =>
+            {
+              // !this.errorArray("email") ? " " : 
+              this.errorArray("email").map(ele =>
               <span className="errors"><br />email {ele}</span>)}
             
             </div>
@@ -113,11 +118,10 @@ class BandSignupForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                  className={this.hasErr('password') && this.state.password.length < 6 ? 
-                  "red-border" : ""}
+                  className={this.hasErr('password')  ? "red-border" : ""}
               />
             </label>
-            {this.state.password.length > 5 ? " " : this.errorArray("password").map(ele =>
+            { this.errorArray("password").map(ele =>
               <span className="errors"><br />password {ele}</span>)}
             <br />
           </div>
