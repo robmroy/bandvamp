@@ -64,12 +64,15 @@ button {
   margin: 1vw;
 }
 .header-links{
-  margin: 1vw;
-  padding: 1vw;
+  margin-left: auto;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
 }
 
 .demo-button{
-  background: gold
+  background: gold;
+  margin: 5px 0 0 0;
 }
 
 
@@ -111,9 +114,6 @@ button {
   box-sizing: border-box; 
 }
 
-.input {
-  margin: 1vw;
-}
 
 .errors {
   color: #c43329;
@@ -131,6 +131,11 @@ input {
   font-size: 16px;
   box-sizing: border-box;
   width: 100%;
+  margin: 0 0 13px 0;
+}
+
+input:focus{
+  border-color: #00A1C6;
 }
 
 .session-submit {
@@ -184,6 +189,7 @@ input {
   vertical-align: middle;
   padding:7px 0px;
 }
+
 
 .input-wrapper{
   width: 650px;
@@ -276,13 +282,47 @@ input {
   color: #161113;
   font-weight: 600;
   font-size: 14px;
+  margin-left: auto;
 }
 
+.header-nav-right{
+  margin: 0 20vw 0 0;
+  width: 34vw;
+}
+
+.search-bar{
+  float: right;
+  margin-left: auto;
+  display: block;
+  width: 300px;
+  background-color: #F3F3F3;
+  margin-bottom: 4px;
+}
+
+.search-bar:focus {
+  border-color: #ccc;
+}
+
+
+
+.search-bar-wrapper{
+  width: 100%;
+  height:35px;
+  margin: 15px 0 0 0;
+}
+
+.pad15{
+  width: 100%;
+  display: block;
+  height: 15px;
+}
+
+.black-link-container{
+  margin-left: auto;
+}
 /* 
 TODO: 
-Spruce up the signup selector a bit. 
 Add a search bar
-inputs should have blue outline when active
 If user takes link from band signup to fan signup,
 persist user info.
 Work on the modal: make background gray and unclickable,
