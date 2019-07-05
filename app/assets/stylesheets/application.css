@@ -44,6 +44,7 @@ a:hover {
 
 body{
   font-family: 'FreeSans', Arial, Helvetica, sans-serif;
+  background-color: rgba(255,255,255,0.98);
 }
 .header-nav {
   display: flex;
@@ -108,11 +109,11 @@ button {
 }
 
 .errors {
-  color: red;
+  color: #c43329;
 }
 
 .red-border {
-  border: 1px solid red;
+  border: 1px solid #c43329;
 }
 
 input {
@@ -187,8 +188,25 @@ input {
   width: 300px;
   
 }
+
+.header-logo{
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Yanone Kaffeesatz";
+}
+
+.vamp{
+  color: #9e036a;
+}
+
+.parallelogram{
+  width: 26px;
+  height: 15px;
+}
 /* 
-TODO: Finish login page.
+TODO: 
+Finish login page.
 If user takes link from band signup to fan signup,
 persist user info.
-Spruce up the signup selector a bit. */
+Spruce up the signup selector a bit. 
+Add a search bar*/

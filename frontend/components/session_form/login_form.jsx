@@ -41,8 +41,17 @@ class SignupForm extends React.Component {
     return this.props.errors[message] || [];
   }
 
+  
   render() {
+    const logoElement = (<div className="header-logo">
+    <img src={window.parallelogram} 
+    className="parallelogram"/>band
+    <span className="vamp">vamp</span></div>)
+    
     return (
+      <div className="login-page">
+        {logoElement}
+      
       <div className="login-content">
 
         <div className="login-form-box">
@@ -70,7 +79,7 @@ class SignupForm extends React.Component {
               />
             </label>
             <br />
-            <span className="input-wrapper">
+            <span className="input-wrapper errors">
             {this.props.errors.login}
             </span>
             <br />
@@ -85,6 +94,7 @@ class SignupForm extends React.Component {
         or a  <Link to="/signup/fan">fan</Link>.</div>
         </div>
       </div>
+    </div>
     </div>
     );
   }
