@@ -109,7 +109,8 @@ class BandSignupForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                  className={this.hasErr('password') ? "red-border" : ""}
+                  className={this.hasErr('password') && this.state.password.length < 6 ? 
+                  "red-border" : ""}
               />
             </label>
             {this.state.password.length > 5 ? " " : this.errorArray("password").map(ele =>
