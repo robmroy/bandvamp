@@ -55,7 +55,9 @@ class BandSignupForm extends React.Component {
       return (<><span className="errors"> <br/> 
       Please enter your band name.</span> <br/> (
         Or, 
-       <Link to="/signup/fan"> sign up as a fan</Link>.)</>);
+       <Link to="/signup/fan"> sign up as a fan</Link>.)
+        <div className="pad12"></div>
+       </>);
     }
   }
   render() {
