@@ -47,7 +47,7 @@ class BandSignupForm extends React.Component {
     return (this.state.band_name.length === 0);
   }
   emptyBandNameMessage (){
-  
+    const that = this;
     if (!this.emptyBandName() || !this.state.toggled){
       return;
     }
@@ -55,7 +55,11 @@ class BandSignupForm extends React.Component {
       return (<><span className="errors"> <br/> 
       Please enter your band name.</span> <br/> (
         Or, 
-       <Link to="/signup/fan"> sign up as a fan</Link>.)
+       <Link to=
+       {{pathname: "/signup/fan",
+       state: that.state
+      }}
+       > sign up as a fan</Link>.)
         <div className="pad12"></div>
        </>);
     }
@@ -133,7 +137,7 @@ class BandSignupForm extends React.Component {
             </div>
             
            <div className="login-hint"> Already have an account?
-            <Link to="/login"> Log in.</Link> </div>
+            <Link to="login"> Log in.</Link> </div>
           </div>
             
         </form>

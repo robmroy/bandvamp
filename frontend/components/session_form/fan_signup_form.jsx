@@ -4,10 +4,16 @@ import { Link } from 'react-router-dom';
 class FanSignupForm extends React.Component {
   constructor(props) {
     super(props);
+    const username = props.location.state ? 
+    props.location.state.username
+    : '';
+    const email = props.location.state ? 
+    props.location.state.email
+    : '';
     this.state = {
-      username: '',
+      username,
       password: '',
-      email: ''
+      email
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.errorArray=this.errorArray.bind(this);

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-class SignupForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +47,8 @@ class SignupForm extends React.Component {
     <img src={window.parallelogram} 
     className="parallelogram"/>band
     <span className="vamp">vamp</span></div>)
-    
+    console.log("location state:")
+    console.log(this.props.location.state);
     return (
       <div className="login-page">
         <div className = "login-page-top">
@@ -102,4 +103,4 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+export default LoginForm;
