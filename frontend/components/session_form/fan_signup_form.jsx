@@ -65,7 +65,7 @@ class FanSignupForm extends React.Component {
           {/* {this.renderErrors()} */}
           <div className="login-form">
             <br />
-            <div className="input">
+            <div className="outer-input-wrapper">
             <label>Username <br/>
               <input type="text"
                 value={this.state.username}
@@ -75,11 +75,11 @@ class FanSignupForm extends React.Component {
             </label>
               <br />
             {this.errorArray("username").map(ele =>
-              <span className="errors">username {ele}</span>)}
+              <div className="errors">username {ele}</div>)}
             <br />
             </div>
 
-            <div className="input">
+            <div className="outer-input-wrapper">
             <label>Email <br />
               <input type="text"
                 value={this.state.email}
@@ -89,11 +89,12 @@ class FanSignupForm extends React.Component {
             </label>
               <br />
             {this.errorArray("email").map(ele =>
-              <span className="errors">email {ele}</span>)}
+              <div className="errors">email {ele}</div>)}
             <br />
             </div>
 
-            <div className="input">
+            <div className="outer-input-wrapper">
+            
             <label>Password <br />
               <input type="password"
                 value={this.state.password}
@@ -101,13 +102,14 @@ class FanSignupForm extends React.Component {
                 className={this.hasErr('password') ? "red-border" : ""}
               />
             </label>
+          
               <br />
             {this.errorArray("password").map(ele =>
-              (<span className="errors">password {ele}</span>))}
+              (<div className="errors">password {ele}</div>))}
             <br />
             </div>
            
-          <div className="input">
+          <div className="input-wrapper">
               <input className="session-submit" type="submit" value={this.props.formType} />
             </div>
             

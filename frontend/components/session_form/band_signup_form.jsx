@@ -53,14 +53,11 @@ class BandSignupForm extends React.Component {
     }
     else {
       return (<><span className="errors"> <br/> 
-      Please enter your band name.</span> <br/> (
-        Or, 
-       <Link to=
+      Please enter your band name.</span> <br/> 
+        <div> (Or, <Link to=
        {{pathname: "/signup/fan",
        state: that.state
-      }}
-       > sign up as a fan</Link>.)
-        <div className="pad12"></div>
+      }}> sign up as a fan</Link>.) </div>
        </>);
     }
   }
@@ -74,7 +71,7 @@ class BandSignupForm extends React.Component {
           <div className="login-form">
             <br />
 
-            <div className="input">
+            <div className="outer-input-wrapper">
               <label>Band Name
               <br />
                 <input type="text"
@@ -87,7 +84,7 @@ class BandSignupForm extends React.Component {
               {this.emptyBandNameMessage()}
               <br />
             </div>
-          <div className="input">
+          <div className="outer-input-wrapper">
             <label >Username
               <br/>
               <input type="text"
@@ -98,10 +95,9 @@ class BandSignupForm extends React.Component {
             </label>
               {this.errorArray("username").map(ele =>
                 <span className="errors"><br />username {ele}</span>)}
-            <br />
           </div>
 
-          <div className="input">
+          <div className="outer-input-wrapper">
             <label>Email
               <br/>
               <input type="text"
@@ -118,7 +114,7 @@ class BandSignupForm extends React.Component {
             </div>
 
           
-          <div className="input">
+          <div className="outer-input-wrapper">
             <label>Password
               <br/>
               <input type="password"
@@ -129,7 +125,6 @@ class BandSignupForm extends React.Component {
             </label>
             { this.errorArray("password").map(ele =>
               <span className="errors"><br />password {ele}</span>)}
-            <br />
           </div>
 
             <div className="input">
