@@ -8,7 +8,7 @@ local:
   
 amazon:
   service: S3
-  access_key_id: "AKIAJDQMS4HJSY2UM6GQ",
+  access_key_id: "AKIAJDQMS4HJSY2UM6GQ"
   secret_access_key: "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"
   region: "us-west"
   bucket: "bandvamp"
