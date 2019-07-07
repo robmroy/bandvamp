@@ -1,10 +1,11 @@
 import React from 'react';
 
-class CoverArtComponent extends React.Component{
+class AlbumForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {imageUrl: "",
-        imageFile: ""};
+        imageFile: "",
+        ajaxUrl: ""};
         this.handleFile=this.handleFile.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
     }
@@ -40,7 +41,8 @@ class CoverArtComponent extends React.Component{
           data: formData,
           contentType: false,
           processData: false
-        });
+        }).then(response => this.setState({ajaxUrl: 
+        response.photoUrl}));
       }
     render(){
        
@@ -50,6 +52,9 @@ class CoverArtComponent extends React.Component{
             onChange={this.handleFile}
             />
             <img src={this.state.imageUrl}/>
+            <br/>
+            {this.state.ajaxUrl}
+            <img src={this.state.ajaxUrl}/>
             <input type="submit" value="Submit"/>
             </form>
         )
@@ -57,4 +62,4 @@ class CoverArtComponent extends React.Component{
 
 }
 
-export default CoverArtComponent;
+export default AlbumForm;

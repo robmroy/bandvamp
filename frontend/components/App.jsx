@@ -6,14 +6,16 @@ import BandSignupContainer from './session_form/band_signup_container';
 import SelectSignup from './session_form/select_signup';
 import HeaderNavContainer from './header_nav_container';
 import Showcase from './showcase.jsx';
-import AlbumCover from './albums/album_cover';
+import AlbumFormContainer from './albums/album_form_container';
+import AlbumContainer from './albums/album_container'
 import Footer from './footer.jsx';
 import {
   Route,
   Redirect,
   Switch,
   Link,
-  HashRouter
+  HashRouter,
+  withRouter
 } from 'react-router-dom';
 
 const App = () => (
@@ -26,7 +28,8 @@ const App = () => (
     <AuthRoute exact path="/signup/fan" component={FanSignupContainer} />
     <Showcase path='/' /> </>
     </Switch>
-    <AlbumCover/>
+    <AlbumFormContainer/>
+    <Route exact path="/album/:albumId" component={AlbumContainer} />
     <Footer path='/' />
   </div >
 )

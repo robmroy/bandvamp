@@ -20,3 +20,10 @@ export const logout = () => (
     url: '/api/session'
   })
 );
+
+export const fetchAlbum = (id) => (
+  $.ajax({
+    method: "get",
+    url: `/api/albums/${id}`
+  })
+)
