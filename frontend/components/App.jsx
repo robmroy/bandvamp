@@ -21,15 +21,19 @@ import {
 const App = () => (
   <div>
     <Switch>
-    <AuthRoute exact path="/login" component={LogInFormContainer} />
-    <><HeaderNavContainer path="/" />
-    <AuthRoute exact path="/signup" component={SelectSignup} />
-    <AuthRoute exact path="/signup/band" component={BandSignupContainer} />
-    <AuthRoute exact path="/signup/fan" component={FanSignupContainer} />
-    <Showcase path='/' /> </>
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
+      <>
+        <HeaderNavContainer />
+        <AuthRoute exact path="/signup" component={SelectSignup} />
+        <AuthRoute exact path="/signup/band" component={BandSignupContainer} />
+        <AuthRoute exact path="/signup/fan" component={FanSignupContainer} />
+      <Switch>
+        <Route  path="/album/:albumId" component={AlbumContainer} />
+        <Route  path="/album" component={AlbumFormContainer} />
+        <Showcase /> 
+      </Switch>
+     </>
     </Switch>
-    <AlbumFormContainer/>
-    <Route exact path="/album/:albumId" component={AlbumContainer} />
     <Footer path='/' />
   </div >
 )
