@@ -25,11 +25,11 @@ const App = () => (
       <>
         <HeaderNavContainer />
         <AuthRoute exact path="/signup" component={SelectSignup} />
-        <AuthRoute exact path="/signup/band" component={BandSignupContainer} />
-        <AuthRoute exact path="/signup/fan" component={FanSignupContainer} />
+        <AuthRoute  path="/signup/band" component={BandSignupContainer} />
+        <AuthRoute  path="/signup/fan" component={FanSignupContainer} />
       <Switch>
         <Route  path="/album/:albumId" component={AlbumContainer} />
-        <Route  path="/album" component={AlbumFormContainer} />
+        <ProtectedRoute  path="/album" component={AlbumFormContainer} />
         <Showcase /> 
       </Switch>
      </>

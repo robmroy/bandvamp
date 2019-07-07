@@ -344,6 +344,11 @@ input:focus{
 .black-link-container{
   margin-left: auto;
 }
+
+.album-inputs{
+  width: 350px;
+  margin: 0 auto;
+}
 /* 
 TODO: 
 
