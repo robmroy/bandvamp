@@ -11,3 +11,9 @@ export const fetchAlbum = id => dispatch => (
       album => dispatch(receiveAlbum(album))
     )
   );
+
+  export const createAlbum = formData => dispatch => (
+    APIUtil.postAlbum(formData).then(
+      album => dispatch(receiveAlbum(album))
+    )
+  );

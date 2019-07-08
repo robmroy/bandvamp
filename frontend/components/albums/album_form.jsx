@@ -53,7 +53,7 @@ class AlbumForm extends React.Component{
             data: formData,
             contentType: false,
             processData: false
-        }).then( r => 1);
+        });
       }
     render(){
        

@@ -27,3 +27,13 @@ export const fetchAlbum = (id) => (
     url: `/api/albums/${id}`
   })
 )
+
+export const postAlbum = formdata => (
+  $.ajax({
+    method: "post",
+    url: '/api/albums',
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+);

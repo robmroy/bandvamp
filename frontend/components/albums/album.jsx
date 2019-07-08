@@ -3,20 +3,22 @@ import React from 'react';
 class Album extends React.Component{
     constructor(props){
         super(props);
-        this.state = {albums:
-             props.entities.albums};
     }
     componentDidMount(){
-        this.props.fetchAlbum();
+        const that = this;
+       this.props.fetchAlbum();
     }
     render(){
-        const id = this.props.match.params.albumId;
-        const album = this.props.entities.albums[id];
-        const photoUrl = album ?
-        album.photoUrl : "";
-        return (photoUrl ? 
-        <> {photoUrl} <img src={photoUrl} /> </>:
-        "nothing")
+        const album = this.props.album;
+        const photoUrl = album.photoUrl;
+        return (
+            <div className='album-page'>   
+               <div> 
+                   <h2> {album.name} </h2> by 
+                {album.band ? " " + album.band.band_name : ""} 
+                <img src={photoUrl} />
+                </div>
+            </div>)
     }
 }
 export default Album;
