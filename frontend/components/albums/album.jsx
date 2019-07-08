@@ -16,7 +16,7 @@ class Album extends React.Component{
                <div> 
                    <h2> {album.name} </h2> by 
                 {album.band ? " " + album.band.band_name : ""} 
-                <img src={photoUrl} />
+                <img src={photoUrl} className="album-cover"/>
                 </div>
             </div>)
     }

@@ -370,6 +370,11 @@ album-page-body{
   width: 100%;
   display: flex;
 }
+
+.album-cover{
+  width: 350px;
+  height: 350px;
+}
 /* 
 TODO: 
 

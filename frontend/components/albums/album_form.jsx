@@ -3,7 +3,7 @@ class AlbumForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {imageUrl: "",
-        imageFile: "",
+        imageFile: null,
         name: "",
         band_id: props.session.id,
         description: ""
