@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => (
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     const id = ownProps.match.params.albumId;
-    return {fetchAlbum: () => dispatch(fetchAlbum(id))};
+    return {fetchAlbum: () => dispatch(fetchAlbum(id))}
 };
 
 export default withRouter(connect(

@@ -1,5 +1,4 @@
 import React from 'react';
-
 class AlbumForm extends React.Component{
     constructor(props){
         super(props);
@@ -47,19 +46,15 @@ class AlbumForm extends React.Component{
           formData.append('album[photo]', that.state.imageFile);
           console.log(Array.from(formData.entries()));
         }
-        $.ajax({
-            method: "post",
-            url: '/api/albums',
-            data: formData,
-            contentType: false,
-            processData: false
-        });
+        this.props.createAlbum(formData);
       }
     render(){
        
         return (
            <form onSubmit={this.handleSubmit}> 
-
+                <div className="errors">
+                    {this.props.errors}
+                </div>
             <div className="album-inputs">
             Album Name
            <input type="text"

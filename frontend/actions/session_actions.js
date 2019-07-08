@@ -25,15 +25,12 @@ export const clearErrors = () => ({
 
 
 export const signup = user => dispatch => {
-
   return (
-  APIUtil.signup(user).then(user => (
-    dispatch(receiveCurrentUser(user))
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
-  ))
+  APIUtil.signup(user).then(user => 
+    dispatch(receiveCurrentUser(user)), 
+    err => dispatch(receiveErrors(err.responseJSON)))
   );
-  };
+};
 
 
 export const login = user => dispatch => (
