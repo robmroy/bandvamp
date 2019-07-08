@@ -5,12 +5,11 @@ class Album extends React.Component{
         super(props);
     }
     componentDidMount(){
-        const that = this;
        this.props.fetchAlbum();
     }
     render(){
         const album = this.props.album;
-        const photoUrl = album.photoUrl;
+        const photoUrl = album ? album.photoUrl : null;
         const image = !photoUrl || photoUrl.endsWith("345892746528734589234728") ?
         "" : <img src={photoUrl} className="album-cover"/>;
         return (

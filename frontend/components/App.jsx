@@ -8,6 +8,7 @@ import HeaderNavContainer from './header_nav_container';
 import Showcase from './showcase.jsx';
 import AlbumFormContainer from './albums/album_form_container';
 import AlbumContainer from './albums/album_container'
+import BandContainer from './band_container';
 import Footer from './footer.jsx';
 import {
   Route,
@@ -28,6 +29,7 @@ const App = () => (
         <AuthRoute  path="/signup/band" component={BandSignupContainer} />
         <AuthRoute  path="/signup/fan" component={FanSignupContainer} />
       <Switch>
+        <Route path="/band/:bandId" component={BandContainer}/>
         <Route  path="/album/:albumId" component={AlbumContainer} />
         <ProtectedRoute  path="/album" component={AlbumFormContainer} />
         <Showcase /> 

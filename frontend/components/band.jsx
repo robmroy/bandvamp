@@ -6,13 +6,27 @@ class Band extends React.Component {
   }
 
   componentDidMount(){
-      
+      this.props.fetchBand();
   }
 
   render(){
-    
-     return <img src={window.lunaURL}/> ;
-  }
+    const band = this.props.band || {};
+    const photoUrl = band.photoUrl;
+    const image = !photoUrl || photoUrl.endsWith("345892746528734589234728") ?
+    "" : <img src={photoUrl} className="banner"/>;
+    return (
+        <div className='band-page'>   
+        {image}
+           <div className="band-page-body"> 
+               {band.band_name}
+               {band.band_description}
+                Albums will go here.
+             
+                    
+                
+            </div>
+        </div>)
+}
 }
 
-export default withRouter(Band);
+export default Band;

@@ -1,0 +1,2 @@
+module Api::BandsHelper
+end

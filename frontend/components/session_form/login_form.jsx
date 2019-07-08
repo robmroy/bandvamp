@@ -75,7 +75,7 @@ class LoginForm extends React.Component {
             <br />
             <label className="input-wrapper">
               <span className="login-label">Password</span>
-              <input type="text"
+              <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
