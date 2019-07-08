@@ -11,12 +11,22 @@ class Album extends React.Component{
     render(){
         const album = this.props.album;
         const photoUrl = album.photoUrl;
+        const image = !photoUrl || photoUrl.endsWith("345892746528734589234728") ?
+        "" : <img src={photoUrl} className="album-cover"/>;
         return (
             <div className='album-page'>   
-               <div> 
+               <div className="album-page-body"> 
+                   <div className="album-page-c1">
                    <h2> {album.name} </h2> by 
-                {album.band ? " " + album.band.band_name : ""} 
-                <img src={photoUrl} className="album-cover"/>
+                     {album.band ? " " + album.band.band_name : ""}
+                    <div>Song player will go here</div>
+                    <div> Track list will be displayed here </div>
+                 </div>
+                    <div className="album-page-c2">
+                    <div className="album-cover-wrapper">
+                        {image}
+                    </div>
+                    </div>
                 </div>
             </div>)
     }

@@ -1,6 +1,8 @@
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
 export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS'
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
+export const RECEIVE_BAND = 'RECEIVE_BAND';
+
 import * as APIUtil from '../util/session_api_util';
 
 export const receiveAlbum = album =>(
@@ -27,6 +29,17 @@ export const receiveAlbumErrors = errors => (
   errors}
 );
 
-  export const clearAlbumErrors = () => (
-    {type: CLEAR_ALBUM_ERRORS}
-  );
+export const clearAlbumErrors = () => (
+  {type: CLEAR_ALBUM_ERRORS}
+);
+
+export const receiveBand = band => ({
+  type: RECEIVE_BAND,
+  band
+});
+
+export const fetchBand = id => dispatch => (
+  APIUtil.fetchBand(id).then(
+    band  => dispatch(receiveBand(band))
+  )
+);

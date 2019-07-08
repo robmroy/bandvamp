@@ -37,3 +37,10 @@ export const postAlbum = formData => (
     processData: false
   })
 );
+
+export const fetchBand = id => (
+  $.ajax({
+    method: "get",
+    url: `/api/bands/${id}`
+  })
+)

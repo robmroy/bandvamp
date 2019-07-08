@@ -366,15 +366,32 @@ album-page{
   width: 975px;
 }
 
-album-page-body{
+.album-page-body{
   width: 100%;
   display: flex;
 }
 
+.album-page-c1{
+  width: 375px;
+  margin: 35px;
+}
+
+.album-page-c2{
+  width: 350px;
+}
+
 .album-cover{
+  height: 100%;
+  display: block;
+}
+
+.album-cover-wrapper{
   width: 350px;
   height: 350px;
+  overflow: hidden;
+  margin:0;   
 }
+
 /* 
 TODO: 
 
