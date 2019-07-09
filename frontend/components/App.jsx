@@ -18,6 +18,7 @@ import {
   HashRouter,
   withRouter
 } from 'react-router-dom';
+import MusicPlayer from './media_player/music_player';
 
 const App = () => (
   <div>

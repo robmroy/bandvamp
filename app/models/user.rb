@@ -1,6 +1,12 @@
 class User < ApplicationRecord
   attr_reader :password
+  has_one_attached :banner
   has_one_attached :photo
+
+  has_many :albums,
+  class_name: :Album,
+  foreign_key: :band_id
+
   validates :username, :email, presence: true, uniqueness: true
   validates :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 6 }, allow_nil: true

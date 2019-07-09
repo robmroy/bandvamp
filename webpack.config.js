@@ -26,6 +26,10 @@ module.exports = {
           },
         },
       ],
+    },
+    {
+      test: /\.mp3$/,
+      loader: 'file-loader'
     }]
   },
   devtool: 'source-map',

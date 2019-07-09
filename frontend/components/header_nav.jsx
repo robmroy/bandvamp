@@ -6,7 +6,26 @@ const HeaderNav = props => {
     <img src={window.parallelogram} 
     className="parallelogram"/>band
     <span className="vamp">vamp</span></div>)
-if (props.user_id === null){
+
+  const auth =  (<div className="header-links">
+  <div className="black-link-container"> <div className="pad15"> </div>   
+<Link to="/signup" 
+className="black-link">sign up</Link> &nbsp; &nbsp;
+<Link to="/login" className="black-link">log in</Link> &nbsp; &nbsp;
+      </div>
+  <button className="demo-button" 
+    onClick={() => props.demo()}>Demo login</button>
+</div>)
+
+const logout = (
+  <div className="black-link-container"> <div className="pad15"> </div>   
+
+<button className="float-right" 
+onClick={() => props.logout()}>logout</button>
+
+</div>
+)
+
   return (
     <div className="header-nav">
       {logoElement}
@@ -17,35 +36,12 @@ if (props.user_id === null){
         <input className="search-bar" placeholder="Search music"/>
         </div>
         </div>
-      <div className="header-links">
-          <div className="black-link-container"> <div className="pad15"> </div>   
-      <Link to="/signup" 
-      className="black-link">sign up</Link> &nbsp; &nbsp;
-    <Link to="/login" className="black-link">log in</Link> &nbsp; &nbsp;
-              </div>
-          <button className="demo-button" 
-            onClick={() => props.demo()}>Demo login</button>
-      </div>
+        {props.user_id ? logout : auth}
       </div>
       <div className="header-nav-right-padding">
         <img src={searchIcon} className="search-icon"/>
       </div>
     </div>
   )
-}
-else {
-  return (
-    <div className="header-nav">{logoElement}
-          <div className="header-nav-right">
-          <div className="black-link-container">
-            <div className="pad42"/>
-  <button className="float-right" 
-  onClick={() => props.logout()}>logout</button>
-          </div>
-    </div>
-      </div>
-    
-  )
-}
 };
 export default HeaderNav;
