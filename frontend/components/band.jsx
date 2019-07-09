@@ -24,11 +24,15 @@ class Band extends React.Component {
            <div className="band-page-body"> 
                {band.band_name}
                {band.band_description}
+               <div className="grid-container">
                 {albums.map((album, idx) =>
-                   <div key={idx}> 
+                   <div key={idx} className = "grid-item"> 
                     <div>{album.name} </div>
-                    <div> <img src={album.photoUrl} /> </div>                    
+                       <img src={album.photoUrl} className='album-small' />                    
                     </div>)}
+                    {[...Array(9-albums.length).keys()].map( (_, idx) =>
+                      <div className='grid-item'></div>) }
+                </div>
             </div>
         </div>)
 }
