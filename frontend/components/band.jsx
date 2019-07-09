@@ -12,11 +12,14 @@ class Band extends React.Component {
   render(){
     const band = this.props.band || {};
     const photoUrl = band.photoUrl;
-    const image = !photoUrl || photoUrl.endsWith("345892746528734589234728") ?
+    const banner = !photoUrl || photoUrl.endsWith("345892746528734589234728") ?
     "" : <img src={photoUrl} className="banner"/>;
     return (
-        <div className='band-page'>   
-        {image}
+        <div className='band-page'>  
+        <div className="banner-wrapper">
+                        {banner}
+       </div> 
+      
            <div className="band-page-body"> 
                {band.band_name}
                {band.band_description}

@@ -6,6 +6,7 @@ module.exports = {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js'
   },
+  
   module: {
     rules: [{
       test: [/\.jsx?$/],
@@ -14,6 +15,17 @@ module.exports = {
       query: {
         presets: ['@babel/env', '@babel/react']
       }
+    },
+    {
+      test: /\.(png|jpg|gif)$/i,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+          },
+        },
+      ],
     }]
   },
   devtool: 'source-map',

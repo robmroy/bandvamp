@@ -304,8 +304,13 @@ input:focus{
 }
 
 .header-nav-right{
-  margin: 0 16vw 0 0;
+  margin: 0 0 0 auto;
   width: 34vw;
+}
+
+.header-nav-right-padding{
+  width: 16vw;
+  position: relative;
 }
 
 .search-bar{
@@ -315,6 +320,7 @@ input:focus{
   width: 300px;
   background-color: #F3F3F3;
   margin-bottom: 4px;
+  font-size: 14px;
 }
 
 .search-bar:focus {
@@ -329,12 +335,16 @@ input:focus{
   margin: 15px 0 0 0;
 }
 
+.pad42{
+  width: 100%;
+  display: block;
+  height: 42px;
+}
 .pad15{
   width: 100%;
   display: block;
   height: 15px;
 }
-
 .pad12{
   width: 100%;
   display: block;
@@ -392,6 +402,34 @@ album-page{
   margin:0;   
 }
 
+.banner-wrapper{
+  width: 975px;
+  max-height: 180px;
+  min-height: 40px;
+  overflow: hidden;
+  margin:0;   
+}
+
+.banner{
+  width: 100%;
+  display: block;
+}
+
+.float-right{
+  float: right;
+}
+
+.search-bar-container {
+  position: relative;
+}
+
+
+
+.search-icon{
+  position: relative;
+  right: 30px; 
+  top: 26px;
+}
 /* 
 TODO: 
 
