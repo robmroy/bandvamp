@@ -14,7 +14,7 @@ stones = User.create!(
   band_name: "The Rolling Stones",
   password: "pass123")
   stones_pic = File.open('app/assets/images/stone-wheels.jpg');
-stones.photo.attach(io: stones_pic, filename: "stone-wheels.jpg");
+  stones.photo.attach(io: stones_pic, filename: "stone-wheels.jpg");
 
 rob = User.create!(
   username: "rob",

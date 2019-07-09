@@ -7,6 +7,7 @@ class Album extends React.Component{
     componentDidMount(){
        this.props.fetchAlbum();
     }
+    
     render(){
         const album = this.props.album;
         const photoUrl = album ? album.photoUrl : null;

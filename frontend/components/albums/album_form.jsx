@@ -75,10 +75,13 @@ class AlbumForm extends React.Component{
            <input type="file"
             onChange={this.handleFile}
             />
-            <img src={this.state.imageUrl}/>
-            <br/>
-            {this.state.ajaxUrl}
-            <img src={this.state.ajaxUrl}/>
+            
+            <div className="album-page-c2">
+                    <div className="album-cover-wrapper">
+                        <img src={this.state.imageUrl}
+                        className='album-cover'/>
+                    </div>
+            </div>
             <input type="submit" value="Submit"/>
             </div>
             </form>

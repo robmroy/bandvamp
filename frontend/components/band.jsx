@@ -21,9 +21,6 @@ class Band extends React.Component {
                {band.band_name}
                {band.band_description}
                 Albums will go here.
-             
-                    
-                
             </div>
         </div>)
 }
