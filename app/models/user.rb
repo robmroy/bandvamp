@@ -13,13 +13,17 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_one_attached :photo
 
-  def require_photo
+
+  def require_photos
       if !self.photo.attached?
           file = File.open('app/assets/images/parallel_cropped.png')
           self.photo.attach(io: file, filename: '345892746528734589234728')
       end
+      if !self.banner.attached?
+        file = File.open('app/assets/images/parallel_cropped.png')
+        self.banner.attach(io: file, filename: '345892746528734589234728')
+    end
   end
 
   def self.find_by_credentials(username, password)

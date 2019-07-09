@@ -11,19 +11,24 @@ class Band extends React.Component {
 
   render(){
     const band = this.props.band || {};
+    const albums = Object.values(band.albums || {});
     const bannerUrl = band.bannerUrl;
     const banner = !bannerUrl || bannerUrl.endsWith("345892746528734589234728") ?
     "" : <img src={bannerUrl} className="banner"/>;
     return (
         <div className='band-page'>  
         <div className="banner-wrapper">
-                        {banner}
+            {banner}
        </div> 
       
            <div className="band-page-body"> 
                {band.band_name}
                {band.band_description}
-                Albums will go here.
+                {albums.map((album, idx) =>
+                   <div key={idx}> 
+                    <div>{album.name} </div>
+                    <div> <img src={album.photoUrl} /> </div>                    
+                    </div>)}
             </div>
         </div>)
 }
