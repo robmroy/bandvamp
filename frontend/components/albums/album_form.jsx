@@ -50,7 +50,13 @@ class AlbumForm extends React.Component{
       }
     render(){
        const errors = this.props.errors || {};
-       const album_errors = errors.album || [];
+
+       let album_errors = errors.album;
+       album_errors = Array.isArray(album_errors) 
+                        ?
+                     album_errors
+                        :
+                    Object.values(album_errors);
         return (
            <form onSubmit={this.handleSubmit}> 
                 
