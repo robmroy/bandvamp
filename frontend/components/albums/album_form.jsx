@@ -53,7 +53,7 @@ class AlbumForm extends React.Component{
         return (
            <form onSubmit={this.handleSubmit}> 
                 <div className="errors">
-                    {this.props.errors}
+                    {this.props.errors[errors]}
                 </div>
             <div className="album-inputs">
             Album Name
