@@ -44,7 +44,7 @@ class AlbumForm extends React.Component{
         const that = this;
         if (this.state.imageFile) {
           formData.append('album[photo]', that.state.imageFile);
-          console.log(Array.from(formData.entries()));
+        //   console.log(Array.from(formData.entries()));
         }
         this.props.createAlbum(formData);
       }
