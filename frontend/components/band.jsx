@@ -31,7 +31,7 @@ class Band extends React.Component {
                        <img src={album.photoUrl} className='album-small' />                    
                     </div>)}
                     {[...Array(9-albums.length).keys()].map( (_, idx) =>
-                      <div className='grid-item'></div>) }
+                      <div key={idx + 9} className='grid-item'></div>) }
                 </div>
             </div>
         </div>)
