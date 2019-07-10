@@ -4,7 +4,7 @@ import { createAlbum } from '../../actions/entities_actions';
 
 const mapStateToProps = ({session, errors}) => ({
     session,
-    errors: errors.album
+    errors
 })
 
 const mapDispatchToProps = dispatch => ({

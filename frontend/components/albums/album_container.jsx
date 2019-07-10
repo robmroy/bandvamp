@@ -5,7 +5,8 @@ import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => (
     {album: 
-        state.entities.albums[ownProps.match.params.albumId] || {}});
+        state.entities.albums[ownProps.match.params.albumId] || {},
+    errors: state.errors});
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     const id = ownProps.match.params.albumId;

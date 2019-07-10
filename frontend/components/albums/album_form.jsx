@@ -49,13 +49,15 @@ class AlbumForm extends React.Component{
         this.props.createAlbum(formData);
       }
     render(){
-       
+       const errors = this.props.errors || {};
+       const album_errors = errors.album || [];
         return (
            <form onSubmit={this.handleSubmit}> 
-                <div className="errors">
-                    {this.props.errors ? this.props.errors[errors] : ""}
-                </div>
+                
             <div className="album-inputs">
+            <div className="errors">
+                    {album_errors}
+                </div>
             Album Name
            <input type="text"
            onChange={this.handleText("name")}
