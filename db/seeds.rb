@@ -5,26 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 User.delete_all
 Album.delete_all
 placeholder = File.open('app/assets/images/parallel_cropped.png')
-
+stones_pic = File.open('app/assets/images/stone-wheels.jpg')
+homeworld = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Arthur+Vyncke/homeworld.jpg')
 stones = User.new(
   username: "rolling_stones",
   email: "mickjagger@yahoo.com",
   band_name: "The Rolling Stones",
   password: "pass123")
-  stones_pic = File.open('app/assets/images/stone-wheels.jpg')
   stones.banner.attach(io: stones_pic, filename: "stone-wheels.jpg")
-  stones.photo.attach(io: placeholder, filename: '345892746528734589234728')
+  stones.photo.attach(io: placeholder, filename: '345892746528734589234728-stone')
 stones.save!
+
+stones_pic.rewind
+placeholder.rewind
 
 rob = User.new(
   username: "rob",
   email: "rob@yahoo.com",
   password: "pass123",
 )
-# rob.photo.attach(io: placeholder, filename: '345892746528734589234728')
+rob.banner.attach(io: homeworld, filename: "stone-wheels-rob.jpg")
+# rob.photo.attach(io: stones_pic, filename: "stone-wheels.jpg")
 # rob.banner.attach(io: placeholder, filename: '345892746528734589234728')
 rob.save!
 

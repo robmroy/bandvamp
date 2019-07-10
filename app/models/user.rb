@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :albums,
   class_name: :Album,
   foreign_key: :band_id
+  validate :require_photos
 
   validates :username, :email, presence: true, uniqueness: true
   validates :password_digest, :session_token, presence: true
