@@ -56,7 +56,7 @@ body{
 }
 
 .header-logo{
-  margin: 30px 0 0 20vw;
+  margin: 16px 0 0 15vw;
   padding: 1vw;
 }
 
@@ -305,7 +305,8 @@ input:focus{
 
 .header-nav-right{
   margin: 0 0 0 auto;
-  width: 34vw;
+  /* width: 34vw; */
+  display: flex;
 }
 
 .header-nav-right-padding{
@@ -315,9 +316,9 @@ input:focus{
 
 .search-bar{
   float: right;
-  margin-left: auto;
+  /* margin-left: auto; */
   display: block;
-  width: 300px;
+  width: 280px;
   background-color: #F3F3F3;
   margin-bottom: 4px;
   font-size: 14px;
@@ -330,9 +331,9 @@ input:focus{
 
 
 .search-bar-wrapper{
-  width: 100%;
   height:35px;
   margin: 15px 0 0 0;
+  display:flex;
 }
 
 .pad42{
@@ -355,9 +356,13 @@ input:focus{
   margin-left: auto;
 }
 
-.album-inputs{
-  width: 350px;
-  margin: 0 auto;
+.album-inputs-right{
+  margin-left: auto;
+}
+
+
+.album-inputs-left{
+  width: 550px;
 }
 
 h1{
@@ -419,16 +424,13 @@ album-page{
   float: right;
 }
 
-.search-bar-container {
-  position: relative;
-}
-
 
 
 .search-icon{
   position: relative;
-  right: 30px; 
-  top: 26px;
+  left: 270px;
+  top: 9px;
+  height: 16px;
 }
 
 .acknowledgement{
@@ -455,7 +457,29 @@ album-page{
   height: 100%;
 }
 
+.album-form{width: 900px;
+display: flex;
+margin: 0 auto;}
 
+.track-inputs{
+  min-height: 220px;
+}
+
+.save-draft {
+  color: white;
+  background-color: #0687f5;
+}
+
+.publish {
+  color: white;
+  background-color: #0ec200;
+}
+.search-logout{
+  display:grid;
+  grid-template-columns: 300px;
+}
+
+.logout{margin-left: auto;}
 /* 
 TODO: 
 

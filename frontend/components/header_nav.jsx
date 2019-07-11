@@ -18,28 +18,27 @@ className="black-link">sign up</Link> &nbsp; &nbsp;
 </div>)
 
 const logout = (
-  <div className="black-link-container"> <div className="pad15"> </div>   
-
-<button className="float-right" 
+<button className="logout" 
 onClick={() => props.logout()}>logout</button>
 
-</div>
-)
+);
 
   return (
     <div className="header-nav">
       {logoElement}
       <div className="header-nav-right">
+      <div className = 'search-logout'>
         <div className="search-bar-wrapper">
         
-        <div className="search-bar-container"> 
+       <img src={searchIcon} className="search-icon"/>
         <input className="search-bar" placeholder="Search music"/>
+   
         </div>
+        {!props.user_id ?  auth : ""}
         </div>
-        {props.user_id ? logout : auth}
       </div>
       <div className="header-nav-right-padding">
-        <img src={searchIcon} className="search-icon"/>
+      {props.user_id? logout : ""}
       </div>
     </div>
   )

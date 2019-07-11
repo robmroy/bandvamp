@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';    
 class AlbumForm extends React.Component{
     constructor(props){
         super(props);
@@ -6,7 +7,8 @@ class AlbumForm extends React.Component{
         imageFile: null,
         name: "",
         band_id: props.session.id,
-        description: ""
+        description: "",
+        toggled: false
         };
         this.handleFile=this.handleFile.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
@@ -47,52 +49,70 @@ class AlbumForm extends React.Component{
         //   console.log(Array.from(formData.entries()));
         }
         this.props.createAlbum(formData);
+        this.state.toggled = true;
       }
     render(){
        const errors = this.props.errors || {};
 
-       let album_errors = errors.album;
-       album_errors = Array.isArray(album_errors) 
-                        ?
-                     album_errors
-                        :
-                    Object.values(album_errors);
+    //    let album_errors = errors.album;
+    //    album_errors = Array.isArray(album_errors) 
+    //                     ?
+    //                  album_errors
+    //                     :
+    //                 Object.values(album_errors);
         return (
-           <form onSubmit={this.handleSubmit}> 
-                
-            <div className="album-inputs">
+            <div>
+           <form onSubmit={this.handleSubmit} className="album-form"> 
+        <div className='album-inputs-left'>
+        <Link to="/signup/band" className="button-link a1c6">
+          add track</Link>
+            <div className="track-inputs"></div>
+                 
+          <input type="submit" className="button-link save-draft"
+           value = "Save Draft" />
+          <input type="submit" className="button-link publish"
+           value = "Publish" />
+        </div>
+            <div className="album-inputs-right">
             <div className="errors">
-                    {album_errors}
+                {this.state.name || !this.state.toggled ? "" : "Please enter an album title"}
                 </div>
+     <div className="outer-input-wrapper">
             Album Name
            <input type="text"
            onChange={this.handleText("name")}
            value={this.state.name}
            ></input>
-           
-           Tracks
-           <input type="text"></input>
+    </div>
 
+    <div className="outer-input-wrapper">
+            Album Cover
+           <input type="file"
+            onChange={this.handleFile}
+            />
+     </div>       
+            <div className="album-page-c2">
+                    <div 
+                        className={this.state.imageUrl ?
+                            "album-cover-wrapper"
+                            : ""}>
+                             <img src={this.state.imageUrl}
+                                className='album-cover'/>
+                    </div>
+            </div>
+    
+    <div className="outer-input-wrapper">
            Description
             <input type="text" 
             className="description"
             onChange={this.handleText("description")}
            value={this.state.description}></input>
-
-            Album Cover
-           <input type="file"
-            onChange={this.handleFile}
-            />
-            
-            <div className="album-page-c2">
-                    <div className="album-cover-wrapper">
-                        <img src={this.state.imageUrl}
-                        className='album-cover'/>
-                    </div>
+    </div>
             </div>
-            <input type="submit" value="Submit"/>
-            </div>
+           
+          
             </form>
+            </div>
         )
     }
 
