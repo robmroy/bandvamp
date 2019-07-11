@@ -37,6 +37,15 @@ export const postAlbum = formData => (
     processData: false
   })
 );
+export const postSong= formData => (
+  $.ajax({
+    method: "post",
+    url: '/api/songs',
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+);
 
 export const fetchBand = id => (
   $.ajax({

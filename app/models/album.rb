@@ -1,9 +1,13 @@
 class Album < ApplicationRecord
     validates :band_id, :name, presence: true
     validate :require_photo
+
     belongs_to :band,
     class_name: :User,
     foreign_key: :band_id
+
+    has_many :songs
+    
 
     has_one_attached :photo
 

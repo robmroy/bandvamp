@@ -2,12 +2,13 @@ export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
 export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS'
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 export const RECEIVE_BAND = 'RECEIVE_BAND';
+export const RECEIVE_SONG = 'RECEIVE_SONG';
 
 import * as APIUtil from '../util/session_api_util';
 
-export const receiveAlbum = album =>(
+export const receiveAlbum = payload =>(
     {type: RECEIVE_ALBUM,
-    album}
+    payload}
   )
   
 export const fetchAlbum = id => dispatch => (
@@ -16,12 +17,42 @@ export const fetchAlbum = id => dispatch => (
     )
   );
 
-  export const createAlbum = formData => dispatch => (
+  export const createAlbum = album => dispatch => {
+    const formData = new FormData();
+    formData.append('album[name]', 
+    album.name);
+    formData.append('album[band_id]', 
+    album.band_id);
+    formData.append('album[description]',
+    album.description);
+    if (album.imageFile) {
+      formData.append('album[photo]', album.imageFile);
+    }
     APIUtil.postAlbum(formData).then(
-      album => dispatch(receiveAlbum(album)),
+      payload => dispatch(receiveAlbum(payload)),
       err => dispatch(receiveAlbumErrors(err.responseJSON))
+    ) };
+
+    export const receiveSong = song =>(
+      {type: RECEIVE_SONG,
+      song}
     )
-  );
+    
+    export const createSong = song => dispatch => {
+      const formData = new FormData();
+      formData.append('song[name]', 
+      song.name);
+      formData.append('song[description]',
+      song.description);
+      formData.append('song[album_id]',
+      song.album_id);
+      if (song.imageFile) {
+        formData.append('song[audio_file]', song.imageFile);
+      }
+      APIUtil.postSong(formData).then(
+        song => dispatch(receiveSong(song)),
+        err => dispatch(receiveSongErrors(err.responseJSON))
+      ) };
 
 
 export const receiveAlbumErrors = errors => (
