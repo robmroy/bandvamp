@@ -508,10 +508,22 @@ margin: 0 auto;}
 .add-track{
  color: #0687f5;
  font-size: 22px;
+ background-color: inherit;
+ border: none;
+ cursor: pointer;
+ width: 140px;
+}
+
+.add-track:hover {
+  text-decoration: underline;
 }
 
 .album-submit-buttons{
   display: flex;
+}
+
+.hidden-input{
+  display:none;
 }
 /* 
 TODO: 
