@@ -3,6 +3,7 @@ class Api::AlbumsController < ApplicationController
     def create
         @album = Album.new(album_params)
         if @album.save
+            
         render "/api/albums/show"
         else
         render json: @album.errors.full_messages, status: 422
@@ -16,7 +17,7 @@ class Api::AlbumsController < ApplicationController
     private
     
     def album_params
-        params.require(:album).permit(:name, :band_id, :photo, :description)
+        params.require(:album).permit(:name, :band_id, :photo, :description, :tracks)
     end
     
       

@@ -17,6 +17,7 @@ class AlbumForm extends React.Component{
         this.handleAlbumText=this.handleAlbumText.bind(this);
         this.handleTrackText=this.handleTrackText.bind(this);
     }
+    
     handleAlbumText(field){
         return e => {
             const album = this.state.album;
@@ -49,15 +50,17 @@ class AlbumForm extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault();
-        const album = this.state.album;
-        if (!album.imageFile) delete album[imageFile];        
-        this.props.createAlbum(album);
         this.state.toggled = true;
+        const {album, tracks} = this.state;
+        if (!album.imageFile) delete album[imageFile];        
+        this.props.createAlbum(album, tracks);
       }
 
-    handleAddTrackLink(e){
+    handleAddTrackLink(idx){
+        return e => {
         e.preventDefault();
-        $('.hidden-input').trigger('click'); 
+        $(`#hidden-${idx}`).trigger('click'); 
+        }
     }
     
     addTrack(e){
@@ -66,13 +69,12 @@ class AlbumForm extends React.Component{
         const file = e.currentTarget.files[0];
         reader.onloadend = () =>
        {    
-           const album=this.state.album;
             let tracks = this.state.tracks;
             let newSong = {songUrl: reader.result, audioFile: file, track_number: 
             tracks.length + 1, name: ""}
-            console.log("new tracks:");
-            console.dir(tracks.concat(newSong));
             this.setState({tracks: tracks.concat(newSong)});
+            console.log("new tracks:");
+            console.dir(this.state.tracks);
             }
         // this.setState({ imageUrl: reader.result, imageFile: file});}
 
@@ -83,8 +85,6 @@ class AlbumForm extends React.Component{
 
     
     render(){
-        console.log("render:")
-        console.dir(this.state.tracks);
        const errors = this.props.errors || {};
        const album = this.state.album;
         const tracks = (<div>
@@ -96,6 +96,10 @@ class AlbumForm extends React.Component{
                 console.log("here");
             }} 
             />
+            <input type="file" className="hidden-input" 
+            id = {`hidden-${idx}`}
+            onChange={(e)=>this.addTrack(e)}/>
+
             </div>)
             )}
         </div>);
@@ -105,11 +109,13 @@ class AlbumForm extends React.Component{
         <div className='album-inputs-left'>
 
         <Link to="/album" type="file" className="button-link add-track"
-        onClick={(e) => this.handleAddTrackLink(e)}> add track </Link>
+        onClick={this.handleAddTrackLink(this.state.tracks.length +1)}> add track </Link>
         
             <div className="track-inputs">
                 {tracks}
-                
+                <input type="file" className="hidden-input" 
+            id = {`hidden-${this.state.tracks.length + 1}`}
+            onChange={(e)=>this.addTrack(e)}/>
             </div>
         <div className = 'album-submit-buttons'>
           <input type="submit" className="save-draft"
@@ -127,6 +133,7 @@ class AlbumForm extends React.Component{
            <input type="text"
            onChange={this.handleAlbumText("name")}
            value={album.name}
+           className = "album-title-input"
            ></input>
     </div>
 
@@ -134,6 +141,7 @@ class AlbumForm extends React.Component{
             Album Cover
            <input type="file"
             onChange={this.handleAlbumCover}
+            className="album-file-input"
             ></input>
      </div>       
             <div className="album-page-c2">
@@ -147,18 +155,18 @@ class AlbumForm extends React.Component{
             </div>
     
     <div className="outer-input-wrapper">
-           Description
-            <input type="text" 
+           description (optional)
+            <textarea
             className="description"
             onChange={this.handleAlbumText("description")}
-           value={album.description}></input>
+           value={album.description}
+           className='album-description-input'/>
     </div>
             </div>
            
             </form>
 
-
-            <input type="file" className="hidden-input" onChange={(e)=>this.addTrack(e)}/>
+            
             </div>
         )
     }

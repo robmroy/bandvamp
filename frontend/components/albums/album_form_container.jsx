@@ -1,6 +1,6 @@
 import AlbumForm from './album_form';
 import { connect } from 'react-redux';
-import { createAlbum } from '../../actions/entities_actions';
+import { createAlbum, createSong } from '../../actions/entities_actions';
 
 const mapStateToProps = ({session, errors}) => ({
     session,
@@ -8,6 +8,7 @@ const mapStateToProps = ({session, errors}) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    createAlbum: formData => dispatch(createAlbum(formData))
+    createAlbum: album => dispatch(createAlbum(album)),
+    createSong: song => dispatch(createSong(song))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumForm);

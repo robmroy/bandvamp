@@ -17,7 +17,7 @@ export const fetchAlbum = id => dispatch => (
     )
   );
 
-  export const createAlbum = album => dispatch => {
+  export const createAlbum = (album, tracks) => dispatch => {
     const formData = new FormData();
     formData.append('album[name]', 
     album.name);
@@ -29,7 +29,14 @@ export const fetchAlbum = id => dispatch => (
       formData.append('album[photo]', album.imageFile);
     }
     APIUtil.postAlbum(formData).then(
-      payload => dispatch(receiveAlbum(payload)),
+      payload => {
+        console.log("initial payload:");
+        console.dir(payload);
+        const album_id = payload.album.id;
+        
+        dispatch(receiveAlbum(payload));
+       
+      },
       err => dispatch(receiveAlbumErrors(err.responseJSON))
     ) };
 
@@ -57,6 +64,10 @@ export const fetchAlbum = id => dispatch => (
 
 export const receiveAlbumErrors = errors => (
   {type: RECEIVE_ALBUM_ERRORS,
+  errors}
+);
+export const receiveSongErrors = errors => (
+  {type: RECEIVE_SONG_ERRORS,
   errors}
 );
 

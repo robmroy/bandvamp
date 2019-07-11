@@ -358,6 +358,7 @@ input:focus{
 
 .album-inputs-right{
   margin-left: auto;
+  width: 380px;
 }
 
 
@@ -465,6 +466,10 @@ margin: 0 auto;}
   min-height: 220px;
 }
 
+.track-inputs input{
+  width: 300px;
+}
+
 .save-draft {
   color: white;
   background-color: #0687f5;
@@ -524,6 +529,19 @@ margin: 0 auto;}
 
 .hidden-input{
   display:none;
+}
+
+.album-title-input{
+  width: 100%;
+  font-size: 22px;
+  margin: 0 0 3px 0;
+  height: 38px;
+}
+.album-description-input{
+  width: 100%;
+  font-size: 13px;
+  margin: 0 0 3px 0;
+  height: 56px;
 }
 /* 
 TODO: 
