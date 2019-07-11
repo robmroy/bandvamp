@@ -468,11 +468,35 @@ margin: 0 auto;}
 .save-draft {
   color: white;
   background-color: #0687f5;
+  height: 33px;
+  width: 110px;
+  display: block;
+  border-radius: 3px;
+  padding: 8px 0 7px 0;
+  margin: 45px 0;
+  font-size: 15px;
+  font-weight: 500;
+  box-sizing: border-box;
+  overflow: auto;
+  display:flex;
+  justify-content: center;
 }
 
 .publish {
   color: white;
   background-color: #0ec200;
+  height: 33px;
+  width: 110px;
+  display: block;
+  border-radius: 3px;
+  padding: 8px 0 7px 0;
+  margin: 45px 15px;
+  font-size: 15px;
+  font-weight: 500;
+  box-sizing: border-box;
+  overflow: auto;
+  display:flex;
+  justify-content: center;
 }
 .search-logout{
   display:grid;
@@ -480,6 +504,15 @@ margin: 0 auto;}
 }
 
 .logout{margin-left: auto;}
+
+.add-track{
+ color: #0687f5;
+ font-size: 22px;
+}
+
+.album-submit-buttons{
+  display: flex;
+}
 /* 
 TODO: 
 

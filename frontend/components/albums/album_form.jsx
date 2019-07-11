@@ -64,14 +64,15 @@ class AlbumForm extends React.Component{
             <div>
            <form onSubmit={this.handleSubmit} className="album-form"> 
         <div className='album-inputs-left'>
-        <Link to="/signup/band" className="button-link a1c6">
+        <Link to="/signup/band" className="button-link add-track">
           add track</Link>
             <div className="track-inputs"></div>
-                 
-          <input type="submit" className="button-link save-draft"
+        <div className = 'album-submit-buttons'>
+          <input type="submit" className="save-draft"
            value = "Save Draft" />
-          <input type="submit" className="button-link publish"
+          <input type="submit" className="publish"
            value = "Publish" />
+        </div>     
         </div>
             <div className="album-inputs-right">
             <div className="errors">
@@ -110,7 +111,6 @@ class AlbumForm extends React.Component{
     </div>
             </div>
            
-          
             </form>
             </div>
         )
