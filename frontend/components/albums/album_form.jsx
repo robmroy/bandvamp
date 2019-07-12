@@ -108,7 +108,7 @@ class AlbumForm extends React.Component{
         </div>);
         return (
             <div>
-                {this.props.albumId ? <Redirect to={`/album/${this.props.albumId}`}/> : "" }
+                {this.props.albumId && this.props.toggled ? <Redirect to={`/album/${this.props.albumId}`}/> : "" }
            <form onSubmit={this.handleSubmit} className="album-form"> 
         <div className='album-inputs-left'>
 

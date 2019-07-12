@@ -25,8 +25,8 @@ export const fetchAlbum = id => dispatch => (
     song.description);
     formData.append('song[album_id]',
     song.album_id);
-    if (song.imageFile) {
-      formData.append('song[audio_file]', song.imageFile);
+    if (song.audioFile) {
+      formData.append('song[audio_file]', song.audioFile);
     }
     console.log("pre-postSong");
     APIUtil.postSong(formData).then(
