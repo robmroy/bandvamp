@@ -4,6 +4,7 @@ export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 export const RECEIVE_BAND = 'RECEIVE_BAND';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const RECEIVE_SONG_ERRORS= 'RECEIVE_SONG_ERRORS';
+export const CLEAR_RECEIVED_ALBUM_ID= 'CLEAR_RECEIVED_ALBUM_ID';
 import * as APIUtil from '../util/session_api_util';
 
 export const receiveAlbum = payload =>(
@@ -111,3 +112,7 @@ export const fetchBand = id => dispatch => (
     band  => dispatch(receiveBand(band))
   )
 );
+
+export const clearReceivedAlbumId = ()  => (
+  {type: CLEAR_RECEIVED_ALBUM_ID}
+)

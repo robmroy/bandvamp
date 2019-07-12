@@ -1,14 +1,18 @@
 
 import merge from 'lodash/merge';
 
-import { RECEIVE_ALBUM } from '../actions/entities_actions';
+import { RECEIVE_ALBUM, CLEAR_RECEIVED_ALBUM_ID } from '../actions/entities_actions';
 
-const albumsReducer = (state = {}, action) => {
+const albumsReducer = (state = {receivedId: null}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ALBUM:
+      const albumId = action.payload.album.id; 
       return merge({}, state, { 
-        [action.payload.album.id]: action.payload });
+        [albumId]: action.payload,
+      receivedId: albumId });
+    case CLEAR_RECEIVED_ALBUM_ID:
+      return merge({}, state, {receivedId: null})
     default:
       return state;
   }

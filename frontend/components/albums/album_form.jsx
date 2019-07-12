@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';    
+import {Link, Redirect} from 'react-router-dom';    
 class AlbumForm extends React.Component{
     constructor(props){
         super(props);
@@ -18,7 +18,9 @@ class AlbumForm extends React.Component{
         this.handleTrackText=this.handleTrackText.bind(this);
         this.addTrack=this.addTrack.bind(this);
     }
-    
+    componentDidMount(){
+        this.props.clearReceivedAlbumId();
+    }
     handleAlbumText(field){
         return e => {
             const album = this.state.album;
@@ -106,6 +108,7 @@ class AlbumForm extends React.Component{
         </div>);
         return (
             <div>
+                {this.props.albumId ? <Redirect to={`/album/${this.props.albumId}`}/> : "" }
            <form onSubmit={this.handleSubmit} className="album-form"> 
         <div className='album-inputs-left'>
 
