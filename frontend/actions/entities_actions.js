@@ -28,37 +28,25 @@ export const fetchAlbum = id => dispatch => (
     if (song.audioFile) {
       formData.append('song[audio_file]', song.audioFile);
     }
-    console.log("pre-postSong");
+   
     APIUtil.postSong(formData).then(
       song => {
-        console.log("song success");
+       
         dispatch(receiveSong(song));
       callback();},
       err => {
-        console.log("song error:");
-        console.dir(err.responseJSON);
         dispatch(receiveSongErrors(err.responseJSON))
       }
 
     ) };
 
   const createTracks = (tracks, finalCallback, dispatch) => {
-    console.log("createTracks:");
-    console.dir(tracks);
     if (tracks.length == 0){finalCallback();}
     else {let track = tracks.pop();
-      console.log("track popped, now tracks is:");
-      console.dir(tracks);
-      console.log("and track is");
-      console.dir(track);
       createSong(track,()=>createTracks(tracks, finalCallback, dispatch))(dispatch);}
   }
 
   export const createAlbum = ({album, tracks}) => dispatch => {
-    console.log("createAlbum:");
-    console.dir(album);
-    console.dir(tracks);
-    console.dir(tracks[1]);
     const formData = new FormData();
     formData.append('album[name]', 
     album.name);
@@ -71,7 +59,6 @@ export const fetchAlbum = id => dispatch => (
     }
     APIUtil.postAlbum(formData).then(
       payload => {
-        console.dir(payload);
         const album_id = payload.album.id;
         tracks.forEach(track => {
           payload.songs.push(track);

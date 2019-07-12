@@ -47,8 +47,6 @@ class LoginForm extends React.Component {
     <img src={window.parallelogram} 
     className="parallelogram"/>band
     <span className="vamp">vamp</span></div>)
-    // console.log("location state:")
-    // console.log(this.props.location.state);
     return (
       <div className="login-page">
         <div className = "login-page-top">

@@ -16,7 +16,6 @@ class Band extends React.Component {
     
     const band = this.props.band || {};
     const albums = Object.values(band.albums || {});
-    console.dir(albums);
     const bannerUrl = band.bannerUrl;
     const banner = !bannerUrl || bannerUrl.endsWith("345892746528734589234728") ?
     "" : <img src={bannerUrl} className="banner"/>;

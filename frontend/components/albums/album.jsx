@@ -20,9 +20,6 @@ class Album extends React.Component{
         const currentSong=songs[this.state.currentTrackNumber - 1] || {};
         const album = this.props.album;
         const photoUrl = album ? album.photoUrl : null;
-        console.dir(album);
-        console.log("currentSongurl:");
-        console.dir(currentSong.audioUrl);
         const image = !photoUrl || photoUrl.endsWith("345892746528734589234728") ?
         "" : <img src={photoUrl} className="album-cover"/>;
         return (

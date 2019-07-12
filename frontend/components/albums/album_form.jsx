@@ -77,10 +77,7 @@ class AlbumForm extends React.Component{
             let newSong = {songUrl: reader.result, audioFile: file, track_number: 
             tracks.length + 1, name: ""}
             this.setState({tracks: tracks.concat(newSong)});
-            console.log("new tracks:");
-            console.dir(this.state.tracks);
             }
-        // this.setState({ imageUrl: reader.result, imageFile: file});}
 
         if (file) {
             reader.readAsDataURL(file);
