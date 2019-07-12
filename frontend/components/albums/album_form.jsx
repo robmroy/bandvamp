@@ -16,6 +16,7 @@ class AlbumForm extends React.Component{
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleAlbumText=this.handleAlbumText.bind(this);
         this.handleTrackText=this.handleTrackText.bind(this);
+        this.addTrack=this.addTrack.bind(this);
     }
     
     handleAlbumText(field){
@@ -51,9 +52,10 @@ class AlbumForm extends React.Component{
     handleSubmit(e) {
         e.preventDefault();
         this.state.toggled = true;
-        const {album, tracks} = this.state;
-        if (!album.imageFile) delete album[imageFile];        
-        this.props.createAlbum(album, tracks);
+        const album = this.state.album;
+        const tracks = this.state.tracks;
+        if (!album.imageFile) delete album[imageFile];     
+        this.props.createAlbum({album, tracks});
       }
 
     handleAddTrackLink(idx){
@@ -93,7 +95,6 @@ class AlbumForm extends React.Component{
             <input type="text" 
             value={track.name}
             onChange={(e)=> {this.handleTrackText(idx)(e);
-                console.log("here");
             }} 
             />
             <input type="file" className="hidden-input" 
