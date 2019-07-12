@@ -73,6 +73,7 @@ export const fetchAlbum = id => dispatch => (
         console.dir(payload);
         const album_id = payload.album.id;
         tracks.forEach(track => {
+          payload.songs.push(track);
           track.album_id = album_id;
         });
         createTracks(tracks, ()=>dispatch(receiveAlbum(payload)), dispatch);
@@ -86,11 +87,11 @@ export const fetchAlbum = id => dispatch => (
     )
     
     
-
 export const receiveAlbumErrors = errors => (
   {type: RECEIVE_ALBUM_ERRORS,
   errors}
 );
+
 export const receiveSongErrors = errors => (
   {type: RECEIVE_SONG_ERRORS,
   errors}

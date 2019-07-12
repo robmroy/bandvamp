@@ -7,8 +7,8 @@ const albumsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ALBUM:
-      const album = action.payload.album;
-      return merge({}, state, { [album.id]: album });
+      return merge({}, state, { 
+        [action.payload.album.id]: action.payload });
     default:
       return state;
   }
