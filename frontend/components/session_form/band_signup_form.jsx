@@ -132,7 +132,7 @@ class BandSignupForm extends React.Component {
             </div>
             
            <div className="login-hint"> Already have an account?
-            <Link to="login"> Log in.</Link> </div>
+            <Link to="/login"> Log in.</Link> </div>
           </div>
             
         </form>
