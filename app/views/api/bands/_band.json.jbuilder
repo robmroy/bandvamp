@@ -9,5 +9,6 @@ end
 
 json.albums band.albums do |album|
     json.name album.name
+    json.id album.id
     json.photoUrl url_for(album.photo)
   end

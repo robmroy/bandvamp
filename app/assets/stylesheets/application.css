@@ -543,6 +543,21 @@ margin: 0 auto;}
   margin: 0 0 3px 0;
   height: 56px;
 }
+
+.song-link{
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.song-link:hover {
+  text-decoration: underline;
+}
+
+.current-song {
+  width: 300px;
+  text-align: center;
+  margin: 0 0 0 20px;
+}
 /* 
 TODO: 
 

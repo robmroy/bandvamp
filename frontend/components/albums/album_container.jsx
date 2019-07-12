@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom';
 const mapStateToProps = (state, ownProps) => {
     const payload = state.entities.albums[ownProps.match.params.albumId] || {};
     const {album, band, songs} = payload;
-    return  {album: album || {}, band: band || {}, songs: songs || {},
+    return  {album: album || {}, band: band || {}, songs: songs || [],
     errors: state.errors}
 };
 

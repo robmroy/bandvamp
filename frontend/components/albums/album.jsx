@@ -12,9 +12,11 @@ class Album extends React.Component{
     componentDidMount(){
        this.props.fetchAlbum();
     }
-    
+    songClick(idx){
+        this.setState({currentTrackNumber: idx + 1});
+    }
     render(){
-        const songs = this.props.songs;
+        let songs = this.props.songs || [];
         const currentSong=songs[this.state.currentTrackNumber - 1] || {};
         const album = this.props.album;
         const photoUrl = album ? album.photoUrl : null;
@@ -30,7 +32,20 @@ class Album extends React.Component{
                    <h2> {album.name} </h2> by 
                      {album.band ? " " + album.band.band_name : ""}
                     <audio controls src={currentSong.audioUrl}></audio>
-                    <div> Track list will be displayed here </div>
+                    <div className="current-song"> 
+                    {`${this.state.currentTrackNumber}. ${currentSong.name}`} 
+                     </div>
+                    <div> {songs.map( (song, idx) => (
+
+                    <div className='song-link' 
+                    onClick={() => this.songClick(idx)}
+                    key = {idx}
+                    > {`${idx + 1}. ${song.name}`} 
+                    </div>
+
+                     ) )}
+                        
+                    </div>
                  </div>
                     <div className="album-page-c2">
                     <div className="album-cover-wrapper">
