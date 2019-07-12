@@ -58,6 +58,11 @@ body{
 .header-logo{
   margin: 16px 0 0 15vw;
   padding: 1vw;
+  color: black;
+}
+
+.header-logo:hover{
+  text-decoration: none;
 }
 
 button {
@@ -557,6 +562,15 @@ margin: 0 auto;}
   width: 300px;
   text-align: center;
   margin: 0 0 0 20px;
+}
+
+.band-name{
+  font-size:22px;
+  margin-bottom: 30px;
+}
+
+.album-to-band{
+  color:black;
 }
 /* 
 TODO: 

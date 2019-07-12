@@ -31,7 +31,7 @@ class Band extends React.Component {
        </div> 
       
            <div className="band-page-body"> 
-               {band.band_name}
+              <div className="band-name"> {band.band_name} </div>
                {band.band_description}
                <div className="grid-container">
                 {albums.slice(0,9).map((album, idx) =>

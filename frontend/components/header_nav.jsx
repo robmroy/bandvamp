@@ -11,10 +11,11 @@ class HeaderNav extends React.Component{
   render(){
     let props = this.props;
   
-  const logoElement = (<div className="header-logo">
+  const logoElement = (
+  <Link className="header-logo" to="/">
     <img src={window.parallelogram} 
     className="parallelogram"/>band
-    <span className="vamp">vamp</span></div>)
+    <span className="vamp">vamp</span></Link>)
 
   const auth =  (<div className="header-links">
   <div className="black-link-container"> <div className="pad15"> </div>   

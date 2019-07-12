@@ -1,6 +1,6 @@
 import React from 'react';
 import MusicPlayer from '../media_player/music_player';
-
+import {Link} from 'react-router-dom';
 class Album extends React.Component{
     constructor(props){
         super(props);
@@ -30,10 +30,16 @@ class Album extends React.Component{
                <div className="album-page-body"> 
                    <div className="album-page-c1">
                    <h2> {album.name} </h2> by 
-                     {album.band ? " " + album.band.band_name : ""}
+                     {album.band ? 
+                        <Link to={`/band/${album.band.id}`}
+                        className = "album-to-band">
+                        {` ${album.band.band_name}`} </Link>
+                        : ""}
                     <audio controls src={currentSong.audioUrl}></audio>
                     <div className="current-song"> 
-                    {`${this.state.currentTrackNumber}. ${currentSong.name}`} 
+                    {
+                        currentSong ? `${this.state.currentTrackNumber}. ${currentSong.name}`
+                    : "No songs yet!"} 
                      </div>
                     <div> {songs.map( (song, idx) => (
 

@@ -9,7 +9,7 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   demo: () => dispatch(login(
     { 
-      username: "rolling_stones", 
+      username: "nakarada", 
       password: "pass123" 
     }))
   });
