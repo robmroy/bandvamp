@@ -1,15 +1,19 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 class Band extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {albumClicked: false, albumId: null}
   }
 
   componentDidMount(){
       this.props.fetchBand();
   }
-
+  clickAlbum(album){
+    this.setState({albumClicked: true, albumId: album.id})
+  }
   render(){
+    
     const band = this.props.band || {};
     const albums = Object.values(band.albums || {});
     console.dir(albums);
@@ -18,6 +22,10 @@ class Band extends React.Component {
     "" : <img src={bannerUrl} className="banner"/>;
     return (
         <div className='band-page'>  
+        {this.state.albumClicked ? 
+    <Redirect to={`/album/${this.state.albumId}`} />
+      :
+      ""}
         <div className="banner-wrapper">
             {banner}
        </div> 
@@ -29,7 +37,8 @@ class Band extends React.Component {
                 {albums.slice(0,9).map((album, idx) =>
                    <div key={idx} className = "grid-item"> 
                     <div>{album.name} </div>
-                       <img src={album.photoUrl} className='album-small' />                    
+                       <img src={album.photoUrl} className='album-small' 
+                       onClick = {() => this.clickAlbum(album)}/>                    
                     </div>)}
                     {[...Array(Math.max(0, 9-albums.length)).keys()].map( (_, idx) =>
                       <div key={idx + 9} className='grid-item'></div>) }
