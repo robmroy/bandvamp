@@ -59,7 +59,12 @@ body{
   margin: 16px 0 0 15vw;
   padding: 1vw;
   color: black;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Yanone Kaffeesatz";
+  display: block;
 }
+
 
 .header-logo:hover{
   text-decoration: none;
@@ -239,11 +244,7 @@ input:focus{
   
 }
 
-.header-logo{
-  font-size: 18px;
-  font-weight: bold;
-  font-family: "Yanone Kaffeesatz";
-}
+
 
 .vamp{
   color: #9e036a;

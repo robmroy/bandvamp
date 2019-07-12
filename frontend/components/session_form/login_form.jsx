@@ -43,10 +43,11 @@ class LoginForm extends React.Component {
 
   
   render() {
-    const logoElement = (<div className="header-logo">
-    <img src={window.parallelogram} 
-    className="parallelogram"/>band
-    <span className="vamp">vamp</span></div>)
+    const logoElement = (
+      <Link className="header-logo" to="/">
+        <img src={window.parallelogram} 
+        className="parallelogram"/>band
+        <span className="vamp">vamp</span></Link>)
     return (
       <div className="login-page">
         <div className = "login-page-top">
