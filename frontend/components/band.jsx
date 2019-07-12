@@ -12,6 +12,7 @@ class Band extends React.Component {
   render(){
     const band = this.props.band || {};
     const albums = Object.values(band.albums || {});
+    console.dir(albums);
     const bannerUrl = band.bannerUrl;
     const banner = !bannerUrl || bannerUrl.endsWith("345892746528734589234728") ?
     "" : <img src={bannerUrl} className="banner"/>;
@@ -25,12 +26,12 @@ class Band extends React.Component {
                {band.band_name}
                {band.band_description}
                <div className="grid-container">
-                {albums.map((album, idx) =>
+                {albums.slice(0,9).map((album, idx) =>
                    <div key={idx} className = "grid-item"> 
                     <div>{album.name} </div>
                        <img src={album.photoUrl} className='album-small' />                    
                     </div>)}
-                    {[...Array(9-albums.length).keys()].map( (_, idx) =>
+                    {[...Array(Math.max(0, 9-albums.length)).keys()].map( (_, idx) =>
                       <div key={idx + 9} className='grid-item'></div>) }
                 </div>
             </div>

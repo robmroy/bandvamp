@@ -1,7 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import searchIcon from '../../app/assets/images/search.png';
-const HeaderNav = props => {
+class HeaderNav extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {clickedDemo: false}
+  }
+
+
+  render(){
+    let props = this.props;
+  
   const logoElement = (<div className="header-logo">
     <img src={window.parallelogram} 
     className="parallelogram"/>band
@@ -14,7 +23,9 @@ className="black-link">sign up</Link> &nbsp; &nbsp;
 <Link to="/login" className="black-link">log in</Link> &nbsp; &nbsp;
       </div>
   <button className="demo-button" 
-    onClick={() => props.demo()}>Demo login</button>
+    onClick={() => {props.demo();
+     this.setState({clickedDemo: true});}}>
+       Demo login</button>
 </div>)
 
 const logout = (
@@ -25,6 +36,11 @@ onClick={() => props.logout()}>logout</button>
 
   return (
     <div className="header-nav">
+      {this.state.clickedDemo && props.userId ? 
+  <Redirect to={`/band/${props.userId}`}/>
+  :
+  ""
+  }
       {logoElement}
       <div className="header-nav-right">
       <div className = 'search-logout'>
@@ -34,13 +50,14 @@ onClick={() => props.logout()}>logout</button>
         <input className="search-bar" placeholder="Search music"/>
    
         </div>
-        {!props.user_id ?  auth : ""}
+        {!props.userId ?  auth : ""}
         </div>
       </div>
       <div className="header-nav-right-padding">
-      {props.user_id? logout : ""}
+      {props.userId? logout : ""}
       </div>
     </div>
   )
-};
+  }
+}
 export default HeaderNav;

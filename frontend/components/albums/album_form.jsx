@@ -53,7 +53,7 @@ class AlbumForm extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault();
-        this.state.toggled = true;
+        this.setState({toggled: true});
         const album = this.state.album;
         const tracks = this.state.tracks;
         if (!album.imageFile) delete album[imageFile];     
@@ -108,7 +108,7 @@ class AlbumForm extends React.Component{
         </div>);
         return (
             <div>
-                {this.props.albumId && this.props.toggled ? <Redirect to={`/album/${this.props.albumId}`}/> : "" }
+                {this.props.albumId && this.state.toggled ? <Redirect to={`/album/${this.props.albumId}`}/> : "" }
            <form onSubmit={this.handleSubmit} className="album-form"> 
         <div className='album-inputs-left'>
 

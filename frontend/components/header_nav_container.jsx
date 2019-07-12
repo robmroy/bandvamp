@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { login, logout } from '../actions/session_actions';
 import HeaderNav from './header_nav';
 const mapStateToProps = state => ({
-  user_id: state.session.id
+  userId: state.session.id
 });
 
 const mapDispatchToProps = dispatch => ({

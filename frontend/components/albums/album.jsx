@@ -29,7 +29,6 @@ class Album extends React.Component{
                    <div className="album-page-c1">
                    <h2> {album.name} </h2> by 
                      {album.band ? " " + album.band.band_name : ""}
-                     {`audiourl: ${currentSong.audioUrl}`}
                     <audio controls src={currentSong.audioUrl}></audio>
                     <div> Track list will be displayed here </div>
                  </div>
