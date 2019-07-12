@@ -514,7 +514,10 @@ margin: 0 auto;}
   grid-template-columns: 300px;
 }
 
-.logout{margin-left: auto;}
+.logout{margin-left: auto;
+border: none;
+background-color: inherit;
+font-weight: 550;}
 
 .add-track{
  color: #0687f5;
@@ -566,13 +569,22 @@ margin: 0 auto;}
 }
 
 .band-name{
-  font-size:22px;
-  margin-bottom: 30px;
+  font-size: 26px;
+  margin: 15px 0 0 300px;
 }
 
 .album-to-band{
   color:black;
 }
+
+.couple-albums{
+  display: grid;
+  grid-template-columns: 325px 325px;
+  grid-template-rows: 325px 325px;
+  grid-column-gap: 20px;
+  margin: 15px 100px 0 300px;
+}
+
 /* 
 TODO: 
 

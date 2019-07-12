@@ -32,10 +32,15 @@ class Band extends React.Component {
            <div className="band-page-body"> 
               <div className="band-name"> {band.band_name} </div>
                {band.band_description}
-               <div className="grid-container">
+               <div className=
+               {albums.length >= 3 ?
+                "grid-container"
+                :
+                "couple-albums"
+              }>
                 {albums.slice(0,9).map((album, idx) =>
                    <div key={idx} className = "grid-item"> 
-                    <div>{album.name} </div>
+                    {/* <div>{album.name} </div> */}
                        <img src={album.photoUrl} className='album-small' 
                        onClick = {() => this.clickAlbum(album)}/>                    
                     </div>)}
