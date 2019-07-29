@@ -13,4 +13,11 @@ class Song < ApplicationRecord
             self.audio_file.attach(io: file, filename: '345892746528734589234728')
         end
     end
+
+    def self.top_results(string)
+        string= string.downcase.split('').join('%')
+        string = '%' + string + '%'
+        Song.where('lower(name) LIKE ?', string).limit(5)
+    end
+
 end

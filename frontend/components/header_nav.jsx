@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import searchIcon from '../../app/assets/images/search.png';
+import SearchContainer from './search/search_container';
 class HeaderNav extends React.Component{
   constructor(props){
     super(props);
@@ -45,14 +46,9 @@ onClick={() => props.logout()}>logout</button>
       {logoElement}
       <div className="header-nav-right">
       <div className = 'search-logout'>
-        <div className="search-bar-wrapper">
-        
-       <img src={searchIcon} className="search-icon"/>
-        <input className="search-bar" placeholder="Search music"/>
-   
+        <SearchContainer />       
         </div>
         {!props.userId ?  auth : ""}
-        </div>
       </div>
       <div className="header-nav-right-padding">
       {props.userId? logout : ""}
