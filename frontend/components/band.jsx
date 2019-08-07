@@ -10,6 +10,7 @@ class Band extends React.Component {
   componentDidMount(){
       this.props.fetchBand();
   }
+
   componentDidUpdate(){
     if (this.props.wildcard != this.state.wildcard){
         this.setState({wildcard: this.props.wildcard});
@@ -19,6 +20,7 @@ class Band extends React.Component {
   clickAlbum(album){
     this.setState({albumClicked: true, albumId: album.id})
   }
+
   render(){
     
     const band = this.props.band || {};
@@ -38,6 +40,9 @@ class Band extends React.Component {
       
            <div className="band-page-body"> 
               <div className="band-name"> {band.band_name} </div>
+              {this.props.wildcard === this.props.sessionId + '' ? (<Link to='/album' className ='link-to-create-album-page'> Create album</Link>)
+             : ''}
+
                {band.band_description}
                <div className=
                {albums.length >= 3 ?

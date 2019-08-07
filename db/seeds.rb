@@ -44,13 +44,6 @@ rob = User.new(
 rob.banner.attach(io: homeworld_cover, filename: "homeworldcover.jpg")
 rob.save!
 
-album1 = Album.new(
-  band_id: stones.id,
-  name: "Test Album"
-)
-worldcup= File.open('app/assets/images/worldcup.png')
-album1.photo.attach(io: worldcup, filename: "worldcup.png")
-album1.save!
 
 nakarada = User.new(
   username: "nakarada",

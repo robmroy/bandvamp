@@ -6,7 +6,8 @@ import {withRouter} from 'react-router-dom';
 const mapStateToProps = (state, ownProps) => {
     let wildcard = ownProps.match.params.bandId;
     return {wildcard,
-        band: state.entities.bands[wildcard] || {}}}
+        band: state.entities.bands[wildcard] || {},
+    sessionId: state.session.id}}
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     const id = ownProps.match.params.bandId;

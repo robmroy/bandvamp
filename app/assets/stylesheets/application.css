@@ -570,7 +570,16 @@ font-weight: 550;}
 
 .band-name{
   font-size: 26px;
-  margin: 15px 0 0 300px;
+  display: inline-block;
+  margin-right: 120px;
+}
+
+.band-page-body{
+  margin: 15px 0 0 250px;
+}
+
+.link-to-create-album-page{
+  font-size: 22px;
 }
 
 .album-to-band{
@@ -582,7 +591,6 @@ font-weight: 550;}
   grid-template-columns: 325px 325px;
   grid-template-rows: 325px 325px;
   grid-column-gap: 20px;
-  margin: 15px 100px 0 300px;
 }
 
 .dropdown {
