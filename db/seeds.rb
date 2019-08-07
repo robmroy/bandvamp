@@ -21,6 +21,9 @@ blood_eagle = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Naka
 reborn = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Nakarada/scando/alexander-nakarada-reborn.mp3')
 pseudo = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Nakarada/alexander-nakarada-pseudo.mp3')
 lumberer = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Nakarada/alexander-nakarada-jack-the-lumberer.mp3')
+homeworld_collapse = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Arthur+Vyncke/arthur-vyncke-homeworld-collapse.mp3')
+one_more_time = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Arthur+Vyncke/arthur-vyncke-one-more-time.mp3')
+turning_the_fight = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Arthur+Vyncke/arthur-vyncke-turning-the-fight-around.mp3')
 stones = User.new(
   username: "rolling_stones",
   email: "mickjagger@yahoo.com",
@@ -38,7 +41,7 @@ rob = User.new(
   email: "rob@yahoo.com",
   password: "pass123",
 )
-rob.banner.attach(io: homeworld_cover, filename: "stone-wheels-rob.jpg")
+rob.banner.attach(io: homeworld_cover, filename: "homeworldcover.jpg")
 rob.save!
 
 album1 = Album.new(
@@ -117,3 +120,92 @@ pseudo_song = Song.new(
 pseudo_song.audio_file.attach(io: pseudo, filename: 'pseudo.mp3')
 pseudo_song.save!
 
+vyncke = User.new(
+  username: "vyncke",
+  password: "pass123",
+  band_name: "Arthur Vyncke",
+  email: 'avyncke@gmail.com'
+)
+
+vyncke.save!
+
+homeworld = Album.new(
+  band_id: vyncke.id,
+  name: "Homeworld"
+)
+homeworld_cover = open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Arthur+Vyncke/homeworld.jpg')
+homeworld.photo.attach(io: homeworld_cover, filename: "homeworld_cover.jpg")
+homeworld.save!
+
+hc = Song.new(
+  album_id: homeworld.id,
+  name: "Homeworld Collapse"
+)
+
+hc.audio_file.attach(io: homeworld_collapse, filename: "homeworld_collapse.mp3")
+hc.save!
+
+omt = Song.new(
+  album_id: homeworld.id,
+  name: "One More Time"
+)
+
+omt.audio_file.attach(io: one_more_time, filename: "one_more_time.mp3")
+omt.save!
+
+ttf = Song.new(
+  album_id: homeworld.id,
+  name: "Turning The Fight Around"
+)
+
+ttf.audio_file.attach(io: turning_the_fight, filename: "turning_the_fight.mp3")
+
+ttf.save!
+
+punch = User.new(
+  username: "punch_deck",
+  band_name: "Punch Deck",
+  email: "punchdeck@gmail.com",
+  password: "pass123"
+)
+
+punch.save!
+
+shapely = Album.new(
+  band_id: punch.id,
+  name: "Shapely Fluctuation"
+)
+
+shapely.photo.attach(shapely_fluctuation_cover)
+shapely.save!
+
+wtp = Song.new(
+  album_id: shapely.id,
+  name: "Wandering the Path"
+)
+wtp.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Punch+Deck/punch-deck-wandering-the-path.mp3'),
+filename: 'wandering.mp3')
+wtp.save!
+longing = Song.new(
+  album_id: shapely.id,
+  name: "Longing"
+)
+longing.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Punch+Deck/punch-deck-longing.mp3'),
+filename: "longing.mp3")
+longing.save!
+wavy = Song.new(
+  album_id: shapely.id,
+  name: "Keep it Wavy"
+)
+
+wavy.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Punch+Deck/punch-deck-keep-it-wavy.mp3'),
+filename: "wavy.mp3")
+wavy.save!
+coal = Song.new(
+  album_id: shapely.id,
+  name: "Coalescence"
+)
+
+coal.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/music/Punch+Deck/punch-deck-coalescence.mp3'),
+filename: 'coalescence.mp3')
+coal.save!

@@ -20,14 +20,15 @@ class Search extends React.Component{
           < Redirect to={`/band/${result.id}`} /> });
         }
         else if (result.type ==="album"){
-          this.setState({redirect: 
-          < Redirect to={`/album/${result.id}`} />})     
+          // this.setState({redirect: 
+          // < Redirect to={`/album/${result.id}`} />
+        // })
+        this.props.history.push(`/album/${result.id}`);     
         }
         else {  
           this.setState({redirect: 
           < Redirect to={`/album/${result.album_id}`} />
         }) 
-          console.log(this.state.redirect)
         }
       }
     }
@@ -47,7 +48,7 @@ class Search extends React.Component{
         <div className="dropdown-content">
          
           {results.map((result, idx) => 
-            <p key={idx} onClick={this.linkToShow(result)}>
+            <p key={idx} onClick={this.linkToShow(result)} className='search-result-link'>
             {result.name || result.band_name}</p>)}
           </div>
         </div>

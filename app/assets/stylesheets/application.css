@@ -604,6 +604,10 @@ font-weight: 550;}
   display: block;
 }
 
+.search-result-link{
+  cursor: pointer;
+}
+
 /* 
 TODO: 
 

@@ -3,12 +3,19 @@ import { Link, withRouter, Redirect } from 'react-router-dom';
 class Band extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {albumClicked: false, albumId: null}
+    this.state = {albumClicked: false, albumId: null,
+    wildcard: this.props.wildcard}
   }
 
   componentDidMount(){
       this.props.fetchBand();
   }
+  componentDidUpdate(){
+    if (this.props.wildcard != this.state.wildcard){
+        this.setState({wildcard: this.props.wildcard});
+        this.props.fetchBand();
+    }
+}
   clickAlbum(album){
     this.setState({albumClicked: true, albumId: album.id})
   }
