@@ -45,12 +45,14 @@ class Search extends React.Component{
         value={this.state.query} onChange={this.handleChange}/>
    
         </div>
+        {results.length ? 
         <div className="dropdown-content">
          
           {results.map((result, idx) => 
             <p key={idx} onClick={this.linkToShow(result)} className='search-result-link'>
             {result.name || result.band_name}</p>)}
           </div>
+          : ''}
         </div>
     );
     }
