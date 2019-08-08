@@ -169,7 +169,7 @@ shapely = Album.new(
   name: "Shapely Fluctuation"
 )
 
-shapely.photo.attach(shapely_fluctuation_cover)
+shapely.photo.attach(io: shapely_fluctuation_cover, filename: 'shapely.jpg')
 shapely.save!
 
 wtp = Song.new(
