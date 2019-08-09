@@ -15,7 +15,7 @@ class Song < ApplicationRecord
     end
 
     def self.top_results(string)
-        string= string.downcase.split('').join('%')
+        string= string.downcase.split(' ').join('%')
         string = '%' + string + '%'
         Song.where('lower(name) LIKE ?', string).limit(5)
     end

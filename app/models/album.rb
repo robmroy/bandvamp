@@ -12,7 +12,7 @@ class Album < ApplicationRecord
     has_one_attached :photo
 
     def self.top_results(string)
-        string= string.downcase.split('').join('%')
+        string= string.downcase.split(' ').join('%')
         string = '%' + string + '%'
         Album.where('lower(name) LIKE ?', string).limit(5)
     end

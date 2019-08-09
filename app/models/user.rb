@@ -49,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def self.top_results(string)
-    string= string.downcase.split('').join('%')
+    string= string.downcase.split(' ').join('%')
     string = '%' + string + '%'
     User.where('lower(band_name) LIKE ?', string).limit(5)
   end
