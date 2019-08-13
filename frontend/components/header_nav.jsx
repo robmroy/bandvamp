@@ -37,7 +37,7 @@ onClick={() => props.logout()}>logout</button>
 );
 
   return (
-    <div className="header-nav">
+    <div className={"header-nav"+this.props.suffix}>
       {this.state.clickedDemo && props.userId ? 
   <Redirect to={`/band/${props.userId}`}/>
   :

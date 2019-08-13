@@ -53,6 +53,25 @@ body{
   width: 100vw;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: white;
+  padding-bottom: 12px;
+
+}
+
+.header-nav-dummy {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100vw;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  top: 0;
+  left: 0;
+  padding-bottom: 12px;
 }
 
 .header-logo{
@@ -618,7 +637,7 @@ font-weight: 550;}
 }
 
 .showcase-pics-container{
-  margin: 20px 2px;
+  margin: 0px 2px;
   display: flex;
 }
 

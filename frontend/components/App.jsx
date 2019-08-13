@@ -25,7 +25,9 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <>
-        <HeaderNavContainer />
+        <HeaderNavContainer suffix=''/>
+        <HeaderNavContainer suffix='-dummy'/>
+
         <AuthRoute exact path="/signup" component={SelectSignup} />
         <AuthRoute  path="/signup/band" component={BandSignupContainer} />
         <AuthRoute  path="/signup/fan" component={FanSignupContainer} />
