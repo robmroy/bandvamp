@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { login, logout } from '../actions/session_actions';
 import HeaderNav from './header_nav';
+import {withRouter} from 'react-router';
 const mapStateToProps = state => ({
   userId: state.session.id
 });
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
   });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderNav);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderNav));

@@ -75,7 +75,7 @@ button {
 }
 .header-links{
   margin-left: auto;
-  width: 100%;
+  width: 280px;
   display: flex;
   box-sizing: border-box;
 }
@@ -306,7 +306,7 @@ input:focus{
   color: #161113;
   font-weight: 600;
   font-size: 14px;
-  margin-left: auto;
+  margin-left: 20px;
 }
 
 .header-nav-right{

@@ -19,15 +19,15 @@ class HeaderNav extends React.Component{
     <span className="vamp">vamp</span></Link>)
 
   const auth =  (<div className="header-links">
-  <div className="black-link-container"> <div className="pad15"> </div>   
-<Link to="/signup" 
-className="black-link">sign up</Link> &nbsp; &nbsp;
-<Link to="/login" className="black-link">log in</Link> &nbsp; &nbsp;
-      </div>
   <button className="demo-button" 
     onClick={() => {props.demo();
      this.setState({clickedDemo: true});}}>
        Demo login</button>
+  <div className="black-link-container"> <div className="pad15"> </div>   
+<Link to="/signup" 
+className="black-link">sign up</Link> 
+<Link to="/login" className="black-link">log in</Link> 
+      </div>
 </div>)
 
 const logout = (
@@ -47,8 +47,8 @@ onClick={() => props.logout()}>logout</button>
       <div className="header-nav-right">
       <div className = 'search-logout'>
         <SearchContainer />       
-        </div>
         {!props.userId ?  auth : ""}
+        </div>
       </div>
       <div className="header-nav-right-padding">
       {props.userId? logout : ""}
