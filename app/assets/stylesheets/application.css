@@ -616,6 +616,69 @@ font-weight: 550;}
   cursor: pointer;
 }
 
+.showcase-pics-container{
+  margin: 20px 60px;
+  display: flex;
+}
+
+.showcase-large-pic{
+  height: 450px;
+   filter: brightness(80%);
+}
+.showcase-pic-main-text{
+  color:  white;
+  font-size: 25px;
+  font-weight: 550;
+  position: absolute;
+  top: 455px;
+  left: 130px;
+}
+.read-more-container{
+  color: black;
+  position: absolute;
+  font-weight: 600;
+  top: 500px;
+  left: 150px;
+  border: solid black 2px;
+  border-radius: 10px;
+}
+
+.read-more{
+  text-align: center;
+  padding: 1px;
+}
+
+
+
+.read-more-external-link{
+  text-align: center;
+  font-style: italic;
+  padding: 1px 5px;
+}
+
+.small-pics-container{
+  display: grid;
+  grid-template-columns: auto;
+  width: 283.06px;
+
+}
+
+.small-pic{
+  height: 147px;
+  margin-left: 4px;
+  background-size: auto 147px;
+}
+
+/* .small-pic-item{
+  position: absolute;
+} */
+
+/* .small-pic-text{
+  position: absolute;
+  top: 15px;
+} */
+  
+
 /* 
 TODO: 
 
