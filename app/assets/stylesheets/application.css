@@ -673,12 +673,18 @@ font-weight: 550;}
 .small-pic{
   height: 12.9vw;
   background-size: auto 13vw;
-  filter: brightness(65%);
+  filter: brightness(74%);
 }
 
-.small-pic:hover{
-  filter: brightness(75%);
+.small-pic-bright{
+  height: 12.9vw;
+  background-size: auto 13vw;
+  filter: brightness(80%);
 }
+
+/* .small-pic:hover{
+  filter: brightness(80%);
+} */
 
 .small-pic-item{
   height: 13vw;
@@ -692,6 +698,7 @@ font-weight: 550;}
   font-weight: 600;
   padding: 0px 9px;
   font-size: 15px;
+  cursor: default;
 }
   
 .App{
