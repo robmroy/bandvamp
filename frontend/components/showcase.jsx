@@ -35,7 +35,7 @@ class Showcase extends React.Component {
          <div className = 'small-pic-item'>
          <div className = 'small-pic' style={{"background-image": 'url('+window.sidepic3+')'}}>
            </div>
-           <div className = 'small-pic-text'>Text3</div>
+           <div className = 'small-pic-text'>Gabber Modus Operandi Galvanize Indonesian Folk Into Feverish Footwork</div>
          </div>
        </div>
        </div>

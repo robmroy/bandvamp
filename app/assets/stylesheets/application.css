@@ -448,6 +448,7 @@ album-page{
   display: grid;
   grid-template-columns: 325px 325px 325px;
   grid-template-rows: 325px 325px 325px;
+  
 }
 
 .grid-item {
@@ -617,28 +618,28 @@ font-weight: 550;}
 }
 
 .showcase-pics-container{
-  margin: 20px 60px;
+  margin: 20px 2px;
   display: flex;
 }
 
 .showcase-large-pic{
-  height: 450px;
+  height: 39vw;
    filter: brightness(80%);
 }
 .showcase-pic-main-text{
   color:  white;
-  font-size: 25px;
+  font-size: 2.6vw;
   font-weight: 550;
   position: absolute;
-  top: 455px;
-  left: 130px;
+  top: 36vw;
+  left: 10vw;
 }
 .read-more-container{
   color: black;
   position: absolute;
   font-weight: 600;
-  top: 500px;
-  left: 150px;
+  top: 40vw;
+  left: 10vw;
   border: solid black 2px;
   border-radius: 10px;
 }
@@ -662,14 +663,16 @@ font-weight: 550;}
 .small-pics-container{
   display: grid;
   grid-template-columns: auto;
-  width: 283.06px;
+  grid-row-gap: .1vw;
+  overflow:hidden;
+  margin-left: 0 auto;
+  height: 39vw;
 
 }
 
 .small-pic{
-  height: 147px;
-  margin-left: 4px;
-  background-size: auto 147px;
+  height: 12.9vw;
+  background-size: auto 13vw;
   filter: brightness(65%);
 }
 
@@ -678,19 +681,22 @@ font-weight: 550;}
 }
 
 .small-pic-item{
-  height: 147px;
+  height: 13vw;
+  margin-left: 2px;
 }
 
 .small-pic-text{
   position: relative;
   color: white;
-  bottom: 50px;
+  bottom: 75px;
   font-weight: 600;
   padding: 0px 9px;
   font-size: 15px;
 }
   
-
+.App{
+  overflow: hidden;
+}
 /* 
 TODO: 
 
