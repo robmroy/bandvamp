@@ -24,14 +24,18 @@ class Showcase extends React.Component {
        <div className = 'small-pics-container'>
          <div className = 'small-pic-item'>
          <div className = 'small-pic' style={{"background-image": 'url('+window.sidepic1+')'}}>
-           <div className = 'small-pic-text'>High Scores: Ben Prunty’s Moody, Trance-Inspired “Photographs” OST</div>
            </div>
+           <div className = 'small-pic-text'>High Scores: Ben Prunty’s Moody, Trance-Inspired “Photographs” OST</div>
          </div>
-         <div>
-         <img className = 'small-pic' src = {window.sidepic2}/>
+         <div className = 'small-pic-item'>
+         <div className = 'small-pic' style={{"background-image": 'url('+window.sidepic2+')'}}>
+           </div>
+           <div className = 'small-pic-text'>Gabe 'Nandez Finds a Home in Hip-Hop</div>
          </div>
-         <div>
-         <img className = 'small-pic' src = {window.sidepic3}/>
+         <div className = 'small-pic-item'>
+         <div className = 'small-pic' style={{"background-image": 'url('+window.sidepic3+')'}}>
+           </div>
+           <div className = 'small-pic-text'>Text3</div>
          </div>
        </div>
        </div>
