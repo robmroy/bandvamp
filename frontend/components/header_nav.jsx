@@ -28,6 +28,7 @@ class HeaderNav extends React.Component{
 className="black-link">sign up</Link> 
 <Link to="/login" className="black-link">log in</Link> 
       </div>
+      <div className='hpad-20'> </div>
 </div>)
 
 const logout = (

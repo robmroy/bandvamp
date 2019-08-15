@@ -54,9 +54,9 @@ class Search extends React.Component{
           {this.state.redirect}
         <div className="search-bar-wrapper">
         
-       <img src={searchIcon} className="search-icon"/>
         <input className="search-bar" placeholder="Search music"
         value={this.state.query} onChange={this.handleChange}/>
+       <img src={searchIcon} className="search-icon"/>
    
         </div>
         {results.length ? 
