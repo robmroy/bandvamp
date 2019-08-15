@@ -609,6 +609,14 @@ font-weight: 550;}
   padding: 40px;
 }
 
+.band-column-3  *{
+margin-top: 8px;
+}
+
+.band-name-col-3{
+  font-weight: 600;
+}
+
 .song-links{
   margin-top: 30px;
 }
@@ -745,6 +753,9 @@ font-weight: 550;}
 
 .album-title-large{font-size: 28px;}
 
+.album-120{
+  width: 120px;
+}
 /* 
 TODO: 
 

@@ -25,10 +25,8 @@ class Band extends React.Component {
   render(){
     if (!this.props.band) return '';
     const band = this.props.band;
-    console.log(band)
     const albums = Object.values(band.albums);
-    console.log(`albums: ${albums}`)
-    const album = albums.length ? albums[0] : '';
+    const album = albums.length ? this.state.album || albums[0] : '';
     const bannerUrl = band.bannerUrl;
     const photoUrl = band.photoUrl;
     const banner = !bannerUrl || bannerUrl.endsWith("345892746528734589234728") ?
@@ -54,8 +52,17 @@ class Band extends React.Component {
                 <AlbumPlayer album={album} band={band}/>
 
                 <div className = 'band-column-3'>
-                {band.band_description} band descriptors
+                  <div className='band-name-col-3'> {band.band_name}</div>
+                {band.band_description} 
                 {photo}
+
+                <div> discography</div>
+
+                <div> {albums.map(alb => (
+                  <div onClick={()=>{this.setState({album: alb})}}>
+                  <img className = {'album-120'} src = {alb.photoUrl}/>
+                  </div>
+                ))}</div>
                 </div>
                
                 </div>
