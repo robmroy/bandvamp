@@ -14,7 +14,7 @@ class Api::AlbumsController < ApplicationController
     end
 
     def index 
-        @albums = Album.all
+        @albums = Album.includes(:band, {photo_attachment: :blob}).all
     end
     
     private

@@ -609,7 +609,7 @@ font-weight: 550;}
   padding: 40px;
 }
 
-.band-column-3  *{
+.band-column-3 > *{
 margin-top: 8px;
 }
 
@@ -764,6 +764,8 @@ margin-top: 8px;
 .band-photo{
   width: 120px;
 }
+
+.band-albums > *{margin-top: 8px;}
 /* 
 TODO: 
 

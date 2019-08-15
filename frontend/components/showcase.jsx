@@ -38,7 +38,7 @@ class Showcase extends React.Component {
        </div>
        <div className = 'small-pics-container'>
          <div className = 'small-pic-item'>
-         <div className = {'small-pic'+this.state.brightness[1]} style={{"background-image": 'url('+window.sidepic1+')'}}
+         <div className = {'small-pic'+this.state.brightness[1]} style={{backgroundImage: 'url('+window.sidepic1+')'}}
          onMouseEnter={() => {brighten(1)(); }}
          onMouseLeave={() => darken(1)()}>
            </div>
@@ -47,7 +47,7 @@ class Showcase extends React.Component {
          </div>
 
          <div className = 'small-pic-item'>
-         <div className = {'small-pic'+this.state.brightness[2]} style={{"background-image": 'url('+window.sidepic2+')'}}
+         <div className = {'small-pic'+this.state.brightness[2]} style={{backgroundImage: 'url('+window.sidepic2+')'}}
          onMouseEnter={() => {brighten(2)(); }}
          onMouseLeave={() => darken(2)()}>
            </div>
@@ -57,7 +57,7 @@ class Showcase extends React.Component {
          </div>
 
          <div className = 'small-pic-item'>
-         <div className = {'small-pic'+this.state.brightness[3]} style={{"background-image": 'url('+window.sidepic3+')'}}
+         <div className = {'small-pic'+this.state.brightness[3]} style={{backgroundImage: 'url('+window.sidepic3+')'}}
          onMouseEnter={() => {brighten(3)(); }}
          onMouseLeave={() => darken(3)()}>
            </div>

@@ -24,11 +24,11 @@ class Search extends React.Component{
           // this.setState({redirect: 
           // < Redirect to={`/album/${result.id}`} />
         // })
-        const bandId = result.band.id;
+        const bandId = result.band_id;
         if(pathname.endsWith(bandId) ){
-        this.props.history.replace({pathname: `/band/${result.band.id}`,
+        this.props.history.replace({pathname: `/band/${result.band_id}`,
       state: {albumId: result.id}});    }
-      else {this.props.history.push({pathname: `/band/${result.band.id}`,
+      else {this.props.history.push({pathname: `/band/${result.band_id}`,
       state: {albumId: result.id}});}
 
         }
