@@ -63,7 +63,7 @@ class Search extends React.Component{
         <div className="dropdown-content">
          
           {results.map((result, idx) => 
-            <p key={idx} onClick={this.linkToShow(result)} className='search-result-link'>
+            <p key={idx} onClick={()=>this.linkToShow(result)()} className='search-result-link'>
             {result.name || result.band_name}</p>)}
           </div>
           : ''}
