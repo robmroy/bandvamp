@@ -29,7 +29,8 @@ class Band extends React.Component {
     const banner = !bannerUrl || bannerUrl.endsWith("345892746528734589234728") ?
     "" : <img src={bannerUrl} className="banner"/>;
     return (
-        <div className='band-page'>  
+        <div className='band-page'> 
+        <div className = 'band-page-content'>
         {this.state.albumClicked ? 
     <Redirect to={`/album/${this.state.albumId}`} />
       :
@@ -60,6 +61,7 @@ class Band extends React.Component {
                       <div key={idx + 9} className='grid-item'></div>) }
                 </div>
             </div>
+            </div> 
         </div>)
 }
 }

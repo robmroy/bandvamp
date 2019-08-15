@@ -5,6 +5,7 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :duration
       t.string :description
+      t.integer :track_number
       t.timestamps
     end
     add_index :songs, :album_id

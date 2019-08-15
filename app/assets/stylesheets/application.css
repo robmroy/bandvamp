@@ -723,6 +723,11 @@ font-weight: 550;}
 .App{
   overflow: hidden;
 }
+
+.band-page-content{
+  width: 975px;
+  margin: 0 auto;
+}
 /* 
 TODO: 
 
