@@ -20,7 +20,8 @@ class AlbumPlayer extends React.Component{
     
     render(){
         const album = this.props.album;
-        console.dir(album);
+        const band = this.props.band;
+        console.dir(band);
         const songs = album.songs;
         const currentSong=songs[this.state.currentTrackNumber - 1] || {};
         const photoUrl = album ? album.photoUrl : null;
@@ -28,21 +29,22 @@ class AlbumPlayer extends React.Component{
         "" : <img src={photoUrl} className="album-cover"/>;
         return (
             <div className='album-page' >   
-               <div className="album-page-body"> 
-                   <div className="album-page-c1">
-                   <h2> {album.name} </h2> by 
-                     {album.band ? 
-                        <Link to={`/band/${album.band.id}`}
+                   <div className = 'album-title-large'> {album.name} </div> 
+                   <div> by 
+                     {
+                        <Link to={`/band/${band.id}`}
                         className = "album-to-band">
-                        {` ${album.band.band_name}`} </Link>
-                        : ""}
+                       {' '+band.band_name} </Link>
+                        } </div>
+               <div className="album-columns-container"> 
+                   <div className="album-page-c1">
                     <audio controls src={currentSong.audioUrl}></audio>
                     <div className="current-song"> 
                     {
                         currentSong ? `${this.state.currentTrackNumber}. ${currentSong.name}`
                     : "No songs yet!"} 
                      </div>
-                    <div> {songs.map( (song, idx) => (
+                    <div className = 'song-links'> {songs.map( (song, idx) => (
 
                     <div className='song-link' 
                     onClick={() => this.songClick(idx)}
