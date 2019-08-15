@@ -7,6 +7,7 @@ class Song < ApplicationRecord
     foreign_key: :album_id
 
 
+
     def require_audio_file
         if !self.audio_file.attached?
             file = File.open('app/assets/images/parallel_cropped.png')

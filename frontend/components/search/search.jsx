@@ -14,6 +14,7 @@ class Search extends React.Component{
       this.props.search(val);
     }
     linkToShow(result){
+      const pathname = this.props.history.location.pathname;
       return e => {
         if(result.type === "band"){
           this.setState({redirect: 
@@ -23,12 +24,25 @@ class Search extends React.Component{
           // this.setState({redirect: 
           // < Redirect to={`/album/${result.id}`} />
         // })
-        this.props.history.push(`/album/${result.id}`);     
+        const bandId = result.band.id;
+        if(pathname.endsWith(bandId) ){
+        this.props.history.replace({pathname: `/band/${result.band.id}`,
+      state: {albumId: result.id}});    }
+      else {this.props.history.push({pathname: `/band/${result.band.id}`,
+      state: {albumId: result.id}});}
+
         }
         else {  
-          this.setState({redirect: 
-          < Redirect to={`/album/${result.album_id}`} />
-        }) 
+          const bandId = result.album.band_id;
+          if(pathname.endsWith(bandId) ){
+          this.props.history.replace({pathname: `/band/${result.album.band_id}`,
+          state: {albumId: result.album_id, songId: result.id}});   
+          }
+          else  {
+            this.props.history.push({pathname: `/band/${result.album.band_id}`,
+            state: {albumId: result.album_id, songId: result.id}});   
+            }
+
         }
       }
     }

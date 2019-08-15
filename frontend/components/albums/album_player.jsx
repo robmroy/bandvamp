@@ -4,8 +4,13 @@ import {Link} from 'react-router-dom';
 class AlbumPlayer extends React.Component{
     constructor(props){
         super(props);
+        let currentTrackNumber = 1;
+        const songId = props.songId;
+        if (songId){
+            currentTrackNumber = props.album.songs.find(s => (s.id ===songId)).track_number;
+        }
         this.state = {
-            currentTrackNumber: 1,
+            currentTrackNumber,
             wildcard: props.wildcard
         }
     }
@@ -14,6 +19,16 @@ class AlbumPlayer extends React.Component{
     //     this.props.fetchAlbum();
     //  }
 
+    componentDidUpdate(prevProps){
+        const songId = this.props.songId;
+        console.log(`songId: ${songId}`);
+        console.log(`psongId: ${prevProps.songId}`);
+        if(prevProps.songId !== songId){
+            if (songId){
+                this.setState({currentTrackNumber: this.props.album.songs.find(s => (s.id ===songId)).track_number})
+            }
+        }
+    }
     songClick(idx){
         this.setState({currentTrackNumber: idx + 1});
     }

@@ -448,7 +448,7 @@ visfib.save!
 
 
 
-ltrj = Song.new(album_id: pttp.id, name: "Let the Rhythm Just ft. Mr. Lif & Ayla Nero.mp3", track_number: 2)
+ltrj = Song.new(album_id: pttp.id, name: "Let the Rhythm Just ft. Mr. Lif & Ayla Nero", track_number: 2)
 ltrj.audio_file.attach(io: open(pttp_url+'The_Polish_Ambassador_-_02_-_Let_the_Rhythm_Just_ft_Mr_Lif__Ayla_Nereo.mp3'),
 filename: 'The_Polish_Ambassador_-_02_-_Let_the_Rhythm_Just_ft_Mr_Lif__Ayla_Nereo.mp3')
 
