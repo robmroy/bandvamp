@@ -595,7 +595,7 @@ font-weight: 550;}
 }
 
 .band-page-body{
-  margin: 15px 0 0 250px;
+  background-color: white;
 }
 
 .link-to-create-album-page{
@@ -728,6 +728,8 @@ font-weight: 550;}
   width: 975px;
   margin: 0 auto;
 }
+
+
 /* 
 TODO: 
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
-import AlbumPlayer from './albums/album_player';
 class Band extends React.Component {
   constructor(props) {
     super(props);
@@ -23,17 +22,14 @@ class Band extends React.Component {
   }
 
   render(){
-    if (!this.props.band) return '';
-    const band = this.props.band;
-    console.log(band)
-    const albums = Object.values(band.albums);
-    console.log(`albums: ${albums}`)
-    const album = albums.length ? albums[0] : '';
+    
+    const band = this.props.band || {};
+    const albums = Object.values(band.albums || {});
     const bannerUrl = band.bannerUrl;
     const banner = !bannerUrl || bannerUrl.endsWith("345892746528734589234728") ?
     "" : <img src={bannerUrl} className="banner"/>;
     return (
-        <div className='band-page' style={{backgroundColor: band.background_color || "white"}}> 
+        <div className='band-page'> 
         <div className = 'band-page-content'>
         {this.state.albumClicked ? 
     <Redirect to={`/album/${this.state.albumId}`} />
@@ -48,9 +44,22 @@ class Band extends React.Component {
               {this.props.wildcard === this.props.sessionId + '' ? (<Link to='/album' className ='link-to-create-album-page'> Create album</Link>)
              : ''}
 
-                <AlbumPlayer album={album}/>
                {band.band_description}
-               
+               <div className=
+               {albums.length >= 3 ?
+                "grid-container"
+                :
+                "couple-albums"
+              }>
+                {albums.slice(0,9).map((album, idx) =>
+                   <div key={idx} className = "grid-item"> 
+                    {/* <div>{album.name} </div> */}
+                       <img src={album.photoUrl} className='album-small' 
+                       onClick = {() => this.clickAlbum(album)}/>                    
+                    </div>)}
+                    {[...Array(Math.max(0, 9-albums.length)).keys()].map( (_, idx) =>
+                      <div key={idx + 9} className='grid-item'></div>) }
+                </div>
             </div>
             </div> 
         </div>)
