@@ -6,5 +6,5 @@ json.albums @band.albums do |album|
     json.photoUrl url_for(album.photo)
     json.songs do
         json.array! album.songs, partial: 'api/songs/song', as: :song
-      end
-  end
+    end
+end

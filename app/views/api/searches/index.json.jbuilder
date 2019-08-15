@@ -11,6 +11,6 @@ json.searchResults do
 
     json.array! @songs.each do |song|
       json.set! :type, 'song'
-      json.partial! 'api/songs/song', song: song
+      json.partial! 'api/songs/songalbum', song: song
     end
 end

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   foreign_key: :band_id
   validate :require_photos
 
+
   validates :username, :email, presence: true, uniqueness: true
   validates :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 6 }, allow_nil: true
