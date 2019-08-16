@@ -24,13 +24,19 @@ class Notables extends React.Component {
             if (!album) return <div></div>;
             fave_five.push(album);
         }
-        return (<div className='fave-5'>
+        return (
+        <div className = 'nn'>
+            <div className = 'row'>
+                <div className = 'splash-section-header'> New and Notable</div>
+            </div>
+        <div className='fave-5'>
 
-            {fave_five.map(fave_alb => (
-                <div className='fave-single-wrapper' >
+            {fave_five.map((fave_alb, i) => (
+                <div className={'fave-single-wrapper'+ (i===0 ? 1 :'')} >
                      <img src={fave_alb.photoUrl} onClick={()=>this.handleClick(fave_alb)}/>
                      </div>
             ))}
+        </div>
         </div>)
     }
 }

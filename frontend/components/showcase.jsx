@@ -90,7 +90,10 @@ class Showcase extends React.Component {
 
        </div>
        </div>
+
+       <div className = 'blue-body'>
        <NotablesContainer/>
+       </div>
        </div>
      )
 
