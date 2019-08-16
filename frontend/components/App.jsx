@@ -5,7 +5,7 @@ import FanSignupContainer from './session_form/fan_signup_container';
 import BandSignupContainer from './session_form/band_signup_container';
 import SelectSignup from './session_form/select_signup';
 import HeaderNavContainer from './header_nav_container';
-import Showcase from './showcase.jsx';
+import ShowcaseContainer from './showcase_container';
 import AlbumFormContainer from './albums/album_form_container';
 import AlbumContainer from './albums/album_container'
 import BandContainer from './band_container';
@@ -35,7 +35,7 @@ const App = () => (
         <Route path="/band/:bandId" component={BandContainer}/>
         <Route  path="/album/:albumId" component={AlbumContainer} />
         <ProtectedRoute  path="/album" component={AlbumFormContainer} />
-        <Showcase /> 
+        <ShowcaseContainer /> 
       </Switch>
      </>
     </Switch>

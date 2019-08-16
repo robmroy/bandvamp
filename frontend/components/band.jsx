@@ -5,8 +5,8 @@ class Band extends React.Component {
   constructor(props) {
     super(props);
     const lstate = props.location.state || {};
-    const {albumId, songId} = lstate;
-    this.state = { albumId, songId,
+    const {albumId, songId, faveTrackNum} = lstate;
+    this.state = { albumId, songId, faveTrackNum,
     wildcard: this.props.wildcard}
   }
 
@@ -38,7 +38,7 @@ class Band extends React.Component {
 
   render(){
     if (!this.props.band) return '';
-    const {albumId, songId} = this.state;
+    const {albumId, songId, faveTrackNum} = this.state;
     const band = this.props.band;
     const albums = Object.values(band.albums);
     const album = albums.length ? albums.find(a=>(a.id === albumId)) || albums[0] : '';
@@ -61,7 +61,8 @@ class Band extends React.Component {
               {this.props.wildcard === this.props.sessionId + '' ? (<Link to='/album' className ='link-to-create-album-page'> Create album</Link>)
              : ''}
 
-                <AlbumPlayer album={album} band={band} songId = {songId}/>
+                <AlbumPlayer album={album} band={band} songId = {songId}
+                faveTrackNum={faveTrackNum}/>
 
                 <div className = 'band-column-3'>
                   <div className='band-name-col-3'> {band.band_name}</div>

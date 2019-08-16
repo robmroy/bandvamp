@@ -6,8 +6,13 @@ class Notables extends React.Component {
     "Wild & You", "Wake Up", "Pushing Through The Pavement",
     "Broken Parts"]}
     }
-    componentDidMount(){
-        this.props.fetchAllAlbums();
+    // componentDidMount(){
+    //     this.props.fetchAllAlbums();
+    // }
+
+    handleClick(album){
+        this.props.history.push({pathname: `/band/${album.band_id}`,
+        state: {albumId: album.album_id}});   
     }
 
     render(){
@@ -22,7 +27,9 @@ class Notables extends React.Component {
         return (<div className='fave-5'>
 
             {fave_five.map(fave_alb => (
-                <div className='fave-single-wrapper'> <img src={fave_alb.photoUrl}/></div>
+                <div className='fave-single-wrapper' >
+                     <img src={fave_alb.photoUrl} onClick={()=>this.handleClick(fave_alb)}/>
+                     </div>
             ))}
         </div>)
     }

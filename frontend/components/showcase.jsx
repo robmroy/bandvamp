@@ -18,8 +18,21 @@ class Showcase extends React.Component {
     brightness[i] = '';
     return () => this.setState({brightness});
   }
+
+  componentDidMount(){
+    this.props.fetchAllAlbums();
+}
+  featureClickHandler(album, faveTrackNum){
+    this.props.history.push({pathname: `/band/${album.band_id}`,
+        state: {albumId: album.album_id,
+          faveTrackNum
+        }});  
+  }
   render(){
-    
+    const wtc = this.props.albums.find(alb =>
+      alb.name === "Bach: Well​-​Tempered Clavier, Book 1")
+      if (!wtc) return '';
+    const faveTrackNum = 5;
    
     const [brighten, darken]=[this.brighten.bind(this), this.darken.bind(this)];
 
@@ -42,7 +55,9 @@ class Showcase extends React.Component {
          <div className = 'small-pic-item'>
          <div className = {'small-pic'+this.state.brightness[1]} style={{backgroundImage: 'url('+window.sidepic1+')'}}
          onMouseEnter={() => {brighten(1)(); }}
-         onMouseLeave={() => darken(1)()}>
+         onMouseLeave={() => darken(1)()}
+         onClick = {()=>this.featureClickHandler(wtc, 5)}
+         >
            </div>
            <div className = 'small-pic-text'
            onMouseEnter={() => {brighten(1)()}} onMouseLeave={() => darken(1)()}>High Scores: Ben Prunty’s Moody, Trance-Inspired “Photographs” OST</div>
@@ -51,7 +66,10 @@ class Showcase extends React.Component {
          <div className = 'small-pic-item'>
          <div className = {'small-pic'+this.state.brightness[2]} style={{backgroundImage: 'url('+window.sidepic2+')'}}
          onMouseEnter={() => {brighten(2)(); }}
-         onMouseLeave={() => darken(2)()}>
+         onMouseLeave={() => darken(2)()}
+         onClick = {()=>this.featureClickHandler(wtc, 5)}
+         >
+           
            </div>
            <div className = 'small-pic-text'
            onMouseEnter={() => {brighten(2)()}}
@@ -61,7 +79,9 @@ class Showcase extends React.Component {
          <div className = 'small-pic-item'>
          <div className = {'small-pic'+this.state.brightness[3]} style={{backgroundImage: 'url('+window.sidepic3+')'}}
          onMouseEnter={() => {brighten(3)(); }}
-         onMouseLeave={() => darken(3)()}>
+         onMouseLeave={() => darken(3)()}
+         onClick = {()=>this.featureClickHandler(wtc, 5)}
+         >
            </div>
            <div className = 'small-pic-text'
            onMouseEnter={() => {brighten(3)()}}

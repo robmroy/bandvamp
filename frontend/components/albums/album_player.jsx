@@ -5,9 +5,14 @@ class AlbumPlayer extends React.Component{
     constructor(props){
         super(props);
         let currentTrackNumber = 1;
-        const songId = props.songId;
+        const {songId, faveTrackNum} = props;
+
         if (songId){
             currentTrackNumber = props.album.songs.find(s => (s.id ===songId)).track_number;
+        }
+
+        else if(faveTrackNum){
+            currentTrackNumber = faveTrackNum;
         }
         this.state = {
             currentTrackNumber,
@@ -21,8 +26,6 @@ class AlbumPlayer extends React.Component{
 
     componentDidUpdate(prevProps){
         const songId = this.props.songId;
-        console.log(`songId: ${songId}`);
-        console.log(`psongId: ${prevProps.songId}`);
         if(prevProps.songId !== songId){
             if (songId){
                 this.setState({currentTrackNumber: this.props.album.songs.find(s => (s.id ===songId)).track_number})
