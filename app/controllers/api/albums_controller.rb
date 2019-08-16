@@ -10,7 +10,8 @@ class Api::AlbumsController < ApplicationController
     end
     
     def show
-        @album = Album.find(params[:id])
+        @album = Album.includes(photo_attachment: :blob,
+            songs: {audio_file_attachment: :blob}).find(params[:id])
     end
 
     def index 
