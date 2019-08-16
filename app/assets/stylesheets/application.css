@@ -793,12 +793,26 @@ margin-top: 8px;
   width: 18.625678119349%;
   max-width: 206px;
   margin-left: 1.7179023508%;
+  height: 430px;
+  background-color: #fff;
 }
 
 .fave-single-wrapper1{
   float: left;
-    width: 18.625678119349%;
-    max-width: 206px;
+  width: 18.625678119349%;
+  max-width: 206px;
+  cursor: pointer;
+  height: 430px;
+  background-color:#fff;
+}
+
+.fave-genre{
+  display: block;
+  line-height: 18px;
+  margin: 0;
+  padding: 0 10px;
+  color: #999;
+  font-size: 12px;
 }
 
 
@@ -825,6 +839,29 @@ margin-top: 8px;
   .blue-body{
     background-color: #eef2f3;
     padding: 36px 0px;
+  }
+
+  .fave-title{
+    display: block;
+    line-height: 18px;
+    margin-top: 9px;
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .fave-title-and-band:hover{
+    text-decoration: underline;
+  }
+
+  .fave-band-name{
+    display: block;
+    line-height: 18px;
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
   }
 /* 
 TODO: 

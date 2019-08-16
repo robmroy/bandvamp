@@ -2,9 +2,13 @@ import React from 'react';
 class Notables extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {names: ["...Plays Guitar",
-    "Wild & You", "Wake Up", "Pushing Through The Pavement",
-    "Broken Parts"]}
+      const names= ["...Plays Guitar", "Pushing Through The Pavement",
+       "Wake Up", "Wild & You",
+      "Broken Parts"]
+      const genres = ['classical',  'groove',  'electropop',
+   'folk',  'synthwave']
+      this.state = {names, genres
+        }
     }
     // componentDidMount(){
     //     this.props.fetchAllAlbums();
@@ -31,9 +35,14 @@ class Notables extends React.Component {
             </div>
         <div className='fave-5'>
 
-            {fave_five.map((fave_alb, i) => (
+            {fave_five.map((faveAlb, i) => (
                 <div className={'fave-single-wrapper'+ (i===0 ? 1 :'')} >
-                     <img src={fave_alb.photoUrl} onClick={()=>this.handleClick(fave_alb)}/>
+                     <img src={faveAlb.photoUrl} onClick={()=>this.handleClick(faveAlb)}/>
+                     <div className = 'fave-title-and-band'>
+                     <div className = 'fave-title' onClick={()=>this.handleClick(faveAlb)}> {faveAlb.name} </div>
+                     <div className = 'fave-band-name' onClick={()=>this.handleClick(faveAlb)}> by {faveAlb.band.band_name} </div>
+                     </div>
+                     <p className = 'fave-genre'>{this.state.genres[i]}</p>
                      </div>
             ))}
         </div>

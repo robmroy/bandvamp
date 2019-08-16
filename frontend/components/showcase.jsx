@@ -45,7 +45,7 @@ class Showcase extends React.Component {
 
       <a target="_blank" href="https://daily.bandcamp.com/2019/08/12/shura-forevher-interview/">
       <div className='read-more-container'> 
-      <div className='read-more'>Read More</div>
+      <div className='read-more'>read more</div>
        <div className='read-more-external-link'> external link </div>
        </div>
        </a>
