@@ -1,5 +1,6 @@
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
-export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS'
+export const RECEIVE_ALL_ALBUMS = 'RECEIVE_ALL_ALBUMS';
+export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 export const RECEIVE_BAND = 'RECEIVE_BAND';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
@@ -11,12 +12,23 @@ export const receiveAlbum = payload =>(
     {type: RECEIVE_ALBUM,
     payload}
   )
+
+  export const receiveAllAlbums = payload =>(
+    {type: RECEIVE_ALL_ALBUMS,
+    payload}
+  )
   
 export const fetchAlbum = id => dispatch => (
     APIUtil.fetchAlbum(id).then(
       album => dispatch(receiveAlbum(album))
     )
   );
+
+export const fetchAllAlbums = () => dispatch => (
+  APIUtil.fetchAllAlbums().then(
+    albums => dispatch(receiveAllAlbums(albums))
+  )
+);
   export const createSong = (song, callback) => dispatch => {
     const formData = new FormData();
     formData.append('song[name]', 

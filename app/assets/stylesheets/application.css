@@ -766,6 +766,21 @@ margin-top: 8px;
 }
 
 .band-albums > *{margin-top: 8px;}
+
+.fave-5{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, auto));
+  max-width: 1106px;
+  margin: 0 auto;
+}
+
+.fave-5 img{
+  width: 17.8vw;
+  max-width: 206px;}
+
+.fave-single-wrapper{
+  margin: 0 auto;
+}
 /* 
 TODO: 
 

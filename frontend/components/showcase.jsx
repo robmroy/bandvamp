@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import lunasol from '../assets/images/luna_y_sol.png';
+import NotablesContainer from './notables_container';
+
 class Showcase extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,7 @@ class Showcase extends React.Component {
     const [brighten, darken]=[this.brighten.bind(this), this.darken.bind(this)];
 
     return 	(
+      <div className = 'showcase'>
     <div className = 'showcase-pics-container'>
     <div className='showcase-large' >
       <img className = 'showcase-large-pic' src = {window.shura}/>
@@ -66,20 +68,9 @@ class Showcase extends React.Component {
            onMouseLeave={() => darken(3)()}>Gabber Modus Operandi Galvanize Indonesian Folk Into Feverish Footwork</div>
          </div>
 
-
-
-
-         {/* <div className = 'small-pic-item'>
-         <div className = 'small-pic' style={{"background-image": 'url('+window.sidepic2+')'}}>
-           </div>
-           <div className = 'small-pic-text'>Gabe 'Nandez Finds a Home in Hip-Hop</div>
-         </div>
-         <div className = 'small-pic-item-3'>
-         <div className = 'small-pic' style={{"background-image": 'url('+window.sidepic3+')'}}>
-           </div>
-           <div className = 'small-pic-text'>Gabber Modus Operandi Galvanize Indonesian Folk Into Feverish Footwork</div>
-         </div> */}
        </div>
+       </div>
+       <NotablesContainer/>
        </div>
      )
 
