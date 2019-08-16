@@ -2,12 +2,20 @@ import React from 'react';
 class Notables extends React.Component {
     constructor(props) {
       super(props);
-      const names= ["...Plays Guitar", "Pushing Through The Pavement",
-       "Wake Up", "Wild & You",
+      const names= ["Pushing Through The Pavement",
+       "Wake Up", "...Plays Guitar", "Wild & You",
       "Broken Parts"]
-      const genres = ['classical',  'groove',  'electropop',
-   'folk',  'synthwave']
-      this.state = {names, genres
+      const genres = [  'groove',  'electropop',
+        'folk', 'classical', 'synthwave']
+        let note3 = "German guitarist Gillicuddy offers a ";
+        note3 += "pensive collection of solo pieces, understated but confidently present."
+        let note1 = "A smooth, groovy album from The Polish Ambassador ";
+        note1 += "featuring talented guest vocals."
+        let note2 = "Jahzzar makes an homage to the synthy pop sounds of the 80's."
+       let  note4 = "The second album of 'countryside lullabies' from the Icelandic duo."
+       let note5= "A cinematic mix of dubstep, trance, synthwave..."
+       const notes = [note1, note2, note3, note4, note5];
+      this.state = {names, genres, notes
         }
     }
     // componentDidMount(){
@@ -43,6 +51,7 @@ class Notables extends React.Component {
                      <div className = 'fave-band-name' onClick={()=>this.handleClick(faveAlb)}> by {faveAlb.band.band_name} </div>
                      </div>
                      <p className = 'fave-genre'>{this.state.genres[i]}</p>
+                     <p className = 'fave-note'>{this.state.notes[i]}</p>
                      </div>
             ))}
         </div>

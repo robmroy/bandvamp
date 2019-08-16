@@ -767,33 +767,22 @@ margin-top: 8px;
 
 .band-albums > *{margin-top: 8px;}
 
-/* .fave-5{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, auto));
-  max-width: 1106px;
-  margin: 0 auto;
-}
-
-.fave-5 img{
-  width: 17.8vw;
-  max-width: 206px;}
-
-.fave-single-wrapper{
-  margin: 0 auto;
-} */
-
 .fave-5 {
     width: 97%;
     max-width: 1106px;
-    min-height: 430px;
+    min-height: 400px;
     margin: 0 auto;
+}
+
+.fave-5 img{
+  cursor: pointer;
 }
 .fave-single-wrapper{
   float: left;
   width: 18.625678119349%;
   max-width: 206px;
   margin-left: 1.7179023508%;
-  height: 430px;
+  height: 400px;
   background-color: #fff;
 }
 
@@ -802,7 +791,7 @@ margin-top: 8px;
   width: 18.625678119349%;
   max-width: 206px;
   cursor: pointer;
-  height: 430px;
+  height: 400px;
   background-color:#fff;
 }
 
@@ -862,6 +851,13 @@ margin-top: 8px;
     font-weight: 600;
     font-size: 13px;
     cursor: pointer;
+  }
+
+  .fave-note{
+    line-height: 18px;
+    font-size: 13px;
+    padding: 0 10px;
+    font-family: Georgia, Times, serif;
   }
 /* 
 TODO: 
