@@ -64,8 +64,8 @@ class Band extends React.Component {
 
                 <div className = 'band-column-3'>
                   <div className='band-name-col-3'> {band.band_name}</div>
-                {band.band_description} 
                 {photo}
+                <div className='band-desc'>{band.band_description} </div>
 
                 {albums.length ? (<><div> discography</div>
 
