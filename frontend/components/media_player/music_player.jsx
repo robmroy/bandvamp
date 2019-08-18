@@ -22,6 +22,11 @@ class MusicPlayer extends Component {
     this.onloadHandler=this.onloadHandler.bind(this);
   }
 
+  displayTime(){
+    const ac = this.audio.current;
+    return ac ? this.secondsToMinutes(ac.currentTime)+'/'
+  +this.secondsToMinutes(ac.duration) : '';
+  }
 
   componentDidUpdate(prevProps){
     const {currentTrackNumber, songs, playing} = this.props;
@@ -85,10 +90,17 @@ class MusicPlayer extends Component {
 
   }
 
+  secondsToMinutes(floatStr){
+    let round = Math.floor(parseFloat(floatStr));
+    let mins = Math.floor(round/60);
+    let secs = round % 60;
+    if (secs < 10){secs = '0'+secs;}
+    return mins + ':' + secs;
+  }
   handleMouseUp(e){
     const ac = this.audio.current;
     this.app.removeEventListener('mousemove',this.handleMouseMove)
-    ac.currentTime = this.state.sliderPos * ac.duration /300;
+    ac.currentTime = this.state.sliderPos * ac.duration /250;
     this.setState({handlingMouseMove: false})
   }
 
@@ -128,7 +140,10 @@ class MusicPlayer extends Component {
     <div className = 'music-player-controls'>
     <button className='playpause-btn' onClick={()=>this.swapPlayPause()}  >{this.playPauseIcon()}</button>
     <div id = 'progress-bar-container'>
-      <div>{song.name}</div>
+      <div className='track-info'>
+      <span>{song.name} </span> &nbsp; <span> {this.displayTime()}</span>
+      </div>
+      
       <div className='progress-bar'></div>
     <div className = "slider" 
       onMouseDown = {e => this.sliderClick(e)} 

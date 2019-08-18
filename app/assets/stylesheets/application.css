@@ -900,6 +900,11 @@ margin-top: 8px;
     box-sizing: border-box;
     border: 1px solid #d9d9d9;
     border-radius: 1px;
+    margin-top: 10px;
+  }
+
+  .track-info{
+    font-size: 12px;
   }
 /* 
 TODO: 
