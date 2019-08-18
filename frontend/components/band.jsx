@@ -31,7 +31,7 @@ class Band extends React.Component {
   
   }
   clickAlbum(album){
-    this.setState({albumClicked: true, albumId: album.id})
+    this.setState({albumClicked: true, albumId: album.id, songId: null})
   }
 
   render(){

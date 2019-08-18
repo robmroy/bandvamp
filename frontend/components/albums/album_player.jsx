@@ -25,7 +25,7 @@ class AlbumPlayer extends React.Component{
         if(prevProps.songId !== songId ||
              album.id !== prevProps.album.id){
             if (songId){
-                this.setState({currentTrackNumber: this.props.album.songs.find(s => (s.id ===songId)).track_number})
+                this.setState({currentTrackNumber: album.songs.find(s => (s.id ===songId)).track_number})
             }
             else this.setState({currentTrackNumber: 1});
         }

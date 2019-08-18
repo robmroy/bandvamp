@@ -22,12 +22,13 @@ class MusicPlayer extends Component {
     this.onloadHandler=this.onloadHandler.bind(this);
   }
 
+
   componentDidUpdate(prevProps){
     const {currentTrackNumber, songs, playing} = this.props;
     if (prevProps.songs !== songs){
     this.setState ( {playing: playing || false,
     handlingMouseMove: false,
-    song: songs[currentTrackNumber - 1],
+    song: songs[currentTrackNumber - 1] || songs[0],
     currentTrackNumber
         });
         return;
@@ -35,7 +36,7 @@ class MusicPlayer extends Component {
     if(prevProps.currentTrackNumber !== currentTrackNumber){
       this.setState({currentTrackNumber,
       song: this.props.songs[currentTrackNumber - 1]},
-      () => setTimeout(this.pause(this.play),10))
+      )
     }
   }
   componentWillUnmount(){
@@ -43,7 +44,6 @@ class MusicPlayer extends Component {
   }
   
   play(){
-    // if (this.state.playing) return;
       const ac = this.audio.current;
       let sliderPos = 0;
       
@@ -60,12 +60,11 @@ class MusicPlayer extends Component {
     this.audio.current.play();
   }
 
-  pause(callback){
-    if (!this.state.playing) return callback();
-    const pause = this.audio.current.pause();
+  pause(){
+    if (!this.state.playing) return;
+    this.audio.current.pause();
     this.setState({playing: false}, () => {
       clearInterval(this.intervalId);
-      if(callback) setTimeout(  callback, 10);
     })
   }
 
@@ -101,15 +100,13 @@ class MusicPlayer extends Component {
     currentTrackNumber = ((currentTrackNumber -1) % numSongs)+1;
 
    this.setState({currentTrackNumber, song: songs[currentTrackNumber],
-    sliderPos: 0});
-
-    // setTimeout(this.play, 10);
-    
+    sliderPos: 0});    
   }
 
   onloadHandler(){
     if (this.state.playing)  this.audio.current.play();
   }
+
   playPauseIcon(){
     if (this.state.playing) {
       return <i className="fas fa-pause playpause-icon"/>
