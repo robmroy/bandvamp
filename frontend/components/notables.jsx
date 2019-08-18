@@ -24,7 +24,7 @@ class Notables extends React.Component {
 
     handleClick(album){
         this.props.history.push({pathname: `/band/${album.band_id}`,
-        state: {albumId: album.album_id}});   
+        state: {albumId: album.id}});   
     }
 
     render(){

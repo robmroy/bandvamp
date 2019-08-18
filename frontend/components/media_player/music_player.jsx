@@ -17,15 +17,18 @@ class MusicPlayer extends Component {
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.nextSong = this.nextSong.bind(this);
+    this.prevSong = this.prevSong.bind(this);
     this.pause = this.pause.bind(this);
     this.play = this.play.bind(this);
     this.onloadHandler=this.onloadHandler.bind(this);
+    this.progBarWidth = 250;
+    this.sliderWidth=24;
   }
 
   displayTime(){
     const ac = this.audio.current;
-    return ac ? this.secondsToMinutes(ac.currentTime)+'/'
-  +this.secondsToMinutes(ac.duration) : '';
+    return ac ? this.secondsToMinutes(ac.currentTime || 0)+'/'
+  +this.secondsToMinutes(ac.duration || 0) : '';
   }
 
   componentDidUpdate(prevProps){
@@ -49,18 +52,23 @@ class MusicPlayer extends Component {
   }
   
   play(){
-      const ac = this.audio.current;
       let sliderPos = 0;
       
       if (!this.state.playing){
         this.intervalId = setInterval(
-          () => {if(!(this.state.handlingMouseMove)) {
+          () => {
+      const ac = this.audio.current;
+      if(!(this.state.handlingMouseMove)) {
             if (ac.currentTime === ac.duration){
-              clearInterval(this.intervalId);
+              // clearInterval(this.intervalId);
               this.nextSong();
             }
             this.setState({sliderPos:
-             (ac ? 250 * ac.currentTime/ac.duration : 0)})}}, 100)}
+             (ac 
+              ? 
+              (this.progBarWidth-this.sliderWidth) * ac.currentTime/ac.duration 
+              : 
+              0)})}}, 100)}
     this.setState({playing: true});
     this.audio.current.play();
   }
@@ -85,7 +93,8 @@ class MusicPlayer extends Component {
 
   handleMouseMove(e){
     const mpc = document.getElementById('progress-bar-container');
-    const x = e.clientX - mpc.offsetLeft; 
+    const x = Math.min(e.clientX - mpc.offsetLeft, 
+      this.progBarWidth - this.sliderWidth); 
     this.setState({sliderPos: x, handlingMouseMove: true});
 
   }
@@ -100,19 +109,31 @@ class MusicPlayer extends Component {
   handleMouseUp(e){
     const ac = this.audio.current;
     this.app.removeEventListener('mousemove',this.handleMouseMove)
-    ac.currentTime = this.state.sliderPos * ac.duration /250;
+    ac.currentTime = this.state.sliderPos * 
+    ac.duration /(this.progBarWidth-this.sliderWidth);
     this.setState({handlingMouseMove: false})
   }
 
   nextSong(){
-    this.props.nextSong();
     const songs = this.props.songs;
     const numSongs = songs.length;
     let currentTrackNumber = this.state.currentTrackNumber + 1;
-    currentTrackNumber = ((currentTrackNumber -1) % numSongs)+1;
+    // currentTrackNumber = ((currentTrackNumber -1) % numSongs)+1;
+    
+    this.setState({currentTrackNumber, song: songs[currentTrackNumber -1],
+      sliderPos: 0});    
+      this.props.nextSong();
+  }
 
-   this.setState({currentTrackNumber, song: songs[currentTrackNumber],
-    sliderPos: 0});    
+  prevSong(){
+    const songs = this.props.songs;
+    const numSongs = songs.length;
+    let currentTrackNumber = this.state.currentTrackNumber - 1;
+    // currentTrackNumber = ((currentTrackNumber -1) % numSongs)+1;
+    
+    this.setState({currentTrackNumber, song: songs[currentTrackNumber-1],
+      sliderPos: 0}); 
+      this.props.prevSong();
   }
 
   onloadHandler(){
@@ -130,21 +151,36 @@ class MusicPlayer extends Component {
 
 
   render () {
+    let {song, currentTrackNumber} = this.state;
+    const backDisabled = currentTrackNumber === 1;
+    const frwdDisabled = currentTrackNumber === this.props.songs.length;
     const ac = this.audio.current;
-    let {song} = this.state;
     return (
-    <div>
-    <audio src={song.audioUrl} ref = {this.audio} controls
+      <div>
+    <audio src={song.audioUrl} ref = {this.audio} 
     onLoadedMetadata={this.onloadHandler}
-                     />
+    />
     <div className = 'music-player-controls'>
     <button className='playpause-btn' onClick={()=>this.swapPlayPause()}  >{this.playPauseIcon()}</button>
     <div id = 'progress-bar-container'>
       <div className='track-info'>
       <span>{song.name} </span> &nbsp; <span> {this.displayTime()}</span>
       </div>
-      
+      <div className = 'flex'>
       <div className='progress-bar'></div>
+      <button
+        className="prev-btn"
+        onClick={this.prevSong}
+        disabled={ backDisabled }>
+        <i className="fas fa-fast-backward prev-btn"/>
+      </button>
+      <button
+        className="next-btn"
+        onClick={this.nextSong}
+        disabled={ frwdDisabled }>
+        <i className="fas fa-fast-forward next-btn"/>
+      </button>
+      </div>
     <div className = "slider" 
       onMouseDown = {e => this.sliderClick(e)} 
       style={{left: this.state.sliderPos+'px'}}>

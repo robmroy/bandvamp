@@ -906,6 +906,37 @@ margin-top: 8px;
   .track-info{
     font-size: 12px;
   }
+
+  .flex{
+    display: flex;
+  }
+
+
+  .prev-btn, .next-btn {
+    font-size: 14px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #000;
+    margin: 0;
+    position: relative;
+    top: 2px;
+  }
+
+  button:disabled i{
+    color: gray;
+}
+
+  
+
+  /* .next-btn{
+    margin: 0;
+  }
+  .prev-btn{
+    margin-left: 4px;
+    margin-right: 0;
+  } */
 /* 
 TODO: 
 

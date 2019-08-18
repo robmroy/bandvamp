@@ -17,6 +17,7 @@ class AlbumPlayer extends React.Component{
         }
         this.musicPlayer=React.createRef();
         this.nextSong = this.nextSong.bind(this);
+        this.prevSong = this.prevSong.bind(this);
     }
 
 
@@ -36,9 +37,12 @@ class AlbumPlayer extends React.Component{
     }
     
     nextSong(){
-        const numSongs = this.props.album.songs.length;
         let currentTrackNumber = this.state.currentTrackNumber + 1;
-        currentTrackNumber = ((currentTrackNumber -1) % numSongs)+1;
+        this.setState({currentTrackNumber});
+    }
+
+    prevSong(){
+        let currentTrackNumber = this.state.currentTrackNumber - 1;
         this.setState({currentTrackNumber});
     }
     render(){
@@ -61,7 +65,7 @@ class AlbumPlayer extends React.Component{
                         } </div>
                <div className="album-columns-container"> 
                    <div className="album-page-c1">
-                       <MusicPlayer ref={this.musicPlayer}
+                       <MusicPlayer ref={this.musicPlayer} prevSong={this.prevSong}
                        nextSong = {this.nextSong} songs = {songs}
                        currentTrackNumber = {currentTrackNumber}/>
                     {/* <div className="current-song"> 
