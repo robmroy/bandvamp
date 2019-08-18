@@ -6,7 +6,10 @@ class Band extends React.Component {
     super(props);
     const lstate = props.location.state || {};
     const {albumId, songId, faveTrackNum} = lstate;
-    this.state = { albumId, songId, faveTrackNum}
+    this.state = { albumId, songId, faveTrackNum,
+    fullDesc: false}
+    this.renderDesc = this.renderDesc.bind(this);
+    this.negateFullDesc=this.negateFullDesc.bind(this);
   }
 
   componentDidMount(){
@@ -30,6 +33,33 @@ class Band extends React.Component {
     }
   
   }
+    renderDesc(){
+      const {band} = this.props;
+      let descStr = band.band_description + ' ';
+      const lim = 20;
+      const {fullDesc} = this.state;
+      if(!band) return '';
+      const words = band.band_description.split(' ');
+      if (!fullDesc && words.length > lim + 2) {
+        let trunc = words.slice(0,lim);
+      const lastWord = trunc[lim -1];
+
+      if ([",", "."].includes(lastWord[lastWord.length -1])){
+        trunc[lim -1] = trunc[lim - 1].slice(0, lastWord.length -1)
+      }
+      descStr= trunc.join(' ')+"... ";
+      }
+  
+      return <div className='band-desc'>{descStr}
+      <span className = 'more-less' onClick={this.negateFullDesc}>
+        {fullDesc ? 'less' : 'more'}</span></div>
+      
+    }
+
+    negateFullDesc(){
+      const fullDesc = !this.state.fullDesc;
+      this.setState({fullDesc});
+    }
   clickAlbum(album){
     this.setState({albumClicked: true, albumId: album.id, songId: null})
   }
@@ -65,7 +95,7 @@ class Band extends React.Component {
                 <div className = 'band-column-3'>
                   <div className='band-name-col-3'> {band.band_name}</div>
                 {photo}
-                <div className='band-desc'>{band.band_description} </div>
+                {this.renderDesc()} 
 
                 {albums.length ? (<><div> discography</div>
 

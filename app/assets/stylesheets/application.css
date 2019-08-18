@@ -89,9 +89,7 @@ body{
   text-decoration: none;
 }
 
-button {
-  margin: 1vw;
-}
+
 .header-links{
   margin-left: auto;
   width: 280px;
@@ -868,6 +866,7 @@ margin-top: 8px;
     outline: none;
     cursor: pointer;
     border-radius: 2px;
+    margin: 10px 10px 0 0;
   }
   
   .playpause-icon {
@@ -930,6 +929,14 @@ margin-top: 8px;
 
 .band-desc{
   font-size: 12px;
+}
+
+.more-less{
+  color: #0687F5;
+  cursor: pointer;
+}
+.more-less:hover{
+  text-decoration: underline;
 }
 
   
