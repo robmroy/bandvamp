@@ -19,16 +19,31 @@ class MusicPlayer extends Component {
     this.nextSong = this.nextSong.bind(this);
     this.pause = this.pause.bind(this);
     this.play = this.play.bind(this);
+    this.onloadHandler=this.onloadHandler.bind(this);
   }
 
   componentDidUpdate(prevProps){
-    // if(prevProps.playing !== this.props.playing){
-    //   this.setState({playing: this.props.playing})
-    // }
+    const {currentTrackNumber, songs, playing} = this.props;
+    if (prevProps.songs !== songs){
+    this.setState ( {playing: playing || false,
+    handlingMouseMove: false,
+    song: songs[currentTrackNumber - 1],
+    currentTrackNumber
+        });
+        return;
+    }
+    if(prevProps.currentTrackNumber !== currentTrackNumber){
+      this.setState({currentTrackNumber,
+      song: this.props.songs[currentTrackNumber - 1]},
+      () => setTimeout(this.pause(this.play),10))
+    }
+  }
+  componentWillUnmount(){
+    if (this.intervalId) clearInterval(this.intervalId);
   }
   
   play(){
-    if (this.state.playing) return;
+    // if (this.state.playing) return;
       const ac = this.audio.current;
       let sliderPos = 0;
       
@@ -46,12 +61,12 @@ class MusicPlayer extends Component {
   }
 
   pause(callback){
-    if (!this.state.playing) return;
-    this.audio.current.pause();
+    if (!this.state.playing) return callback();
+    const pause = this.audio.current.pause();
     this.setState({playing: false}, () => {
       clearInterval(this.intervalId);
-      if(callback) callback();
-    });
+      if(callback) setTimeout(  callback, 10);
+    })
   }
 
   swapPlayPause(){
@@ -59,7 +74,6 @@ class MusicPlayer extends Component {
   }
 
   sliderClick(e){
-    console.log('slider click');
     const app = this.app;
     app.addEventListener('mousemove', this.handleMouseMove);
     app.addEventListener('mouseup', this.handleMouseUp);
@@ -79,20 +93,23 @@ class MusicPlayer extends Component {
     this.setState({handlingMouseMove: false})
   }
 
-  async nextSong(){
+  nextSong(){
     this.props.nextSong();
     const songs = this.props.songs;
     const numSongs = songs.length;
     let currentTrackNumber = this.state.currentTrackNumber + 1;
     currentTrackNumber = ((currentTrackNumber -1) % numSongs)+1;
 
-   await this.setState({currentTrackNumber, song: songs[currentTrackNumber],
+   this.setState({currentTrackNumber, song: songs[currentTrackNumber],
     sliderPos: 0});
 
-    await this.pause();
-    this.play();
+    // setTimeout(this.play, 10);
+    
   }
 
+  onloadHandler(){
+    if (this.state.playing)  this.audio.current.play();
+  }
   playPauseIcon(){
     if (this.state.playing) {
       return <i className="fas fa-pause playpause-icon"/>
@@ -108,8 +125,8 @@ class MusicPlayer extends Component {
     let {song} = this.state;
     return (
     <div>
-    <audio src={song.audioUrl}
-                        ref = {this.audio} controls
+    <audio src={song.audioUrl} ref = {this.audio} controls
+    onLoadedMetadata={this.onloadHandler}
                      />
     <div className = 'music-player-controls'>
     <button className='playpause-btn' onClick={()=>this.swapPlayPause()}  >{this.playPauseIcon()}</button>
