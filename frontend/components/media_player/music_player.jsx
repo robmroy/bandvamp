@@ -55,7 +55,7 @@ class MusicPlayer extends Component {
               this.nextSong();
             }
             this.setState({sliderPos:
-             (ac ? 300 * ac.currentTime/ac.duration : 0)})}}, 100)}
+             (ac ? 250 * ac.currentTime/ac.duration : 0)})}}, 100)}
     this.setState({playing: true});
     this.audio.current.play();
   }
@@ -129,10 +129,10 @@ class MusicPlayer extends Component {
     <button className='playpause-btn' onClick={()=>this.swapPlayPause()}  >{this.playPauseIcon()}</button>
     <div id = 'progress-bar-container'>
       <div>{song.name}</div>
+      <div className='progress-bar'></div>
     <div className = "slider" 
       onMouseDown = {e => this.sliderClick(e)} 
       style={{left: this.state.sliderPos+'px'}}>
-      sl
     </div>
     </div>
     </div>

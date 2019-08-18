@@ -876,6 +876,14 @@ margin-top: 8px;
   
   .slider{
     position: relative;
+    bottom: 11px;
+    width: 24px;
+    height: 12px;
+    box-sizing: border-box;
+    border: 1px solid #bebebe;
+    background: #fff;
+    border-radius: 1px;
+    cursor: pointer;
   }
 
   .music-player-controls{
@@ -884,6 +892,14 @@ margin-top: 8px;
 
   #progress-bar-container{
     padding: 19px 0px;
+  }
+
+  .progress-bar{
+    width: 250px;
+    height: 10px;
+    box-sizing: border-box;
+    border: 1px solid #d9d9d9;
+    border-radius: 1px;
   }
 /* 
 TODO: 
