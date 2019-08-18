@@ -6,23 +6,19 @@ class AlbumPlayer extends React.Component{
         super(props);
         let currentTrackNumber = 1;
         const {songId, faveTrackNum} = props;
-
         if (songId){
             currentTrackNumber = props.album.songs.find(s => (s.id ===songId)).track_number;
         }
-
         else if(faveTrackNum){
             currentTrackNumber = faveTrackNum;
         }
         this.state = {
-            currentTrackNumber,
-            wildcard: props.wildcard
+            currentTrackNumber
         }
+        this.musicPlayer=React.createRef();
+        this.nextSong = this.nextSong.bind(this);
     }
 
-    // componentDidMount(){
-    //     this.props.fetchAlbum();
-    //  }
 
     componentDidUpdate(prevProps){
         const songId = this.props.songId;
@@ -33,15 +29,22 @@ class AlbumPlayer extends React.Component{
         }
     }
     songClick(idx){
-        this.setState({currentTrackNumber: idx + 1});
+        this.setState({currentTrackNumber: idx + 1},
+           () => this.musicPlayer.current.play());
     }
     
+    nextSong(){
+        const numSongs = this.props.album.songs.length;
+        let currentTrackNumber = this.state.currentTrackNumber + 1;
+        currentTrackNumber = ((currentTrackNumber -1) % numSongs)+1;
+        this.setState({currentTrackNumber});
+    }
     render(){
         const album = this.props.album;
+        if (!album) return '';
         const band = this.props.band;
-        console.dir(band);
         const songs = album.songs;
-        const currentSong=songs[this.state.currentTrackNumber - 1] || {};
+        const currentTrackNumber = this.state.currentTrackNumber;
         const photoUrl = album ? album.photoUrl : null;
         const image = !photoUrl || photoUrl.endsWith("345892746528734589234728") ?
         "" : <img src={photoUrl} className="album-cover"/>;
@@ -56,12 +59,14 @@ class AlbumPlayer extends React.Component{
                         } </div>
                <div className="album-columns-container"> 
                    <div className="album-page-c1">
-                    <audio controls src={currentSong.audioUrl}></audio>
-                    <div className="current-song"> 
+                       <MusicPlayer ref={this.musicPlayer}
+                       nextSong = {this.nextSong} songs = {songs}
+                       currentTrackNumber = {currentTrackNumber}/>
+                    {/* <div className="current-song"> 
                     {
                         currentSong ? `${this.state.currentTrackNumber}. ${currentSong.name}`
                     : "No songs yet!"} 
-                     </div>
+                     </div> */}
                     <div className = 'song-links'> {songs.map( (song, idx) => (
 
                     <div className='song-link' 

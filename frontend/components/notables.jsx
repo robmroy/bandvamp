@@ -6,7 +6,7 @@ class Notables extends React.Component {
        "Wake Up", "...Plays Guitar", "Wild & You",
       "Broken Parts"]
       const genres = [  'groove',  'electropop',
-        'folk', 'classical', 'synthwave']
+      'classical', 'folk', 'synthwave']
         let note3 = "German guitarist Gillicuddy offers a ";
         note3 += "pensive collection of solo pieces, understated but confidently present."
         let note1 = "A smooth, groovy album from The Polish Ambassador ";

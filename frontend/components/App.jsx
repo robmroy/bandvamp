@@ -21,7 +21,7 @@ import {
 import MusicPlayer from './media_player/music_player';
 
 const App = () => (
-  <div className ='App'>
+  <div id ='App'>
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <>

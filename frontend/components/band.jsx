@@ -6,8 +6,7 @@ class Band extends React.Component {
     super(props);
     const lstate = props.location.state || {};
     const {albumId, songId, faveTrackNum} = lstate;
-    this.state = { albumId, songId, faveTrackNum,
-    wildcard: this.props.wildcard}
+    this.state = { albumId, songId, faveTrackNum}
   }
 
   componentDidMount(){
@@ -19,19 +18,18 @@ class Band extends React.Component {
     const {albumId, songId} = lstate;
 
     const plstate = prevProps.location.state ||{};
-    if (this.props.wildcard != this.state.wildcard
-      || albumId !== plstate.albumId || 
-      songId !== plstate.songId){
-        this.setState({wildcard: this.props.wildcard},
-          () => {this.props.fetchBand();
-          this.setState({songId, albumId}); });
-    }
-    // if (prevProps.match.params.bandId !== this.props.match.params.bandId){
-    //   this.props.fetchBand();
-    //   this.setState({album: null});
-    // }
 
-}
+    if (this.props.wildcard !== prevProps.wildcard
+      ){
+        return this.props.fetchBand();
+    }
+
+    if (albumId !== plstate.albumId || 
+      songId !== plstate.songId){
+        this.setState({songId, albumId});
+    }
+  
+  }
   clickAlbum(album){
     this.setState({albumClicked: true, albumId: album.id})
   }
@@ -69,14 +67,15 @@ class Band extends React.Component {
                 {band.band_description} 
                 {photo}
 
-                <div> discography</div>
+                {albums.length ? (<><div> discography</div>
 
                 <div className = "band-albums"> {albums.map(alb => (
                   <div onClick={()=>{this.setState({albumId: alb.id})}}>
                   <img className = {'album-120'} src = {alb.photoUrl}/>
                   <div style={{fontSize: '12px'}}>{alb.name}</div>
                   </div>
-                ))}</div>
+                ))}</div></>) : ''}
+
                 </div>
                
                 </div>
