@@ -8,6 +8,21 @@ class User < ApplicationRecord
   foreign_key: :band_id
   validate :require_photos
 
+  has_many :follows,
+  class_name: :Follow,
+  foreign_key: :fan_id
+
+  has_many :followed_bands,
+  through: :follows
+
+  has_many :purchases,
+  class_name: :Purchase,
+  foreign_key: :album_id
+
+  has_many :purchased_albums,
+  through: :purchases
+
+
 
   validates :username, :email, presence: true, uniqueness: true
   validates :password_digest, :session_token, presence: true

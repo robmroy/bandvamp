@@ -939,6 +939,14 @@ margin-top: 8px;
   text-decoration: underline;
 }
 
+.link{
+  cursor: pointer;
+}
+
+.link:hover{
+  text-decoration: underline;
+}
+
   
 
   /* .next-btn{

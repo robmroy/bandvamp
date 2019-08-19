@@ -101,8 +101,8 @@ class Band extends React.Component {
 
                 <div className = "band-albums"> {albums.map(alb => (
                   <div key = {alb.id} onClick={()=>{this.setState({albumId: alb.id})}}>
-                  <img className = {'album-120'} src = {alb.photoUrl}/>
-                  <div style={{fontSize: '12px'}}>{alb.name}</div>
+                  <img className = 'album-120 link' src = {alb.photoUrl}/>
+                  <div className = 'link' style={{fontSize: '12px'}}>{alb.name}</div>
                   </div>
                 ))}</div></>) : ''}
 

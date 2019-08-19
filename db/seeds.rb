@@ -813,7 +813,7 @@ require 'open-uri'
 # filename: 'coalescence.mp3')
 # coal.save!
 
-ltrj = Song.find_by(name: 'Let the Rhythm Just ft. Mr. Lif & Ayla Nero.mp3')
+# ltrj = Song.find_by(name: 'Let the Rhythm Just ft. Mr. Lif & Ayla Nero.mp3')
 
 ki = User.find_by(username: 'kimiko')
 
@@ -827,16 +827,33 @@ mb = User.find_by(username: 'bubba')
 
 nihilore = User.find_by(username: "nihilore")
 
-ltrj.update_attribute('name', 'Let the Rhythm Just ft. Mr. Lif & Ayla Nero')
+# ltrj.update_attribute('name', 'Let the Rhythm Just ft. Mr. Lif & Ayla Nero')
 
-ki.update_attribute('band_description', 'An award winning pianist, composer, and athlete, Kimiko Ishizaka brings a love and devotion to the music of J.S. Bach which will thrill purists and aficionados, and make instant fans out of first-time listeners. Her contributions to the public domain are her legacy.')
+# ki.update_attribute('band_description', 'An award winning pianist, composer, and athlete, Kimiko Ishizaka brings a love and devotion to the music of J.S. Bach which will thrill purists and aficionados, and make instant fans out of first-time listeners. Her contributions to the public domain are her legacy.')
 
-j.update_attribute('band_description', 'Betterwithmusic.com is a Javier Suarez (jahzzar) project which offers original music under the Creative Commons license. It is meant to be used for films, short movies, animations, documentaries, advertisment, corporate image and of course, download for personal use.')
+# j.update_attribute('band_description', 'Betterwithmusic.com is a Javier Suarez (jahzzar) project which offers original music under the Creative Commons license. It is meant to be used for films, short movies, animations, documentaries, advertisment, corporate image and of course, download for personal use.')
 
-pa.update_attribute('band_description', 'The Polish Ambassador is raising the bar for what it means to be a professionally touring musician. Sure, the electronic musician lays claim to producing the sweetest beats this side of the Milky Way Galaxy, but the world’s funkiest diplomat is also using his popularity to steer the millennial generation toward a nourishing and sustainable way of relating with art, community and the planet.')
+# pa.update_attribute('band_description', 'The Polish Ambassador is raising the bar for what it means to be a professionally touring musician. Sure, the electronic musician lays claim to producing the sweetest beats this side of the Milky Way Galaxy, but the world’s funkiest diplomat is also using his popularity to steer the millennial generation toward a nourishing and sustainable way of relating with art, community and the planet.')
 
-g.update_attribute('band_description', "Pluckin' them strings.")
+# g.update_attribute('band_description', "Pluckin' them strings.")
 
-mb.update_attribute('band_description', 'My bubba is a daringly sweet pair of ladies, whose songs are slow and easy, teasing and pleasing. They call them lullabies from the countryside, with one part sweet talking, one part mumbo jumbo and one part pure wisdom. Bubba plays the guitar and the banjo, and My has a really old table harp. And they sing. Sweetly and simply, songs that stroke you like a banana cream pie.')
+# mb.update_attribute('band_description', 'My bubba is a daringly sweet pair of ladies, whose songs are slow and easy, teasing and pleasing. They call them lullabies from the countryside, with one part sweet talking, one part mumbo jumbo and one part pure wisdom. Bubba plays the guitar and the banjo, and My has a really old table harp. And they sing. Sweetly and simply, songs that stroke you like a banana cream pie.')
 
-nihilore.update_attribute('band_description', 'All my music is Royalty Free released under Creative Commons - Attribution, meaning you can freely use them in any project as long as sufficient credit is given. If the prices are currently set to anything other than free, all my music can also be downloaded freely at www.nihilore.com but please let me know so i can fix it')
+# nihilore.update_attribute('band_description', 'All my music is Royalty Free released under Creative Commons - Attribution, meaning you can freely use them in any project as long as sufficient credit is given. If the prices are currently set to anything other than free, all my music can also be downloaded freely at www.nihilore.com but please let me know so i can fix it')
+
+vv = User.new(username: "VocalVamp123",
+      email: "the_count@gmail.com",
+      password: "pass123")
+
+vv.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/count.jpeg',
+  filename: 'count.jpeg'))
+
+vv.save!
+
+[ki, j, pa, g, nihilore, mb].each do |band|
+  Follow.create(fan_id: vv.id, band_id: band.id)
+  band.albums.each do |album|
+    Purchase.create(album_id: album.id, user_id: vv.id)
+  end
+end
+  
