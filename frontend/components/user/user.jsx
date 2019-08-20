@@ -78,11 +78,12 @@ class User extends React.Component {
             <span className = 'link link-color' onClick={() => this.setState({editing: true})}> Edit </span></div>
         }
         return <div className ='fanpage-about'>
+            <div className='hint'>about you</div>
         <textarea className = 'desc-text' onChange = {e=> {this.setState({desc: e.target.value})}} value={this.state.desc || ''}
-        placeholder='description here'/>
-        <div className = 'pointer' onClick={() => {this.editFan();
-        this.setState({editing: false});}}>Submit change</div>
-        <div className = 'pointer'
+        />
+        <div className = 'pointer save-button' onClick={() => {this.editFan();
+        this.setState({editing: false});}}>Save changes</div>
+        <div className = 'pointer cancel'
         onClick ={ () => this.setState({editing: false})} >Cancel</div>
         </div>
     }
