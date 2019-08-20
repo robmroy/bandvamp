@@ -7,15 +7,18 @@ const mapStateToProps = state => ({
   userId: state.session.id
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   openModal: ()=> dispatch(openModal('signup')),
   logout: () => dispatch(logout()),
   demo: () => dispatch(login(
     { 
       username: "VocalVamp123", 
       password: "pass123" 
-    }))
-  });
+    },  user => {
+      console.log('ownprops:')
+      console.dir(ownProps);
+      ownProps.history.push(`/user/${user.id}`)}
+      ),)});
 
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderNav));

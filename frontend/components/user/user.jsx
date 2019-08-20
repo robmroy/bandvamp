@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Follow from '../follow';
+import Album from '../albums/album';
 
 
 class User extends React.Component {
@@ -14,30 +16,40 @@ class User extends React.Component {
     }
 
     renderCollection(){
+        const linkToAlbum = (album) => this.props.history.push({pathname: `/band/${album.band_id}`,
+        state: {albumId: album.id}});   
+
         const {fan, user} = this.props;
-        console.dir(fan.purchased_albums)
        return <div className='collection-container'> {fan.purchased_albums.map(
-            alb =>  <div className='collection-item-container'>
+            alb =>  <div key = {alb.id}  className='collection-item-container'>
                 <div className = 'collection-item'>
-            <img className = 'collection-album' src={alb.photoUrl}/>
+            <img className = 'collection-album link' src={alb.photoUrl}
+            onClick={() =>linkToAlbum(alb)}/>
+            <div className='link' onClick={() =>linkToAlbum(alb)}>
             <div className='collection-alb-name'>{alb.name}</div>
             <div className = 'collection-band-name'> by {alb.band_name} </div>
+            </div>
             </div>
             </div>)}</div>
     }
 
     renderFollows(){
-        const {fan, user} = this.props;
+        const props = this.props;
+        const {fan, user} = props;
       return  <div className = 'follows-container'> 
       {fan.followed_bands.map(band =>{
             const name = band.band_name;
-          return (<div className='follow-item'> 
+          return (<div key ={band.id} className='follow-item'> 
           <div className = 'follow-item-pic-wrapper'> 
-          <img className = 'follow-item-pic' src={name==="My Bubba & Mi" 
+          <img className = 'follow-item-pic link' 
+          onClick={() => props.history.push(`/band/${band.id}`)}
+          src={name==="My Bubba & Mi" 
           ? window.bubba : band.photoUrl}/>
           </div>
           <div className = 'follow-item-right'>
-          {name}
+          <div className='fan-follow-name link'
+          onClick={() => props.history.push(`/band/${band.id}`)}>{name}</div>
+          <Follow ver='1' band_id = {band.id}/>
           </div>
           </div>)})}</div>
     }
