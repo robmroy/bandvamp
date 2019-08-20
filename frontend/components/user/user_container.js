@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {fetchUser} from '../../actions/entities_actions';
+import {fetchUser, editUser} from '../../actions/entities_actions';
 import User from './user';
 import {withRouter} from 'react-router-dom';
 
@@ -16,7 +16,8 @@ const mapStateToProps = (state, ownProps) => {
     }}
 
 const mapDispatchToProps = dispatch => ({    
-     fetchUser: id => dispatch(fetchUser(id))
+     fetchUser: (id, callback) => dispatch(fetchUser(id, callback)),
+     editUser: user => dispatch(editUser(user))
 });
 
 export default withRouter(connect(

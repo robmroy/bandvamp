@@ -4,11 +4,12 @@ import {withRouter} from 'react-router';
 import SelectSignupContainer from './select_signup_container';
 import LoginFormContainer from './login_form_container';
 import {openModal, closeModal} from '../../actions/modal_actions';
+import {login} from '../../actions/session_actions';
 
-function toFollow({openModal, push, closeModal}) {
+function toFollow({openModal, push, closeModal, demo}) {
   
   return (
-    <div className = 'modal-form to-follow-modal' >
+    <div className = 'modal-form to-follow-modal ta-center' >
         To follow this artist please 
         <span className = 'link link-color'
         onClick ={() => openModal('signup')}> sign up </span> 
@@ -26,6 +27,11 @@ function toFollow({openModal, push, closeModal}) {
             onClick ={() => {push('/login');
             closeModal();}}
             >Log in</div></div>
+
+            <div className = 'or-demo'>Or, log in as a <span 
+            className = 'link link-color'
+            onClick = {() => {demo(); closeModal();}}
+            >demo user</span>.</div>
     </div>
   );
 }
@@ -36,10 +42,19 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     openModal: modalType => dispatch(openModal(modalType)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    demo: () => dispatch(login(
+        { 
+          username: "VocalVamp123", 
+          password: "pass123" 
+        },  user => {
+          console.log('ownprops:')
+          console.dir(ownProps);
+          ownProps.history.push(`/user/${user.id}`)}
+          ),)
   };
 };
 

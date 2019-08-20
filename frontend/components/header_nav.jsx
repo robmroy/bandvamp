@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import searchIcon from '../../app/assets/images/search.png';
 import SearchContainer from './search/search_container';
 class HeaderNav extends React.Component{
   constructor(props){
@@ -39,13 +38,11 @@ onClick={() => props.logout()}>logout</button>
 
   return (
     <div className={"header-nav"+this.props.suffix}>
-      {/* {this.state.clickedDemo && props.userId ? 
-  <Redirect to={`/user/${props.userId}/follows`}/>
-  :
-  ""
-  } */}
       {logoElement}
       <div className="header-nav-right">
+        {props.userId ? <span className = 'collection-topper black-link'
+        onClick = {() => this.props.history.push(`/user/${props.userId}`)}>
+        Collection</span> : ''}
       <div className = 'search-logout'>
         <SearchContainer />       
         {!props.userId ?  auth : ""}

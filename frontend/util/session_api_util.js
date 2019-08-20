@@ -14,6 +14,24 @@ export const signup = user => (
   })
 );
 
+export const editUser = user => {
+  console.dir(user);
+  return (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/users/${user.id}`,
+    data: { user }
+  }));
+}
+
+export const editBand = band => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/bands/${band.id}`,
+    data: { band }
+  })
+)
+
 export const logout = () => (
   $.ajax({
     method: 'DELETE',

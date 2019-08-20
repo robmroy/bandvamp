@@ -108,7 +108,7 @@ export const clearAlbumErrors = () => (
 export const receiveBand = band => ({
   type: RECEIVE_BAND,
   band
-});
+})
 
 export const fetchBand = id => dispatch => (
   APIUtil.fetchBand(id).then(
@@ -116,12 +116,26 @@ export const fetchBand = id => dispatch => (
   )
 );
 
-export const fetchUser = id => dispatch => (
+export const fetchUser = (id, callback) => dispatch => (
   APIUtil.fetchUser(id).then(
-    user  => dispatch(receiveUser(user))
+    user  => {dispatch(receiveUser(user));
+      if(callback)callback(user);
+    }
   )
 );
 
 export const clearReceivedAlbumId = ()  => (
   {type: CLEAR_RECEIVED_ALBUM_ID}
 )
+
+export const editBand = band => dispatch => (
+  APIUtil.editBand(band).then(
+    band => dispatch(receiveBand(band))
+  )
+);
+
+export const editUser = user => dispatch => (
+  APIUtil.editUser(user).then(
+    user => dispatch(receiveUser(user))
+  )
+);
