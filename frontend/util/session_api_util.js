@@ -60,3 +60,10 @@ export const fetchBand = id => (
     url: `/api/bands/${id}`
   })
 )
+
+export const fetchUser = id => (
+  $.ajax({
+    method: "get",
+    url: `/api/users/${id}`
+  })
+)

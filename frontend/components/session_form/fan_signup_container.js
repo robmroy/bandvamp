@@ -2,6 +2,8 @@
 import { connect } from 'react-redux';
 import { signup, clearErrors } from '../../actions/session_actions';
 import FanSignupForm from './fan_signup_form';
+import {withRouter} from 'react-router';
+import {closeModal} from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -13,9 +15,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    closeModal: () => dispatch(closeModal()),
     processForm: (user) => dispatch(signup(user)),
     clearErrors: () => dispatch(clearErrors())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FanSignupForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FanSignupForm));

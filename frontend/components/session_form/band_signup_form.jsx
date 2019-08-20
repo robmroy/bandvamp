@@ -33,7 +33,7 @@ class BandSignupForm extends React.Component {
     this.setState({toggled: true});
     const user = Object.assign({}, this.state);
     if (!this.emptyBandName()){
-    this.props.processForm(user);}
+    this.props.processForm(user).then(() => this.props.closeModal());}
   }
 
   

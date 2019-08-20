@@ -841,14 +841,16 @@ nihilore = User.find_by(username: "nihilore")
 
 # nihilore.update_attribute('band_description', 'All my music is Royalty Free released under Creative Commons - Attribution, meaning you can freely use them in any project as long as sufficient credit is given. If the prices are currently set to anything other than free, all my music can also be downloaded freely at www.nihilore.com but please let me know so i can fix it')
 
-vv = User.new(username: "VocalVamp123",
-      email: "the_count@gmail.com",
-      password: "pass123")
+# vv = User.new(username: "VocalVamp123",
+#       email: "the_count@gmail.com",
+#       password: "pass123")
 
-vv.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/count.jpeg',
-  filename: 'count.jpeg'))
+vv = User.find_by(username: "VocalVamp123")
 
-vv.save!
+# vv.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/count.jpeg'),
+#   filename: 'count.jpeg')
+
+# vv.save!
 
 [ki, j, pa, g, nihilore, mb].each do |band|
   Follow.create(fan_id: vv.id, band_id: band.id)

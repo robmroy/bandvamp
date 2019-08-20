@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { login, logout } from '../actions/session_actions';
+import {openModal} from '../actions/modal_actions'
 import HeaderNav from './header_nav';
 import {withRouter} from 'react-router';
 const mapStateToProps = state => ({
@@ -7,10 +8,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  openModal: ()=> dispatch(openModal('signup')),
   logout: () => dispatch(logout()),
   demo: () => dispatch(login(
     { 
-      username: "nakarada", 
+      username: "VocalVamp123", 
       password: "pass123" 
     }))
   });

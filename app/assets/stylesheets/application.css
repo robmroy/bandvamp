@@ -111,7 +111,7 @@ body{
   width: 430px;
   /* padding: 20px; */
   background: #fff;
-  z-index: 3;
+  z-index: 5;
   border-radius: 5px;
   border: 1px solid #000;
 }
@@ -303,6 +303,7 @@ input:focus{
   overflow: auto;
   display:flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .pad60{
@@ -324,6 +325,7 @@ input:focus{
   font-weight: 600;
   font-size: 14px;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .header-nav-right{
@@ -533,9 +535,11 @@ margin: 0 auto;}
 }
 
 .logout{margin-left: auto;
+  margin-top: 30px;
 border: none;
 background-color: inherit;
-font-weight: 550;}
+font-weight: 550;
+cursor: pointer;}
 
 .add-track{
  color: #0687f5;
@@ -947,15 +951,33 @@ margin-top: 8px;
   text-decoration: underline;
 }
 
-  
-
-  /* .next-btn{
-    margin: 0;
+  .fan-banner{
+    background: linear-gradient(135deg, #816FF7 0%, #30D4BB 100%);
+    height: 100px;
   }
-  .prev-btn{
-    margin-left: 4px;
-    margin-right: 0;
-  } */
+
+  .fan-bio-photo{
+    display: inline-block;
+    vertical-align: top;
+    width: 210px;
+    margin: -30px 38px 0 0;
+  }
+
+  .fan-bio{
+    width: 960px;
+    margin: 0 auto;
+    padding-bottom: 14px;
+  }
+
+  .session-screen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    background-color: rgba(0,0,0,0.55)
+  }
 /* 
 TODO: 
 

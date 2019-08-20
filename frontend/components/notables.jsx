@@ -13,7 +13,7 @@ class Notables extends React.Component {
         note1 += "featuring talented guest vocals."
         let note2 = "Jahzzar makes an homage to the synthy pop sounds of the 80's."
        let  note4 = "The second album of 'countryside lullabies' from the Icelandic duo."
-       let note5= "A cinematic mix of dubstep, trance, synthwave..."
+       let note5= "A cinematic mix of dubstep, trance, and synthwave."
        const notes = [note1, note2, note3, note4, note5];
       this.state = {names, genres, notes
         }

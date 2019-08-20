@@ -10,6 +10,8 @@ import AlbumFormContainer from './albums/album_form_container';
 import AlbumContainer from './albums/album_container'
 import BandContainer from './band_container';
 import Footer from './footer.jsx';
+import UserContainer from './user/user_container';
+import Modal from './modal';
 import {
   Route,
   Redirect,
@@ -18,10 +20,10 @@ import {
   HashRouter,
   withRouter
 } from 'react-router-dom';
-import MusicPlayer from './media_player/music_player';
 
 const App = () => (
   <div id ='App'>
+    <Modal/>
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <>
@@ -32,6 +34,7 @@ const App = () => (
         <AuthRoute  path="/signup/band" component={BandSignupContainer} />
         <AuthRoute  path="/signup/fan" component={FanSignupContainer} />
       <Switch>
+        <Route path='/user/:fanId' component = {UserContainer}/>
         <Route path="/band/:bandId" component={BandContainer}/>
         <Route  path="/album/:albumId" component={AlbumContainer} />
         <ProtectedRoute  path="/album" component={AlbumFormContainer} />

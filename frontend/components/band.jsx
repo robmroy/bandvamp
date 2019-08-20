@@ -35,6 +35,7 @@ class Band extends React.Component {
   }
     renderDesc(){
       const {band} = this.props;
+      if (!band.band_description)return '';
       let descStr = band.band_description + ' ';
       const lim = 20;
       const {fullDesc} = this.state;

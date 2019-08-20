@@ -6,6 +6,7 @@ export const RECEIVE_BAND = 'RECEIVE_BAND';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const RECEIVE_SONG_ERRORS= 'RECEIVE_SONG_ERRORS';
 export const CLEAR_RECEIVED_ALBUM_ID= 'CLEAR_RECEIVED_ALBUM_ID';
+export const RECEIVE_USER = 'RECEIVE_USER'
 import * as APIUtil from '../util/session_api_util';
 
 export const receiveAlbum = payload =>(
@@ -18,6 +19,9 @@ export const receiveAlbum = payload =>(
     payload}
   )
   
+export const receiveUser = user => (
+  {type: RECEIVE_USER, user}
+)
 export const fetchAlbum = id => dispatch => (
     APIUtil.fetchAlbum(id).then(
       album => dispatch(receiveAlbum(album))
@@ -109,6 +113,12 @@ export const receiveBand = band => ({
 export const fetchBand = id => dispatch => (
   APIUtil.fetchBand(id).then(
     band  => dispatch(receiveBand(band))
+  )
+);
+
+export const fetchUser = id => dispatch => (
+  APIUtil.fetchUser(id).then(
+    user  => dispatch(receiveUser(user))
   )
 );
 

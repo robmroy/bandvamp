@@ -10,7 +10,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.includes(followed_bands: {photo_attachment: :blob},
+     purchased_albums: [{photo_attachment: :blob}, :band]).find(params[:id])
     render "/api/users/show"
   end
 

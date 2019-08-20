@@ -109,6 +109,7 @@ class MusicPlayer extends Component {
   handleMouseUp(e){
     const ac = this.audio.current;
     this.app.removeEventListener('mousemove',this.handleMouseMove)
+    this.app.removeEventListener('mouseup',this.handleMouseUp)
     ac.currentTime = this.state.sliderPos * 
     ac.duration /(this.progBarWidth-this.sliderWidth);
     this.setState({handlingMouseMove: false})

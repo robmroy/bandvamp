@@ -24,8 +24,8 @@ class HeaderNav extends React.Component{
      this.setState({clickedDemo: true});}}>
        Demo login</button>
   <div className="black-link-container"> <div className="pad15"> </div>   
-<Link to="/signup" 
-className="black-link">sign up</Link> 
+<span 
+className="black-link" onClick = {this.props.openModal}>sign up</span> 
 <Link to="/login" className="black-link">log in</Link> 
       </div>
       <div className='hpad-20'> </div>
@@ -40,7 +40,7 @@ onClick={() => props.logout()}>logout</button>
   return (
     <div className={"header-nav"+this.props.suffix}>
       {this.state.clickedDemo && props.userId ? 
-  <Redirect to={`/band/${props.userId}`}/>
+  <Redirect to={`/user/${props.userId}`}/>
   :
   ""
   }

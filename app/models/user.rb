@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   has_many :purchases,
   class_name: :Purchase,
-  foreign_key: :album_id
+  foreign_key: :user_id
 
   has_many :purchased_albums,
   through: :purchases

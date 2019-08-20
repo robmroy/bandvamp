@@ -1,6 +1,7 @@
 class Api::SessionsController < ApplicationController
   def create
-    @user = User.find_by_credentials(
+    @user = User.includes(followed_bands: {photo_attachment: :blob},
+      purchased_albums: [{photo_attachment: :blob}, :band]).find_by_credentials(
       params[:user][:username],
       params[:user][:password]
     )
