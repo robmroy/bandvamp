@@ -693,7 +693,9 @@ margin-top: 8px;
 }
 
 
-
+.fan-bio-right{
+  margin: 30px;
+}
 .read-more-external-link{
   text-align: center;
   font-style: italic;
@@ -964,9 +966,10 @@ margin-top: 8px;
   }
 
   .fan-bio{
-    width: 960px;
+    width: 70vw;
     margin: 0 auto;
     padding-bottom: 14px;
+    display: flex;
   }
 
   .session-screen {
@@ -978,10 +981,72 @@ margin-top: 8px;
     z-index: 4;
     background-color: rgba(0,0,0,0.55)
   }
-/* 
-TODO: 
 
-Work on the modal: make background gray and unclickable,
-and make modal closeable.
+  .fanpage-name{
+    font-size: 25px;
+  }
 
-*/
+  .fanpage-about{
+    font-size: 15px;
+  }
+
+  .link-tabs{
+    display: flex;
+    margin: 30px;
+  }
+
+  .link-tab{
+    margin: 0 30px;
+  }
+
+  .link-tab:hover{
+    text-decoration: none;
+    border-bottom: 2px solid;
+  }
+
+  .collection-album{
+    width: 210px;
+  }
+
+  .collection-item{
+    margin: 0 auto;
+    width: 210px;
+  }
+
+  .collection-container{
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    display: grid;
+    grid-row-gap: 20px;
+  }
+
+  .collection-alb-name{
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .collection-band-name{
+    font-size: 12px;
+  }
+
+  .selected-tab{
+    color: black;
+    border-bottom: #000 solid 2px;
+  }
+
+  .follow-item-pic{
+    width: 70px;
+  }
+
+  .follow-item-pic-wrapper{
+    margin: 5px 15px;
+  }
+
+  .follows-container{
+    grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) );
+    display: grid;
+    grid-row-gap: 20px;
+  }
+
+  .follow-item{
+    display: flex;
+  }

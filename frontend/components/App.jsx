@@ -30,9 +30,9 @@ const App = () => (
         <HeaderNavContainer suffix=''/>
         <HeaderNavContainer suffix='-dummy'/>
 
-        <AuthRoute exact path="/signup" component={SelectSignup} />
+        {/* <AuthRoute exact path="/signup" component={SelectSignup} />
         <AuthRoute  path="/signup/band" component={BandSignupContainer} />
-        <AuthRoute  path="/signup/fan" component={FanSignupContainer} />
+        <AuthRoute  path="/signup/fan" component={FanSignupContainer} /> */}
       <Switch>
         <Route path='/user/:fanId' component = {UserContainer}/>
         <Route path="/band/:bandId" component={BandContainer}/>

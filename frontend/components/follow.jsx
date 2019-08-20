@@ -1,12 +1,7 @@
 import React from 'react';
-import { closeModal } from '../actions/modal_actions';
 import { connect } from 'react-redux';
-import SelectSignupContainer from './session_form/select_signup_container';
-import FanSignupContainer from './session_form/fan_signup_container';
-import BandSignupContainer from './session_form/band_signup_container';
-import LoginFormContainer from './session_form/login_form_container';
 
-function Modal({modal, closeModal}) {
+function follow({modal, closeModal}) {
   if (!modal) {
     return null;
   }
@@ -36,7 +31,7 @@ function Modal({modal, closeModal}) {
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal
+    sessionId: state.session.id
   };
 };
 

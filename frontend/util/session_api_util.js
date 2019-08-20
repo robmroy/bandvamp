@@ -67,3 +67,19 @@ export const fetchUser = id => (
     url: `/api/users/${id}`
   })
 )
+
+export const createFollow = ({band_id, fan_id}) => (
+  $.ajax({
+    method: "post",
+    url: `/api/follows`,
+    data: {follow: {band_id, fan_id}}
+  })
+)
+
+export const deleteFollow = ({band_id, fan_id}) => (
+  $.ajax({
+    method: "delete",
+    url: `/api/follows/${fan_id}`,
+    data: {follow: {band_id, fan_id}}
+  })
+)

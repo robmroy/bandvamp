@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :albums
     resources :songs, only: [:create]
     resources :searches, only: [:index]
+    resources :follows, only: [:create, :destroy]
   end
 end
 

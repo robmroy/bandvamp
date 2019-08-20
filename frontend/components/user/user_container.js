@@ -9,7 +9,11 @@ const mapStateToProps = (state, ownProps) => {
         fan: state.entities.users[wildcard],
     sessionId: state.session.id,
     user: state.session.id ? 
-    state.entities.users[state.session.id] : undefined}}
+    state.entities.users[state.session.id] : undefined,
+    tab: 
+    ownProps.location.pathname.endsWith('follows') ?
+    'follows' : 'collection'
+    }}
 
 const mapDispatchToProps = dispatch => ({    
      fetchUser: id => dispatch(fetchUser(id))

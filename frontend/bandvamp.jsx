@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import * as APIUtil from './util/session_api_util';
-import { logout } from './actions/session_actions'
+import { createFollow, deleteFollow} from './actions/follow_actions'
 document.addEventListener('DOMContentLoaded', () => {
 
   const root = document.getElementById('root');
@@ -16,10 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
   const store = configureStore(preloadedState);
-  window.getSession = () => store.getState().session;
-  window.signup = APIUtil.signup;
-  window.logout=logout;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.createFollow = createFollow;
+  window.deleteFollow = deleteFollow;
   ReactDOM.render(<Root store={store} />, root);
 });

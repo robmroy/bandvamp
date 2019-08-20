@@ -52,8 +52,10 @@ class BandSignupForm extends React.Component {
       return;
     }
     else {
-      return (<><span className="errors"> <br/> 
-      Please enter your band name.</span> <br/> 
+      return (<><span className="errors"> 
+      <br/> 
+      Please enter your band name.</span> 
+      <br/> 
         <div> (Or, <Link to=
        {{pathname: "/signup/fan",
        state: that.state
@@ -82,7 +84,6 @@ class BandSignupForm extends React.Component {
               </label>
 
               {this.emptyBandNameMessage()}
-              <br />
             </div>
           <div className="outer-input-wrapper">
             <label >Username
