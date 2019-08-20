@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import AlbumPlayer from './albums/album_player';
+import Follow from './follow';
 class Band extends React.Component {
   constructor(props) {
     super(props);
@@ -52,8 +53,8 @@ class Band extends React.Component {
       }
   
       return <div className='band-desc'>{descStr}
-      <span className = 'more-less' onClick={this.negateFullDesc}>
-        {fullDesc ? 'less' : 'more'}</span></div>
+      {words.length > lim + 2 ? <span className = 'more-less' onClick={this.negateFullDesc}>
+        {fullDesc ? 'less' : 'more'}</span> : null }</div>
       
     }
 
@@ -96,6 +97,7 @@ class Band extends React.Component {
                 <div className = 'band-column-3'>
                   <div className='band-name-col-3'> {band.band_name}</div>
                 {photo}
+                <Follow band_id = {band.id} ver='2'/>
                 {this.renderDesc()} 
 
                 {albums.length ? (<><div> discography</div>

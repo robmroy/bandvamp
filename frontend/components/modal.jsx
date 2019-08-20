@@ -5,7 +5,7 @@ import SelectSignupContainer from './session_form/select_signup_container';
 import FanSignupContainer from './session_form/fan_signup_container';
 import BandSignupContainer from './session_form/band_signup_container';
 import LoginFormContainer from './session_form/login_form_container';
-
+import ToFollow from './session_form/to_follow'
 function Modal({modal, closeModal}) {
   if (!modal) {
     return null;
@@ -24,6 +24,9 @@ function Modal({modal, closeModal}) {
     case 'signup/band':
       component = <BandSignupContainer />;
       break;
+    case 'tofollow':
+        component = <ToFollow />;
+        break;
     default:
       return null;
   }

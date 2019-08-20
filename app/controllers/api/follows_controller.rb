@@ -14,8 +14,8 @@ class Api::FollowsController < ApplicationController
             band_id: follow_params[:band_id],
             fan_id: follow_params[:fan_id]
         )
-        @user = User.find(@follow.fan_id)
         @follow.destroy!
+        @user = User.find(follow_params[:fan_id])
         render 'api/users/show'
     end
 
