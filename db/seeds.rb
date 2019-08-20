@@ -11,73 +11,73 @@ require 'open-uri'
 # Album.delete_all
 # Song.delete_all
 
-ki = User.new(username: 'kimiko',
-band_name: "Kimiko Ishizaka",
-email: 'kimiko@gmail.com',
-password: 'pass123')
+# ki = User.new(username: 'kimiko',
+# band_name: "Kimiko Ishizaka",
+# email: 'kimiko@gmail.com',
+# password: 'pass123')
 
-ki.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/kimiko.jpg'),
-filename: 'ki.jpg')
+# ki.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/kimiko.jpg'),
+# filename: 'ki.jpg')
 
-ki.banner.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/banner.png'),
-filename: 'ki_banner.png')
+# ki.banner.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/banner.png'),
+# filename: 'ki_banner.png')
 
-ki.save!
+# ki.save!
 
-wtc = Album.new(band_id: ki.id, name: "Bach: Well​-​Tempered Clavier, Book 1")
+# wtc = Album.new(band_id: ki.id, name: "Bach: Well​-​Tempered Clavier, Book 1")
 
-wtc.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/cover.jpg'),
-filename: 'cover.jpg')
+# wtc.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/cover.jpg'),
+# filename: 'cover.jpg')
 
-wtc.save!
+# wtc.save!
 
-track1 = Song.new(album_id: wtc.id, name: 'Prelude No. 1 in C major, BWV 846',
-track_number: 1)
+# track1 = Song.new(album_id: wtc.id, name: 'Prelude No. 1 in C major, BWV 846',
+# track_number: 1)
 
-track1.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+01+Prelude+No.+1+in+C+major%2C+BWV+846.mp3'),
-filename: 'track1.mp3')
+# track1.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+01+Prelude+No.+1+in+C+major%2C+BWV+846.mp3'),
+# filename: 'track1.mp3')
 
-track1.save!
+# track1.save!
 
-track2 = Song.new(album_id: wtc.id, name: 'Fugue No. 1 in C major, BWV 846',
-track_number: 2)
+# track2 = Song.new(album_id: wtc.id, name: 'Fugue No. 1 in C major, BWV 846',
+# track_number: 2)
 
-track2.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+02+Fugue+No.+1+in+C+major%2C+BWV+846.mp3'),
-filename: 'track2.mp3')
+# track2.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+02+Fugue+No.+1+in+C+major%2C+BWV+846.mp3'),
+# filename: 'track2.mp3')
 
-track2.save!
+# track2.save!
 
-track3=Song.new(album_id: wtc.id, name: 'Prelude No. 2 in C minor, BWV 847',
-track_number: 3)
+# track3=Song.new(album_id: wtc.id, name: 'Prelude No. 2 in C minor, BWV 847',
+# track_number: 3)
 
-track3.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+03+Prelude+No.+2+in+C+minor%2C+BWV+847.mp3'),
-filename: 'track3.mp3')
+# track3.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+03+Prelude+No.+2+in+C+minor%2C+BWV+847.mp3'),
+# filename: 'track3.mp3')
 
-track3.save!
+# track3.save!
 
-track4= Song.new(album_id: wtc.id, name: 'Fugue No. 2 in C minor, BWV 847',
-track_number: 4)
+# track4= Song.new(album_id: wtc.id, name: 'Fugue No. 2 in C minor, BWV 847',
+# track_number: 4)
 
-track4.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+04+Fugue+No.+2+in+C+minor%2C+BWV+847.mp3'),
-filename: 'track4.mp3')
+# track4.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+04+Fugue+No.+2+in+C+minor%2C+BWV+847.mp3'),
+# filename: 'track4.mp3')
 
-track4.save!
+# track4.save!
 
-track5 = Song.new(album_id: wtc.id, name: 'Prelude No. 3 in C-sharp major, BWV 848',
-track_number: 5)
+# track5 = Song.new(album_id: wtc.id, name: 'Prelude No. 3 in C-sharp major, BWV 848',
+# track_number: 5)
 
-track5.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+05+Prelude+No.+3+in+C-sharp+major%2C+BWV+848.mp3'),
-filename: 'track5.mp3')
+# track5.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+05+Prelude+No.+3+in+C-sharp+major%2C+BWV+848.mp3'),
+# filename: 'track5.mp3')
 
-track5.save!
+# track5.save!
 
-track6 = Song.new(album_id: wtc.id, name: 'Fugue No. 3 in C-sharp major, BWV 848',
-  track_number: 6)
+# track6 = Song.new(album_id: wtc.id, name: 'Fugue No. 3 in C-sharp major, BWV 848',
+#   track_number: 6)
 
-  track6.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+06+Fugue+No.+3+in+C-sharp+major%2C+BWV+848.mp3'),
-filename: 'track6.mp3')
+#   track6.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+06+Fugue+No.+3+in+C-sharp+major%2C+BWV+848.mp3'),
+# filename: 'track6.mp3')
 
-track6.save!
+# track6.save!
 
 # url2 = 'https://bandvamp-seeds.s3-us-west-1.amazonaws.com/freemusicarchive/'
 
@@ -813,7 +813,6 @@ track6.save!
 # filename: 'coalescence.mp3')
 # coal.save!
 
-ltrj = Song.find_by(name: 'Let the Rhythm Just ft. Mr. Lif & Ayla Nero.mp3')
 
 ki = User.find_by(username: 'kimiko')
 
@@ -826,8 +825,6 @@ g= User.find_by(username: 'gillicuddy')
 mb = User.find_by(username: 'bubba')
 
 nihilore = User.find_by(username: "nihilore")
-
-ltrj.update_attribute('name', 'Let the Rhythm Just ft. Mr. Lif & Ayla Nero')
 
 ki.update_attribute('band_description', 'An award winning pianist, composer, and athlete, Kimiko Ishizaka brings a love and devotion to the music of J.S. Bach which will thrill purists and aficionados, and make instant fans out of first-time listeners. Her contributions to the public domain are her legacy.')
 
