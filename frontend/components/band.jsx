@@ -76,6 +76,7 @@ class Band extends React.Component {
     const {albumId, songId, faveTrackNum} = this.state;
     const albums = Object.values(band.albums);
     const album = albums.length ? albums.find(a=>(a.id === albumId)) || albums[0] : '';
+    album.songs.sort((s,t) => s.track_number - t.track_number)
     const bannerUrl = band.bannerUrl;
     const photoUrl = band.photoUrl;
     const banner = !bannerUrl || bannerUrl.endsWith("345892746528734589234728") ?
