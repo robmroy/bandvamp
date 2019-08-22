@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {createFollow, deleteFollow} from '../actions/follow_actions';
-import {fetchUser} from '../actions/entities_actions';
 import {openModal} from '../actions/modal_actions';
 
 class Follow extends React.Component {
@@ -10,10 +9,6 @@ class Follow extends React.Component {
     this.state = {hover: false}
   }
 
-  componentDidMount(){
-    if(this.props.user && !this.props.user.followed_bands)
-    this.props.fetchUser(this.props.user.id);
-  }
 
   render(){
     const {user, band_id, ver, deleteFollow, createFollow, openModal} = this.props;
@@ -51,7 +46,6 @@ const mapDispatchToProps = dispatch => {
   return {
     createFollow: data => dispatch(createFollow(data)),
     deleteFollow: data => dispatch(deleteFollow(data)),
-    fetchUser: id => dispatch(fetchUser(id)),
     openModal: modalType => dispatch(openModal(modalType))
   };
 };

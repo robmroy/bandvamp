@@ -134,8 +134,22 @@ export const editBand = band => dispatch => (
   )
 );
 
-export const editUser = user => dispatch => (
-  APIUtil.editUser(user).then(
+// export const editUser = user => dispatch => (
+//   APIUtil.editUser(user).then(
+//     user => dispatch(receiveUser(user))
+//   )
+// );
+
+export const editUser = (user, callback) => dispatch => {
+  const formData = new FormData();
+  
+  if(user.user_description)
+  formData.append('user[user_description]',
+  user.user_description);
+  
+  if (user.photo) {
+    formData.append('user[photo]', user.photo);
+  } 
+  APIUtil.editUser({formData, id: user.id}).then(
     user => dispatch(receiveUser(user))
-  )
-);
+  ) };

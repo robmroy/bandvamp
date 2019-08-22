@@ -142,7 +142,8 @@ class AlbumForm extends React.Component{
             Album Cover
            <input type="file"
             onChange={this.handleAlbumCover}
-            className="album-file-input"
+            className="file-input"
+            id = "alb-input"
             ></input>
      </div>       
             <div className="album-page-c2">

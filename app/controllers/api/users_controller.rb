@@ -17,6 +17,8 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    p user_params[:photo] ? "------photo-------" : "-------no photo-------"
+    p user_params[:user_description] ? "user description" : "no user description"
     if @user.update(user_params)
       render 'api/users/show'
     else
@@ -29,6 +31,6 @@ class Api::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, 
-      :band_name, :band_description, :user_description)
+      :band_name, :band_description, :user_description, :photo)
   end
 end

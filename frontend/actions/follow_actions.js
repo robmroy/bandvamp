@@ -1,6 +1,5 @@
 import * as SessionApiUtil from '../util/session_api_util';
 import {receiveUser} from '../actions/entities_actions';
-export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 
 export const createFollow = ({band_id, fan_id}) => (dispatch) => (
   SessionApiUtil.createFollow({band_id, fan_id}).then(

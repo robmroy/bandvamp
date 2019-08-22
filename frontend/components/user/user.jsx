@@ -12,11 +12,12 @@ class User extends React.Component {
     }
     
       this.renderDesc = this.renderDesc.bind(this);
-    }
+      this.handlePhoto = this.handlePhoto.bind(this);
+    this.saveChanges = this.saveChanges.bind(this);    }
     componentDidMount(){
         window.scrollTo(0,0);
-        const {user, fan, sessionId, fetchUser, wildcard} = this.props;
-        if(sessionId && (!user || !user.purchased_albums)) fetchUser(sessionId);
+        const {user, fan, fetchUser, wildcard} = this.props;
+        if(user && !user.purchased_albums) fetchUser(user.id);
         if (!fan || !fan.purchased_albums){fetchUser(wildcard, 
             (fan) => this.setState({desc: fan.user_description}));}
     }
@@ -75,17 +76,42 @@ class User extends React.Component {
         }
         if(!this.state.editing){
             return   <div className ='fanpage-about'>{fan.user_description}
-            <span className = 'link link-color' onClick={() => this.setState({editing: true})}> Edit </span></div>
+                </div>
         }
         return <div className ='fanpage-about'>
             <div className='hint'>about you</div>
         <textarea className = 'desc-text' onChange = {e=> {this.setState({desc: e.target.value})}} value={this.state.desc || ''}
         />
-        <div className = 'pointer save-button' onClick={() => {this.editFan();
+        <div className = 'pointer save-button' onClick={() => {this.saveChanges();
         this.setState({editing: false});}}>Save changes</div>
         <div className = 'pointer cancel'
         onClick ={ () => this.setState({editing: false})} >Cancel</div>
         </div>
+    }
+
+    handlePhoto(e){
+        const user = this.props.user;
+        e.preventDefault();
+        const reader = new FileReader();
+        const file = e.currentTarget.files[0];
+        reader.onloadend = () =>
+       {
+        //    const album = this.state.album;
+        //    album.imageUrl = reader.result;
+        this.setState({ photo: file, imageUrl: reader.result});
+    }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } 
+    }
+
+    saveChanges(e){
+        // e.preventDefault();
+        this.props.editUser({id: this.props.user.id,
+        photo: this.state.photo,
+        user_description: this.state.desc
+    })
     }
 
     render(){
@@ -97,9 +123,22 @@ class User extends React.Component {
         return <div> 
             <div className = 'fan-banner'></div>
             <div className = 'fan-bio'>
-            <img className = 'fan-bio-photo' src = {fan.photoUrl} />
+                <div>
+            <img className = 'fan-bio-photo' src = {this.state.imageUrl || fan.photoUrl} />
+            {this.state.editing ? <div className = 'replace-photo' onClick={
+                ()=> {document.getElementById('user-photo-input').click()}
+            }>Replace photo</div> : null}
+            </div>
+            <input type="file"
+            onChange={this.handlePhoto}
+            className="file-input"
+            id = "user-photo-input"
+           ></input>
+            
             <div className = 'fan-bio-right'>
-                <div className='fanpage-name'>{fan.username}</div>
+                <span className='fanpage-name'>{fan.username}</span>            
+                 <span className = 'link edit-profile' onClick={() => this.setState({editing: true})}> 
+            <i className = 'far fa-edit'></i>Edit Profile</span>
             {this.renderDesc()}
             </div>
             </div>

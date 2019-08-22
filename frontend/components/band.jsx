@@ -15,6 +15,10 @@ class Band extends React.Component {
 
   componentDidMount(){
       this.props.fetchBand();
+      const user = this.props.user;
+      if (user && !user.followed_bands){
+        this.props.fetchUser(user.id);
+      }
   }
 
   componentDidUpdate(prevProps){
@@ -67,9 +71,9 @@ class Band extends React.Component {
   }
 
   render(){
-    if (!this.props.band) return '';
+    const {band, user} = this.props;
+    if (!band|| (user && !user.followed_bands)) return '';
     const {albumId, songId, faveTrackNum} = this.state;
-    const band = this.props.band;
     const albums = Object.values(band.albums);
     const album = albums.length ? albums.find(a=>(a.id === albumId)) || albums[0] : '';
     const bannerUrl = band.bannerUrl;
@@ -92,7 +96,7 @@ class Band extends React.Component {
              : ''}
 
                 <AlbumPlayer album={album} band={band} songId = {songId}
-                faveTrackNum={faveTrackNum}/>
+                faveTrackNum={faveTrackNum} user={this.props.user}/>
 
                 <div className = 'band-column-3'>
                   <div className='band-name-col-3'> {band.band_name}</div>

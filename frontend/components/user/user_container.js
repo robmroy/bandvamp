@@ -8,8 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     return {wildcard,
         fan: state.entities.users[wildcard],
     sessionId: state.session.id,
-    user: state.session.id ? 
-    state.entities.users[state.session.id] : undefined,
+    user: state.entities.users[state.session.id],
     tab: 
     ownProps.location.pathname.endsWith('follows') ?
     'follows' : 'collection'

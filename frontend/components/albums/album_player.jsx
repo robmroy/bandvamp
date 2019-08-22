@@ -18,6 +18,9 @@ class AlbumPlayer extends React.Component{
         this.musicPlayer=React.createRef();
         this.nextSong = this.nextSong.bind(this);
         this.prevSong = this.prevSong.bind(this);
+        this.renderBuyAlbum=this.renderBuyAlbum.bind(this);
+        this.buyAlbumHandler=this.buyAlbumHandler.bind(this);
+
     }
 
 
@@ -45,9 +48,30 @@ class AlbumPlayer extends React.Component{
         let currentTrackNumber = this.state.currentTrackNumber - 1;
         this.setState({currentTrackNumber});
     }
+
+    renderBuyAlbum(){
+        const {user, album} = this.props;
+        console.dir(user);
+        console.dir(album)
+        if (user && user.purchased_albums.map(a=>a.id).includes(album.id))
+        {return <div>You own this album.</div>}
+        
+        else{
+            return <div className='buy-digital-album'
+            onClick={this.buyAlbumHandler}>Buy Digital Album</div>
+        }
+    }
+
+    buyAlbumHandler(){
+        
+    }
+
+
+    
+
     render(){
         const album = this.props.album;
-        if (!album) return '';
+        if (!album ) return '';
         const band = this.props.band;
         const songs = album.songs;
         const currentTrackNumber = this.state.currentTrackNumber;
@@ -68,11 +92,9 @@ class AlbumPlayer extends React.Component{
                        <MusicPlayer ref={this.musicPlayer} prevSong={this.prevSong}
                        nextSong = {this.nextSong} songs = {songs}
                        currentTrackNumber = {currentTrackNumber}/>
-                    {/* <div className="current-song"> 
-                    {
-                        currentSong ? `${this.state.currentTrackNumber}. ${currentSong.name}`
-                    : "No songs yet!"} 
-                     </div> */}
+                    <div className = 'digital-1'>Digital Album</div>
+                    <div className = 'digital-2'>Includes unlimited streaming via the free Bandvamp app.</div>
+                    {this.renderBuyAlbum()}
                     <div className = 'song-links'> {songs.map( (song, idx) => (
 
                     <div className='song-link' 
