@@ -44,7 +44,8 @@ class Notables extends React.Component {
         <div className='fave-5'>
 
             {fave_five.map((faveAlb, i) => (
-                <div className={'fave-single-wrapper'+ (i===0 ? 1 :'')} >
+                <div className={'fave-single-wrapper'+ (i===0 ? 1 :'')}
+                key ={i} >
                      <img src={faveAlb.photoUrl} onClick={()=>this.handleClick(faveAlb)}/>
                      <div className = 'fave-title-and-band'>
                      <div className = 'fave-title' onClick={()=>this.handleClick(faveAlb)}> {faveAlb.name} </div>

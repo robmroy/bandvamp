@@ -7,6 +7,7 @@ class Search extends React.Component{
     this.state = {query: "", redirect: ""};
     this.handleChange=this.handleChange.bind(this);
     this.linkToShow=this.linkToShow.bind(this);
+    this.renderResultItem = this.renderResultItem.bind(this);
     }
     handleChange(e){
       const val = e.target.value;
@@ -46,6 +47,14 @@ class Search extends React.Component{
         }
       }
     }
+    renderResultItem(result){
+      if(result.type === 'band')return (
+       <div><img className='small-result-left' src={result.photoUrl}/> 
+       <span className = 'small-result-right' > <div>{result.band_name}</div>
+       <div>next category</div></span>
+       </div> 
+      )
+    }
     render(){
     let props = this.props || {};
     let results = props.results || [];
@@ -63,8 +72,9 @@ class Search extends React.Component{
         <div className="dropdown-content">
          
           {results.map((result, idx) => 
-            <p key={idx} onClick={()=>this.linkToShow(result)()} className='search-result-link'>
-            {result.name || result.band_name}</p>)}
+            <div key={idx} onClick={()=>this.linkToShow(result)()} 
+            className='search-result-link'>
+            {this.renderResultItem(result)}</div>)}
           </div>
           : ''}
         </div>

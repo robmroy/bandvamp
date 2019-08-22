@@ -27,7 +27,6 @@ class HeaderNav extends React.Component{
 className="black-link" onClick = {this.props.openModal}>sign up</span> 
 <Link to="/login" className="black-link">log in</Link> 
       </div>
-      <div className='hpad-20'> </div>
 </div>)
 
 const logout = (
