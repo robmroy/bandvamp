@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 class FanSignupForm extends React.Component {
   constructor(props) {
     super(props);
-    console.dir(props);
     const username = props.location.state ? 
     props.location.state.username
     : '';
@@ -34,7 +33,9 @@ class FanSignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(()=>this.props.closeModal());
+    this.props.signup(user, user=> {this.props.closeModal();
+      this.props.history.push(`/user/${user.id}`);
+    });
   }
 
   renderErrors() {
@@ -63,7 +64,6 @@ class FanSignupForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <div className="signup-header">Sign up for a Bandvamp fan account</div>
           <br />
-          {/* {this.renderErrors()} */}
           <div className="login-form">
             <br />
             <div className="outer-input-wrapper">

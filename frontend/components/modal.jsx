@@ -31,7 +31,7 @@ function Modal({modal, closeModal}) {
       return null;
   }
   return (
-    <div className = 'session-screen' onClick={closeModal}>
+    <div className = 'overlay' onClick={closeModal}>
       <div onClick={e=>e.stopPropagation()}>{component}</div>
     </div>
   );

@@ -22,12 +22,22 @@ class User extends React.Component {
             (fan) => this.setState({desc: fan.user_description}));}
     }
 
+    componentDidUpdate(prevProps){
+        const fan = this.props.fan;
+        if (prevProps.match.params.fanId !== this.props.match.params.fanId)
+        this.setState({desc: fan && fan.purchased_albums ? fan.user_description : undefined})
+    }
     renderCollection(){
         const linkToAlbum = (album) => this.props.history.push({pathname: `/band/${album.band_id}`,
         state: {albumId: album.id}});   
 
         const {fan, user} = this.props;
-       return <div className='collection-container'> {fan.purchased_albums.map(
+        const purchased_albums = fan.purchased_albums;
+        if (!purchased_albums.length && user && fan.id ===user.id){
+            return <div className = 'center-500 bottom-50 hint'>No purchased albums... try the homepage or search bar to find some.</div>
+            
+        }
+       return <div className='collection-container'> {purchased_albums.map(
             alb =>  <div key = {alb.id}  className='collection-item-container'>
                 <div className = 'collection-item'>
             <img className = 'collection-album link' src={alb.photoUrl}
@@ -44,9 +54,8 @@ class User extends React.Component {
         const props = this.props;
         const {fan, user} = props;
         if (!fan.followed_bands.length && user && fan.id ===user.id){
-            return <div> <div className = 'center-500'> You're not following any bands yet!</div>
-            <div className = 'center-500 bottom-50'>Try the homepage or search bar to find some.</div>
-            </div>
+            return  <div className = 'center-500 bottom-50 hint'>No followed bands... try the homepage or search bar to find some.</div>
+            
         }
       return  <div className = 'follows-container'> 
       {fan.followed_bands.map(band =>{
@@ -79,7 +88,7 @@ class User extends React.Component {
                 </div>
         }
         return <div className ='fanpage-about'>
-            <div className='hint'>about you</div>
+            <div className='hint about-you'>about you</div>
         <textarea className = 'desc-text' onChange = {e=> {this.setState({desc: e.target.value})}} value={this.state.desc || ''}
         />
         <div className = 'pointer save-button' onClick={() => {this.saveChanges();
@@ -96,8 +105,6 @@ class User extends React.Component {
         const file = e.currentTarget.files[0];
         reader.onloadend = () =>
        {
-        //    const album = this.state.album;
-        //    album.imageUrl = reader.result;
         this.setState({ photo: file, imageUrl: reader.result});
     }
 
@@ -107,7 +114,6 @@ class User extends React.Component {
     }
 
     saveChanges(e){
-        // e.preventDefault();
         this.props.editUser({id: this.props.user.id,
         photo: this.state.photo,
         user_description: this.state.desc
@@ -118,7 +124,6 @@ class User extends React.Component {
         const props = this.props;
         const {fan, user} = props;
         if (!fan) return '';
-        // if (!fan.purchased_albums) return '';
         if (this.state.desc === undefined) return '';
         return <div> 
             <div className = 'fan-banner'></div>

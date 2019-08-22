@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {createPurchase} from '../../actions/purchase_actions';
 import AlbumPlayer from './album_player';
+import {withRouter} from 'react-router';
 
 
 
@@ -10,7 +11,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     ))}
 };
 
-export default connect(
+export default withRouter(connect(
     null,
     mapDispatchToProps
-    )(AlbumPlayer);
+    )(AlbumPlayer));

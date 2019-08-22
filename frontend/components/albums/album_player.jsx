@@ -51,7 +51,9 @@ class AlbumPlayer extends React.Component{
     renderBuyAlbum(){
         const {user, album} = this.props;
         if (user && user.purchased_albums.map(a=>a.id).includes(album.id))
-        {return <div>You own this album.</div>}
+        {return <div className='you-own-this link'
+        onClick={() => 
+            this.props.history.push(`/user/${user.id}`)}><i className='fas fa-heart'/> You own this</div>}
         
         else{
             return <div className='buy-digital-album'

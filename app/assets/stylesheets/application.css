@@ -984,7 +984,7 @@ margin-top: 8px;
     display: flex;
   }
 
-  .session-screen {
+  .overlay {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -1186,7 +1186,10 @@ margin-top: 8px;
   .hint{
     font-size: 12px;
     color: #929292;
-    margin: 0 0 6px 0;
+  }
+
+  .hint *{
+    color: #929292;
   }
 
   .save-button{
@@ -1235,6 +1238,8 @@ margin-top: 8px;
     width: .1px;
     height: .1px;
     z-index: -1;
+    bottom: 0;
+    position: absolute;
   }
 
   .replace-photo{
@@ -1266,4 +1271,18 @@ margin-top: 8px;
 .edit-profile i{
   color: #939497;
   margin-right: 4px;
+}
+
+.about-you{
+  margin: 0 0 6px 0;
+}
+
+.fa-heart{
+  color: #b51414
+}
+
+.you-own-this{
+  font-size: 12px;
+  font-weight: bold;
+  margin: 10px 0;
 }

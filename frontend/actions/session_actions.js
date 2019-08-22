@@ -24,10 +24,11 @@ export const clearErrors = () => ({
 });
 
 
-export const signup = user => dispatch => {
+export const signup = (user, cb) => dispatch => {
   return (
   APIUtil.signup(user).then(user => 
-    dispatch(receiveCurrentUser(user)), 
+    {dispatch(receiveCurrentUser(user));
+      if(cb) cb(user)}, 
     err => dispatch(receiveErrors(err.responseJSON)))
   );
 };
