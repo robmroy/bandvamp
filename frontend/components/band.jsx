@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
-import AlbumPlayer from './albums/album_player';
+import AlbumPlayerContainer from './albums/album_player_container';
 import Follow from './follow';
 class Band extends React.Component {
   constructor(props) {
@@ -95,7 +95,7 @@ class Band extends React.Component {
               {this.props.wildcard === this.props.sessionId + '' ? (<Link to='/album' className ='link-to-create-album-page'> Create album</Link>)
              : ''}
 
-                <AlbumPlayer album={album} band={band} songId = {songId}
+                <AlbumPlayerContainer album={album} band={band} songId = {songId}
                 faveTrackNum={faveTrackNum} user={this.props.user}/>
 
                 <div className = 'band-column-3'>

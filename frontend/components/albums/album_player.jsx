@@ -19,7 +19,6 @@ class AlbumPlayer extends React.Component{
         this.nextSong = this.nextSong.bind(this);
         this.prevSong = this.prevSong.bind(this);
         this.renderBuyAlbum=this.renderBuyAlbum.bind(this);
-        this.buyAlbumHandler=this.buyAlbumHandler.bind(this);
 
     }
 
@@ -51,23 +50,15 @@ class AlbumPlayer extends React.Component{
 
     renderBuyAlbum(){
         const {user, album} = this.props;
-        console.dir(user);
-        console.dir(album)
         if (user && user.purchased_albums.map(a=>a.id).includes(album.id))
         {return <div>You own this album.</div>}
         
         else{
             return <div className='buy-digital-album'
-            onClick={this.buyAlbumHandler}>Buy Digital Album</div>
+            onClick={this.props.createPurchase}>Buy Digital Album</div>
         }
     }
 
-    buyAlbumHandler(){
-        
-    }
-
-
-    
 
     render(){
         const album = this.props.album;
