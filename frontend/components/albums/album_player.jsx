@@ -19,6 +19,7 @@ class AlbumPlayer extends React.Component{
         this.nextSong = this.nextSong.bind(this);
         this.prevSong = this.prevSong.bind(this);
         this.renderBuyAlbum=this.renderBuyAlbum.bind(this);
+        this.handleBuyAlbum=this.handleBuyAlbum.bind(this);
 
     }
 
@@ -57,8 +58,14 @@ class AlbumPlayer extends React.Component{
         
         else{
             return <div className='buy-digital-album'
-            onClick={this.props.createPurchase}>Buy Digital Album</div>
+            onClick={this.handleBuyAlbum}>Buy Digital Album</div>
         }
+    }
+
+    handleBuyAlbum(){
+        const {user} = this.props;
+        if (user) this.props.createPurchase();
+        else this.props.openModal();
     }
 
 

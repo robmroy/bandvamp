@@ -18,14 +18,14 @@ class HeaderNav extends React.Component{
     <span className="vamp">vamp</span></Link>)
 
   const auth =  (<div className="header-links">
-  <button className="demo-button" 
+  <div><span className="demo" 
     onClick={() => {props.demo();
      this.setState({clickedDemo: true});}}>
-       Demo login</button>
-  <div className="black-link-container"> <div className="pad15"> </div>   
+       demo user</span></div>
+  <div className="black-link-container">   
 <span 
 className="black-link" onClick = {this.props.openModal}>sign up</span> 
-<Link to="/login" className="black-link">log in</Link> 
+<span onClick={()=>this.props.history.push('/login')} className="black-link">log in</span> 
       </div>
 </div>)
 

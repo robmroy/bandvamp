@@ -23,6 +23,7 @@ import {
 
 const App = () => (
   <div id ='App'>
+  <div id = 'App-body'>
     <Modal/>
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
@@ -42,6 +43,7 @@ const App = () => (
       </Switch>
      </>
     </Switch>
+    </div>
     <Footer path='/' />
   </div >
 )

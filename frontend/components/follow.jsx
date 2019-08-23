@@ -30,7 +30,7 @@ class Follow extends React.Component {
   else return <div className = {`follow-${ver}`} 
   onClick = {()=> {
     if (user) {createFollow({band_id, fan_id: user.id})}
-    else {openModal('tofollow')}}}>
+    else {openModal('to-follow')}}}>
               Follow
             </div>
   }
