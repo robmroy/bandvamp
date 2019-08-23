@@ -21,6 +21,7 @@ class Showcase extends React.Component {
 
   componentDidMount(){
     this.props.fetchAllAlbums();
+    window.scrollTo(0,0);
 }
   featureClickHandler(album, faveTrackNum){
     this.props.history.push({pathname: `/band/${album.band_id}`,
@@ -29,7 +30,8 @@ class Showcase extends React.Component {
         }});  
   }
   render(){
-    const wtc = this.props.albums.find(alb =>
+    const albums = this.props.albums;
+    const wtc = albums.find(alb =>
       alb.name === "Bach: Well​-​Tempered Clavier, Book 1")
       if (!wtc) return '';
     const faveTrackNum = 5;
@@ -91,7 +93,8 @@ class Showcase extends React.Component {
        </div>
        </div>
         <div className='showcase-section-2'>
-         <SellingNow albums={this.props.albums}/>
+         <SellingNow albums={albums}
+         push={this.props.history.push}/>
          </div>
        <div className = 'blue-body'>
        <NotablesContainer/>

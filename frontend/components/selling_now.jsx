@@ -3,32 +3,38 @@ class SellingNow extends React.Component {
     constructor(props) {
 
       super(props);
+     
       this.n = 10;
       const codes = ['us', 'gb', 'ca', 'de', 'it', 'se', 'fr', 'es', 'jp', 'pt', 'ch']
       this.countries = {us: 'United States', gb: 'United Kingdom',
     ca: 'Canada', de: 'Germany', it: 'Italy', se: 'Sweden',
-    fr: 'France', es: 'Spain', jp: 'Japan', pt: 'Portugal', ch: 'Switzerland'}
-      this.allAlbums = this.props.albums.sort(
-        () => Math.random() - .5);
+    fr: 'France', es: 'Spain', jp: 'Japan', pt: 'Portugal', ch: 'Switzerland'};
+    
+    this.allAlbums = props.albums.slice().sort( () => Math.random() - .5);
+      
     this.allAlbums.forEach(album => {
         let flagIdx = Math.floor(
             Math.random()**3 * this.allAlbums.length
         )%codes.length;
-        console.log(flagIdx);
         album['country'] = codes[flagIdx];
     });
-        
         this.state = { idx: -1}
         this.rotate = this.rotate.bind(this);
         this.mouseOverHandler = this.mouseOverHandler.bind(this);
         this.mouseOutHandler = this.mouseOutHandler.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.idx = 0;
-        this.testRef = React.createRef();
+        this.intervalId = React.createRef();
 
     }
 
     componentDidMount(){
+         
         this.rotate();
+    }
+
+    componentWillUnmount(){
+        if(this.intervalId) clearInterval(this.intervalId);
     }
 
     linkToShow(album){
@@ -44,13 +50,11 @@ class SellingNow extends React.Component {
         let timeGap = Math.random()*3;
         this.setState({idx: idx - 1, timeGap},
             () => {
-                for(let i = 0; i<this.n; i++ ){
-                }
-                setTimeout(()=>this.rotate(), timeGap * 1000)});
+                this.intervalId = setTimeout(()=>this.rotate(), timeGap * 1000)});
     }
     
     handleClick(album){
-        this.props.history.push({pathname: `/band/${album.band_id}`,
+        return () => this.props.push({pathname: `/band/${album.band_id}`,
         state: {albumId: album.id}});   
     }
 
@@ -86,7 +90,8 @@ class SellingNow extends React.Component {
         return (
             <div>
             <div className = 'row'>
-                <div className='splash-section-header'>Selling Right Now</div>
+                <span className='splash-section-header'>Selling Right Now</span>
+                {paused ? <span className='paused'>paused</span> : null}
             </div>
         <div className = "carousel" onMouseOver = {this.mouseOverHandler}
         onMouseOut = {this.mouseOutHandler} >
@@ -96,7 +101,8 @@ class SellingNow extends React.Component {
                     return <div key={idx + i} 
                     className = {`carousel-item${i<2 ? ` ${arr[i]}` : ''}`}
                  >
-                     <div className = 'carousel-item-inner'> 
+                     <div className = 'carousel-item-inner'
+                     onClick={this.handleClick(alb)}> 
                     <img src={alb.photoUrl} className='carousel-img'/>
                     <div style={{fontWeight: "bold"}}>{alb.name}</div>
                     <div>by {alb.band.band_name}</div>
