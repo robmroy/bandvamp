@@ -18,8 +18,10 @@ class SellingNow extends React.Component {
         album['country'] = codes[flagIdx];
     });
         
-        this.state = { idx: 0, width: 0}
+        this.state = { idx: -1}
         this.rotate = this.rotate.bind(this);
+        this.mouseOverHandler = this.mouseOverHandler.bind(this);
+        this.mouseOutHandler = this.mouseOutHandler.bind(this);
         this.idx = 0;
         this.testRef = React.createRef();
 
@@ -52,10 +54,19 @@ class SellingNow extends React.Component {
         state: {albumId: album.id}});   
     }
 
+    mouseOverHandler(){
+        this.setState({pauseIdx: this.state.idx});
+    }
+
+    mouseOutHandler(){
+        this.setState({pauseIdx: undefined});
+    }
+
     render(){
             let allAlbums = this.allAlbums;
             const l = allAlbums.length;
-            const idx = this.state.idx;
+            const idx = this.state.pauseIdx || this.state.idx;
+            const paused = !! this.state.pauseIdx;
             const indices = new Array(this.n);
             const start = (idx % l) + l-1;
             for (let i=0; i<this.n; i++){
@@ -63,11 +74,13 @@ class SellingNow extends React.Component {
              }
              const albums = indices.map(i => allAlbums[i]);
              albums[1].timeLength = 0.1;
+             if(!paused){
              for(let i= 2; i< albums.length; i++ ){
                  let alb = albums[i];
               alb.timeLength = 
                 alb.timeLength ? alb.timeLength + this.state.timeGap
                 : this.state.timeGap + i}
+             }
 
              const arr = ['zero', 'one'];
         return (
@@ -75,12 +88,15 @@ class SellingNow extends React.Component {
             <div className = 'row'>
                 <div className='splash-section-header'>Selling Right Now</div>
             </div>
-        <div className = "carousel">
+        <div className = "carousel" onMouseOver = {this.mouseOverHandler}
+        onMouseOut = {this.mouseOutHandler} >
             {albums.map((alb, i) => {
                      const time = Math.ceil(alb.timeLength);
                      const timeStr = time + (time === 1 ? ' second ago' : ' seconds ago');
-                    return <div key={idx + i} className = {`carousel-item${i<2 ? ` ${arr[i]}` : ''}`}
+                    return <div key={idx + i} 
+                    className = {`carousel-item${i<2 ? ` ${arr[i]}` : ''}`}
                  >
+                     <div className = 'carousel-item-inner'> 
                     <img src={alb.photoUrl} className='carousel-img'/>
                     <div style={{fontWeight: "bold"}}>{alb.name}</div>
                     <div>by {alb.band.band_name}</div>
@@ -90,6 +106,7 @@ class SellingNow extends React.Component {
                         </div>: null}
                     <div className='time-log'>
                    {timeStr}</div>
+                   </div>
             </div>})}
         </div>
         </div>)

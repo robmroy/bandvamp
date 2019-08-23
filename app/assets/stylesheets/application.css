@@ -860,7 +860,7 @@ margin-top: 8px;
   color: #408ea3;
   font-size: 14px;
   font-weight: 500;
-  margin: 0 0 18px;
+  margin: 18px 0;
   text-transform: uppercase;}
 
   .blue-body{
@@ -1338,19 +1338,27 @@ margin-top: 8px;
 .carousel-item{
   display: inline-block;
   width: 11.3924%;
-  /* transition: left 1s;  */
   transition: width .3s ease-out;
   vertical-align: top;
   margin-left: 1.2658%;
   font-size: 11px;
-
+  padding-top: 6px;
 }
 
-.carousel-item > div{
+.carousel-item-inner > div{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 4px;
+}
+
+.carousel-item-inner{
+  padding: 6px;
+  margin: -6px;
+}
+
+.carousel-item-inner:hover{
+  background-color: #d9f1fa;
 }
 
 .ellipsis{
@@ -1391,6 +1399,8 @@ margin-top: 8px;
 .carousel *{
   color: black;
 }
+
+
 .time-log{
   color: #929292;
 }
@@ -1399,3 +1409,6 @@ margin-top: 8px;
   color: black;
 }
 
+.showcase-section-2{
+  padding-top: 36px;
+}
