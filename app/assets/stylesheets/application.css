@@ -1335,14 +1335,29 @@ margin-top: 8px;
   text-transform: uppercase;
 }
 
-.carousel-img-wrapper{
+.carousel-item{
   display: inline-block;
   width: 11.3924%;
-  transition: left 1s; 
-  transition: width 1s;
+  /* transition: left 1s;  */
+  transition: width .3s ease-out;
   vertical-align: top;
   margin-left: 1.2658%;
+  font-size: 11px;
+
 }
+
+.carousel-item > div{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 .carousel-img{
   width: 100%;
@@ -1356,17 +1371,23 @@ margin-top: 8px;
   width: 0;
 }
 
+.zero *{
+  display: none;
+}
+
 
 
 .carousel{
 
-  transition: height 0.5s ease-out;
-  white-space: nowrap;
-  animation: fade-in .8s ease-in;
-  animation-fill-mode: forwards;
+  /* transition: height 0.5s ease-out; */
+  /* animation: fade-in .8s ease-in;
+  animation-fill-mode: forwards; */
   width: 97%;
   max-width: 1106px;
   margin: 0 auto;
   overflow: hidden;
-  min-height: 132px;
+  min-height: 180px;
+  white-space: nowrap;
+
 }
+
