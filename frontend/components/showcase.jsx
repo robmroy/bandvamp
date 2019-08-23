@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NotablesContainer from './notables_container';
-
+import SellingNow from './selling_now';
 class Showcase extends React.Component {
   constructor(props) {
     super(props);
@@ -92,6 +92,7 @@ class Showcase extends React.Component {
        </div>
 
        <div className = 'blue-body'>
+         <SellingNow albums={this.props.albums}/>
        <NotablesContainer/>
        </div>
        </div>

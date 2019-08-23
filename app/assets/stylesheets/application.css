@@ -1334,3 +1334,39 @@ margin-top: 8px;
 .result-type{
   text-transform: uppercase;
 }
+
+.carousel-img-wrapper{
+  display: inline-block;
+  width: 11.3924%;
+  transition: left 1s; 
+  transition: width 1s;
+  vertical-align: top;
+  margin-left: 1.2658%;
+}
+
+.carousel-img{
+  width: 100%;
+}
+
+.zero, .one{
+  margin-left: 0;
+}
+
+.zero{
+  width: 0;
+}
+
+
+
+.carousel{
+
+  transition: height 0.5s ease-out;
+  white-space: nowrap;
+  animation: fade-in .8s ease-in;
+  animation-fill-mode: forwards;
+  width: 97%;
+  max-width: 1106px;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 132px;
+}
