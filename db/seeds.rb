@@ -814,44 +814,103 @@ require 'open-uri'
 # coal.save!
 
 
-ki = User.find_by(username: 'kimiko')
+# ki = User.find_by(username: 'kimiko')
 
-j=User.find_by(username: 'jahzzar')
+# j=User.find_by(username: 'jahzzar')
 
-pa=User.find_by(username: "polish_ambad")
+# pa=User.find_by(username: "polish_ambad")
 
-g= User.find_by(username: 'gillicuddy')
+# g= User.find_by(username: 'gillicuddy')
 
-mb = User.find_by(username: 'bubba')
+# mb = User.find_by(username: 'bubba')
 
-nihilore = User.find_by(username: "nihilore")
+# nihilore = User.find_by(username: "nihilore")
 
-ki.update_attribute('band_description', 'An award winning pianist, composer, and athlete, Kimiko Ishizaka brings a love and devotion to the music of J.S. Bach which will thrill purists and aficionados, and make instant fans out of first-time listeners. Her contributions to the public domain are her legacy.')
+# ki.update_attribute('band_description', 'An award winning pianist, composer, and athlete, Kimiko Ishizaka brings a love and devotion to the music of J.S. Bach which will thrill purists and aficionados, and make instant fans out of first-time listeners. Her contributions to the public domain are her legacy.')
 
-j.update_attribute('band_description', 'Betterwithmusic.com is a Javier Suarez (jahzzar) project which offers original music under the Creative Commons license. It is meant to be used for films, short movies, animations, documentaries, advertisment, corporate image and of course, download for personal use.')
+# j.update_attribute('band_description', 'Betterwithmusic.com is a Javier Suarez (jahzzar) project which offers original music under the Creative Commons license. It is meant to be used for films, short movies, animations, documentaries, advertisment, corporate image and of course, download for personal use.')
 
-pa.update_attribute('band_description', 'The Polish Ambassador is raising the bar for what it means to be a professionally touring musician. Sure, the electronic musician lays claim to producing the sweetest beats this side of the Milky Way Galaxy, but the world’s funkiest diplomat is also using his popularity to steer the millennial generation toward a nourishing and sustainable way of relating with art, community and the planet.')
+# pa.update_attribute('band_description', 'The Polish Ambassador is raising the bar for what it means to be a professionally touring musician. Sure, the electronic musician lays claim to producing the sweetest beats this side of the Milky Way Galaxy, but the world’s funkiest diplomat is also using his popularity to steer the millennial generation toward a nourishing and sustainable way of relating with art, community and the planet.')
 
-g.update_attribute('band_description', "Pluckin' them strings.")
+# g.update_attribute('band_description', "Pluckin' them strings.")
 
-mb.update_attribute('band_description', 'My bubba is a daringly sweet pair of ladies, whose songs are slow and easy, teasing and pleasing. They call them lullabies from the countryside, with one part sweet talking, one part mumbo jumbo and one part pure wisdom. Bubba plays the guitar and the banjo, and My has a really old table harp. And they sing. Sweetly and simply, songs that stroke you like a banana cream pie.')
+# mb.update_attribute('band_description', 'My bubba is a daringly sweet pair of ladies, whose songs are slow and easy, teasing and pleasing. They call them lullabies from the countryside, with one part sweet talking, one part mumbo jumbo and one part pure wisdom. Bubba plays the guitar and the banjo, and My has a really old table harp. And they sing. Sweetly and simply, songs that stroke you like a banana cream pie.')
 
-nihilore.update_attribute('band_description', 'All my music is Royalty Free released under Creative Commons - Attribution, meaning you can freely use them in any project as long as sufficient credit is given. If the prices are currently set to anything other than free, all my music can also be downloaded freely at www.nihilore.com but please let me know so i can fix it')
+# nihilore.update_attribute('band_description', 'All my music is Royalty Free released under Creative Commons - Attribution, meaning you can freely use them in any project as long as sufficient credit is given. If the prices are currently set to anything other than free, all my music can also be downloaded freely at www.nihilore.com but please let me know so i can fix it')
 
-vv = User.new(username: "VocalVamp123",
-      email: "the_count@gmail.com",
-      password: "pass123")
+# vv = User.new(username: "VocalVamp123",
+#       email: "the_count@gmail.com",
+#       password: "pass123")
 
 
-vv.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/count.jpeg'),
-  filename: 'count.jpeg')
+# vv.photo.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/count.jpeg'),
+#   filename: 'count.jpeg')
 
-vv.save!
+# vv.save!
 
-[ki, j, pa, g, nihilore, mb].each do |band|
-  Follow.create(fan_id: vv.id, band_id: band.id)
-  band.albums.each do |album|
-    Purchase.create(album_id: album.id, user_id: vv.id)
-  end
-end
+# [ki, j, pa, g, nihilore, mb].each do |band|
+#   Follow.create(fan_id: vv.id, band_id: band.id)
+#   band.albums.each do |album|
+#     Purchase.create(album_id: album.id, user_id: vv.id)
+#   end
+# end
+
+wtc = Album.find_by(name: "Bach: Well​-​Tempered Clavier, Book 1")
+
+t7 = Song.new(name: 'Prelude No. 4 in C-sharp minor, BWV 849',
+track_number: 7, album_id: wtc.id)
+
+t7.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+07+Prelude+No.+4+in+C-sharp+minor%2C+BWV+849.mp3'),
+filename: 'track7.mp3')
+
+t7.save!
+
+t8 = Song.new(name: 'Fugue No. 4 in C-sharp minor, BWV 849',
+  track_number: 8, album_id: wtc.id)
   
+t8.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+08+Fugue+No.+4+in+C-sharp+minor%2C+BWV+849.mp3'),
+filename: 'track8.mp3')
+
+t8.save!
+
+t9 = Song.new(name: 'Prelude No. 5 in D major, BWV 850',
+  track_number: 9, album_id: wtc.id)
+  
+t9.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+09+Prelude+No.+5+in+D+major%2C+BWV+850.mp3'),
+filename: 'track9.mp3')
+
+t9.save!
+
+t10 = Song.new(name: 'Fugue No. 5 in D major, BWV 850',
+  track_number: 10, album_id: wtc.id)
+  
+t10.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+10+Fugue+No.+5+in+D+major%2C+BWV+850.mp3'),
+filename: 'track10.mp3')
+
+t10.save!
+
+t11 = Song.new(name: 'Prelude No. 6 in D minor, BWV 851',
+  track_number: 11, album_id: wtc.id)
+  
+t11.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+11+Prelude+No.+6+in+D+minor%2C+BWV+851.mp3'),
+filename: 'track11.mp3')
+
+t11.save!
+
+t12 = Song.new(name: 'Fugue No. 6 in D minor, BWV 851',
+  track_number: 12, album_id: wtc.id)
+  
+t12.audio_file.attach(io: open('https://bandvamp-seeds.s3-us-west-1.amazonaws.com/kimiko_ishizaka/well-tempered_clavier_book1/Kimiko+Ishizaka+-+Bach-+Well-Tempered+Clavier%2C+Book+1+-+12+Fugue+No.+6+in+D+minor%2C+BWV+851.mp3'),
+filename: 'track12.mp3')
+
+t12.save!
+
+
+
+
+
+
+
+
+
+
