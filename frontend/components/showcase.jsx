@@ -62,6 +62,7 @@ class Showcase extends React.Component {
          >
            </div>
            <div className = 'small-pic-text'
+           onClick = {()=>this.featureClickHandler(wtc, 5)}
            onMouseEnter={() => {brighten(1)()}} onMouseLeave={() => darken(1)()}>High Scores: Ben Prunty’s Moody, Trance-Inspired “Photographs” OST</div>
          </div>
 
@@ -74,6 +75,7 @@ class Showcase extends React.Component {
            
            </div>
            <div className = 'small-pic-text'
+           onClick = {()=>this.featureClickHandler(wtc, 5)}
            onMouseEnter={() => {brighten(2)()}}
            onMouseLeave={() => darken(2)()}>Gabe 'Nandez Finds a Home in Hip-Hop</div>
          </div>
@@ -86,6 +88,7 @@ class Showcase extends React.Component {
          >
            </div>
            <div className = 'small-pic-text'
+           onClick = {()=>this.featureClickHandler(wtc, 5)}
            onMouseEnter={() => {brighten(3)()}}
            onMouseLeave={() => darken(3)()}>Gabber Modus Operandi Galvanize Indonesian Folk Into Feverish Footwork</div>
          </div>

@@ -93,8 +93,7 @@ class Band extends React.Component {
       
            <div className="band-page-body"> 
            <div className = 'band-page-columns-container'>
-              {this.props.wildcard === this.props.sessionId + '' ? (<Link to='/album' className ='link-to-create-album-page'> Create album</Link>)
-             : ''}
+              
 
                 {album.songs.length ? <AlbumPlayerContainer album={album} band={band} songId = {songId}
                 faveTrackNum={faveTrackNum} user={this.props.user}/> : null}

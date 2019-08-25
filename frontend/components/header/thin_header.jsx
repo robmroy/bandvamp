@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import SearchContainer from './search/search_container';
-class HeaderNav extends React.Component{
+import SearchContainer from '../search/search_container';
+class ThinHeader extends React.Component{
   constructor(props){
     super(props);
     this.state = {clickedDemo: false}
@@ -36,7 +36,7 @@ onClick={() => props.logout()}>logout</button>
 );
 
   return (
-    <div className={"header-nav"+this.props.suffix}>
+    <div className={"thin-header-nav"+this.props.suffix}>
       {logoElement}
       <div className="header-nav-right">
         {props.userId ? <span className = 'collection-topper black-link'
@@ -54,4 +54,4 @@ onClick={() => props.logout()}>logout</button>
   )
   }
 }
-export default HeaderNav;
+export default ThinHeader;

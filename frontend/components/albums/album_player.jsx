@@ -87,6 +87,9 @@ class AlbumPlayer extends React.Component{
                         className = "album-to-band">
                        {' '+band.band_name} </Link>
                         } </div>
+
+            {this.props.user && this.props.user.id=== this.props.band.id ? (<Link to='/album' className ='link-to-create-album-page'> Create album</Link>)
+             : ''}
                <div className="album-columns-container"> 
                    <div className="album-page-c1">
 

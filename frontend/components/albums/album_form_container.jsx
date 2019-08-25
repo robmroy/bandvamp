@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => {
     console.log('dispatch mdp:')
     console.dir(dispatch);
     return{
-    createAlbum: album => dispatch(createAlbum(album)),
+    createAlbum: (album, cb) => dispatch(createAlbum(album, cb)),
     createSong: song => dispatch(createSong(song)),
     clearReceivedAlbumId: () => dispatch(clearReceivedAlbumId())
 }};

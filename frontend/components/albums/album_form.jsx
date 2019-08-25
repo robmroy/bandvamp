@@ -116,20 +116,18 @@ class AlbumForm extends React.Component{
         </div>);
         return (
             <div>
-                {/* {this.props.albumId && this.state.toggled ? <Redirect to={`/album/${this.props.albumId}`}/> : "" } */}
            <form onSubmit={this.handleSubmit} className="album-form"> 
         <div className='album-inputs-left'>
-
-        <div  className="button-link add-track"
-        onClick={this.addBlankTrack}> add track </div>
-        
             <div className="track-inputs">
                 {tracks}
                 <input type="file" 
                 className="hidden-input" 
             id = "track-input"
             onChange={(e)=>this.addTrack2(e)}/>
+        <div  className="button-link add-track"
+        onClick={this.addBlankTrack}> add track </div>
             </div>
+
         <div className = 'album-submit-buttons'>
           <input type="submit" className="save-draft"
            value = "Save Draft" />

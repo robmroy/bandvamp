@@ -1,10 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import LogInFormContainer from './session_form/login_form_container';
 import FanSignupContainer from './session_form/fan_signup_container';
 import BandSignupContainer from './session_form/band_signup_container';
 import SelectSignup from './session_form/select_signup';
-import HeaderNavContainer from './header_nav_container';
+import HeaderNavContainer from './header/header_nav_container';
+import ThinHeaderContainer from './header/thin_header_container';
 import ShowcaseContainer from './showcase_container';
 import AlbumFormContainer from './albums/album_form_container';
 import AlbumContainer from './albums/album_container'
@@ -21,16 +23,37 @@ import {
   withRouter
 } from 'react-router-dom';
 
-const App = () => (
+const App = ({session}) => (
   <div id ='App'>
   <div id = 'App-body'>
     <Modal/>
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <>
-        <HeaderNavContainer suffix=''/>
-        <HeaderNavContainer suffix='-dummy'/>
+        <Switch>
+          {session.id ? 
 
+            <Route component = { () => <>
+            <ThinHeaderContainer  suffix=''/>
+            <ThinHeaderContainer   suffix='-dummy'/></>
+            }/>
+
+            :
+
+          <Route exact path="/" component = {
+            () => <>
+        <HeaderNavContainer  suffix=''/>
+        <HeaderNavContainer exact path="/"  suffix='-dummy'/>
+        </>
+        } />
+      }
+        
+        <Route component = { () => <>
+        <ThinHeaderContainer  suffix=''/>
+        <ThinHeaderContainer   suffix='-dummy'/></>
+        }/>
+      
+        </Switch>
         {/* <AuthRoute exact path="/signup" component={SelectSignup} />
         <AuthRoute  path="/signup/band" component={BandSignupContainer} />
         <AuthRoute  path="/signup/fan" component={FanSignupContainer} /> */}
@@ -48,4 +71,6 @@ const App = () => (
   </div >
 )
 
-export default App;
+const mapStateToProps = state => ({session: state.session});
+
+export default connect(mapStateToProps)(App);
