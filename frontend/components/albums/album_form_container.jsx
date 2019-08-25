@@ -8,9 +8,12 @@ const mapStateToProps = ({session, errors, entities}) => ({
     albumId: entities.albums.receivedId
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+    console.log('dispatch mdp:')
+    console.dir(dispatch);
+    return{
     createAlbum: album => dispatch(createAlbum(album)),
     createSong: song => dispatch(createSong(song)),
     clearReceivedAlbumId: () => dispatch(clearReceivedAlbumId())
-});
+}};
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumForm);

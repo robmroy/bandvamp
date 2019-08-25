@@ -75,7 +75,7 @@ class Band extends React.Component {
     if (!band|| (user && !user.followed_bands)) return '';
     const {albumId, songId, faveTrackNum} = this.state;
     const albums = Object.values(band.albums);
-    const album = albums.length ? albums.find(a=>(a.id === albumId)) || albums[0] : '';
+    const album = albums.length ? albums.find(a=>(a.id === albumId)) || albums[0] : {songs: []};
     album.songs.sort((s,t) => s.track_number - t.track_number)
     const bannerUrl = band.bannerUrl;
     const photoUrl = band.photoUrl;
@@ -96,8 +96,8 @@ class Band extends React.Component {
               {this.props.wildcard === this.props.sessionId + '' ? (<Link to='/album' className ='link-to-create-album-page'> Create album</Link>)
              : ''}
 
-                <AlbumPlayerContainer album={album} band={band} songId = {songId}
-                faveTrackNum={faveTrackNum} user={this.props.user}/>
+                {album.songs.length ? <AlbumPlayerContainer album={album} band={band} songId = {songId}
+                faveTrackNum={faveTrackNum} user={this.props.user}/> : null}
 
                 <div className = 'band-column-3'>
                   <div className='band-name-col-3'> {band.band_name}</div>

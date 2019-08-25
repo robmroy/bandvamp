@@ -444,6 +444,7 @@ h3{
 .album-cover{
   height: 100%;
   display: block;
+  margin-left: 10px;
 }
 
 .album-cover-wrapper{
@@ -523,7 +524,6 @@ margin: 0 auto;}
   width: 110px;
   display: block;
   border-radius: 3px;
-  padding: 8px 0 7px 0;
   margin: 45px 0;
   font-size: 15px;
   font-weight: 500;
@@ -539,7 +539,6 @@ margin: 0 auto;}
   width: 110px;
   display: block;
   border-radius: 3px;
-  padding: 8px 0 7px 0;
   margin: 45px 15px;
   font-size: 15px;
   font-weight: 500;
@@ -630,7 +629,9 @@ cursor: pointer;}
 }
 
 .band-column-3 > *{
-margin-top: 8px;
+  width: 120px;
+  box-sizing: border-box;
+  margin-top: 8px;
 }
 
 .band-name-col-3{

@@ -16,6 +16,7 @@
         private
         
         def song_params
-            params.require(:song).permit(:name, :album_id, :audio_file, :description)
+            params.require(:song).permit(:name, :album_id, :audio_file, :description,
+            :track_number)
         end
     end

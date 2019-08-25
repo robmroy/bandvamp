@@ -34,6 +34,8 @@ export const fetchAllAlbums = () => dispatch => (
   )
 );
   export const createSong = (song, callback) => dispatch => {
+    console.log(`dispatch: `);
+    console.dir(dispatch);
     const formData = new FormData();
     formData.append('song[name]', 
     song.name);
@@ -41,13 +43,14 @@ export const fetchAllAlbums = () => dispatch => (
     song.description);
     formData.append('song[album_id]',
     song.album_id);
+    formData.append('song[track_number]',
+    song.track_number);
     if (song.audioFile) {
       formData.append('song[audio_file]', song.audioFile);
     }
    
     APIUtil.postSong(formData).then(
       song => {
-       
         dispatch(receiveSong(song));
       callback();},
       err => {
@@ -62,7 +65,7 @@ export const fetchAllAlbums = () => dispatch => (
       createSong(track,()=>createTracks(tracks, finalCallback, dispatch))(dispatch);}
   }
 
-  export const createAlbum = ({album, tracks}) => dispatch => {
+  export const createAlbum = ({album, tracks}, cb) => dispatch => {
     const formData = new FormData();
     formData.append('album[name]', 
     album.name);
@@ -80,7 +83,7 @@ export const fetchAllAlbums = () => dispatch => (
           payload.songs.push(track);
           track.album_id = album_id;
         });
-        createTracks(tracks, ()=>dispatch(receiveAlbum(payload)), dispatch);
+        createTracks(tracks, ()=>{if (cb) cb()}, dispatch);
       },
       err => dispatch(receiveAlbumErrors(err.responseJSON))
     ) };

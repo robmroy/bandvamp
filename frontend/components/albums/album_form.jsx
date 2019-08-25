@@ -9,14 +9,17 @@ class AlbumForm extends React.Component{
         name: "",
         band_id: props.session.id,
         description: ""},
-        toggled: false,
-        tracks: []
+        tracks: [],
+        editingTrackNumber: null
         };
         this.handleAlbumCover=this.handleAlbumCover.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleAlbumText=this.handleAlbumText.bind(this);
         this.handleTrackText=this.handleTrackText.bind(this);
-        this.addTrack=this.addTrack.bind(this);
+        // this.addTrack=this.addTrack.bind(this);
+        this.addTrack2=this.addTrack2.bind(this);
+        this.trigger = this.trigger.bind(this);
+        this.addBlankTrack = this.addBlankTrack.bind(this);
     }
     componentDidMount(){
         this.props.clearReceivedAlbumId();
@@ -28,12 +31,10 @@ class AlbumForm extends React.Component{
             this.setState({album})
         }
     }
-    handleTrackText(idx){
-        return e => {
-            let tracks = this.state.tracks;
+    handleTrackText(e, idx){
+            let tracks = this.state.tracks.slice();
             tracks[idx]["name"]=e.target.value;
             this.setState({tracks});
-        }
     }
     handleAlbumCover(e){
         e.preventDefault();
@@ -53,35 +54,48 @@ class AlbumForm extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({toggled: true});
         const album = this.state.album;
         const tracks = this.state.tracks;
         if (!album.imageFile) delete album[imageFile];     
-        this.props.createAlbum({album, tracks});
+        this.props.createAlbum({album, tracks},
+            () => this.props.history.push({pathname: `/band/${this.props.session.id}`
+           })
+           );
+
       }
 
-    handleAddTrackLink(idx){
-        return e => {
+    trigger(e, track_number){
+        
         e.preventDefault();
-        $(`#hidden-${idx}`).trigger('click'); 
-        }
+        this.setState({editingTrackNumber: track_number}, 
+            () => $('#track-input').trigger('click')); 
+        
     }
     
-    addTrack(e){
+
+    addBlankTrack(){
+        let tracks = this.state.tracks.slice();
+        tracks.push({name: "", track_number: tracks.length + 1});
+        this.setState({tracks});
+    }
+
+    addTrack2(e){
         e.preventDefault();
         const reader = new FileReader();
         const file = e.currentTarget.files[0];
         reader.onloadend = () =>
        {    
-            let tracks = this.state.tracks;
-            let newSong = {songUrl: reader.result, audioFile: file, track_number: 
-            tracks.length + 1, name: ""}
-            this.setState({tracks: tracks.concat(newSong)});
+           const track_number = this.state.editingTrackNumber;
+            let tracks = this.state.tracks.slice();
+            let newSong = {songUrl: reader.result, audioFile: file, track_number, 
+                name: tracks[track_number-1] ? tracks[track_number-1].name : ""}
+            tracks[this.state.editingTrackNumber - 1] = newSong;
+            this.setState({tracks});
             }
 
         if (file) {
             reader.readAsDataURL(file);
-        } 
+        }  
     }
 
     
@@ -93,30 +107,28 @@ class AlbumForm extends React.Component{
                 <div key={idx}>
             <input type="text" 
             value={track.name}
-            onChange={(e)=> {this.handleTrackText(idx)(e);
+            onChange={(e)=> {this.handleTrackText(e, idx);
             }} 
             />
-            <input type="file" className="hidden-input" 
-            id = {`hidden-${idx}`}
-            onChange={(e)=>this.addTrack(e)}/>
-
+            <a type="file" onClick={e => this.trigger(e,idx + 1)}>Upload audio</a>
             </div>)
             )}
         </div>);
         return (
             <div>
-                {this.props.albumId && this.state.toggled ? <Redirect to={`/album/${this.props.albumId}`}/> : "" }
+                {/* {this.props.albumId && this.state.toggled ? <Redirect to={`/album/${this.props.albumId}`}/> : "" } */}
            <form onSubmit={this.handleSubmit} className="album-form"> 
         <div className='album-inputs-left'>
 
-        <Link to="/album" type="file" className="button-link add-track"
-        onClick={this.handleAddTrackLink(this.state.tracks.length +1)}> add track </Link>
+        <div  className="button-link add-track"
+        onClick={this.addBlankTrack}> add track </div>
         
             <div className="track-inputs">
                 {tracks}
-                <input type="file" className="hidden-input" 
-            id = {`hidden-${this.state.tracks.length + 1}`}
-            onChange={(e)=>this.addTrack(e)}/>
+                <input type="file" 
+                className="hidden-input" 
+            id = "track-input"
+            onChange={(e)=>this.addTrack2(e)}/>
             </div>
         <div className = 'album-submit-buttons'>
           <input type="submit" className="save-draft"
@@ -142,7 +154,7 @@ class AlbumForm extends React.Component{
             Album Cover
            <input type="file"
             onChange={this.handleAlbumCover}
-            className="file-input"
+            className="album-cover-file-input"
             id = "alb-input"
             ></input>
      </div>       

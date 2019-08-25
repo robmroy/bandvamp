@@ -89,9 +89,10 @@ class AlbumPlayer extends React.Component{
                         } </div>
                <div className="album-columns-container"> 
                    <div className="album-page-c1">
-                       <MusicPlayer ref={this.musicPlayer} prevSong={this.prevSong}
+
+                       <MusicPlayer ref={this.musicPlayer} prevSong={this.prevSong} 
                        nextSong = {this.nextSong} songs = {songs}
-                       currentTrackNumber = {currentTrackNumber}/>
+                       currentTrackNumber = {currentTrackNumber}/> 
                     <div className = 'digital-1'>Digital Album</div>
                     <div className = 'digital-2'>Includes unlimited streaming via the free Bandvamp app.</div>
                     {this.renderBuyAlbum()}
