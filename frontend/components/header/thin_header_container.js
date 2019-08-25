@@ -4,7 +4,7 @@ import {openModal} from '../../actions/modal_actions'
 import ThinHeader from './thin_header';
 import {withRouter} from 'react-router';
 const mapStateToProps = state => ({
-  userId: state.session.id
+  user: state.entities.users[state.session.id]
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

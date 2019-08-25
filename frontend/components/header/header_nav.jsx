@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import SearchContainer from '../search/search_container';
-import ThinHeaderContainer from './thin_header_container';
 class HeaderNav extends React.Component{
   constructor(props){
     super(props);
@@ -12,10 +10,11 @@ class HeaderNav extends React.Component{
   render(){
     let props = this.props;
   const logoElement = (
-  <Link className="header-logo-big" to="/">
+  <div className="header-logo-big"
+  onClick={()=>this.props.history.push('/')}>
     <img src={window.parallelogram} 
     className="parallelogram"/>band
-    <span className="vamp">vamp</span></Link>)
+    <span className="vamp">vamp</span></div>)
 
   const auth =  (<div className="header-links">
   <div><span className="demo" 

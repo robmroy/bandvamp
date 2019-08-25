@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import SearchContainer from '../search/search_container';
+import Dropdown from './dropdown.jsx';
 class ThinHeader extends React.Component{
   constructor(props){
     super(props);
@@ -10,7 +11,7 @@ class ThinHeader extends React.Component{
 
   render(){
     let props = this.props;
-  
+    const {user, logout} = props;
   const logoElement = (
   <Link className="header-logo" to="/">
     <img src={window.parallelogram} 
@@ -29,26 +30,27 @@ className="black-link" onClick = {this.props.openModal}>sign up</span>
       </div>
 </div>)
 
-const logout = (
-<button className="logout" 
-onClick={() => props.logout()}>logout</button>
+const dropdown = 
+  <Dropdown push={this.props.history.push}
+        user = {user}
+        logout = {logout}/> ;
 
-);
+
 
   return (
     <div className={"thin-header-nav"+this.props.suffix}>
       {logoElement}
       <div className="header-nav-right">
-        {props.userId ? <span className = 'collection-topper black-link'
-        onClick = {() => this.props.history.push(`/user/${props.userId}`)}>
+        {props.user ? <span className = 'collection-topper black-link'
+        onClick = {() => this.props.history.push(`/user/${props.user.id}`)}>
         Collection</span> : ''}
       <div className = 'search-logout'>
         <SearchContainer />       
-        {!props.userId ?  auth : ""}
+        {!props.user ?  auth : ""}
         </div>
+      {props.user ? dropdown : ""}
       </div>
       <div className="header-nav-right-padding">
-      {props.userId? logout : ""}
       </div>
     </div>
   )

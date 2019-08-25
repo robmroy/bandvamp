@@ -16,8 +16,10 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     processForm: (user) => {
-      dispatch(login(user, (user) => ownProps.history.push(user.band_name ? 
-        `band/${user.id}` : `user/${user.id}`) ));
+      dispatch(login(user, (user) => ownProps.history.push(
+        // user.band_name ? 
+        // `band/${user.id}` : 
+        `user/${user.id}`) ));
       
     }
   };
