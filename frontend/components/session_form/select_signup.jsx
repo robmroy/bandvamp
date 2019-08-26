@@ -20,9 +20,8 @@ class selectSignup extends React.Component {
   render(){
     return (
       <div className="modal-form selector-modal">
-          {/* <button onClick={this.routeToBand}
-          className="selector-button">Signup as an artist</button>
-          <button onClick={this.routeToFan}>Signup as a fan</button> */}
+        <span className='x'
+        onClick={this.props.closeModal}>{'\u2715'}</span>
           <div className="signup-header">
             Sign up for a Bandvamp account</div>
         <div className="height-33-wrapper">

@@ -8,6 +8,8 @@ function toPurchase({openModal, push, closeModal, demo}) {
   
   return (
     <div className = 'modal-form to-follow-modal ta-center' >
+       <span className='x'
+        onClick={closeModal}>{'\u2715'}</span>
         To buy this album please 
         <span className = 'link link-color'
         onClick ={() => openModal('signup')}> sign up </span> 

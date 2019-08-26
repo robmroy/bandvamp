@@ -49,10 +49,7 @@ onClick={() => props.logout()}>logout</button>
         </div>
         {props.userId? logout : ""}
       </div>
-      <div className="header-nav-right-padding">
-      
-      </div>
-    </div>
+          </div>
   )
   }
 }

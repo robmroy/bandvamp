@@ -50,8 +50,6 @@ const dropdown =
         </div>
       {props.user ? dropdown : ""}
       </div>
-      <div className="header-nav-right-padding">
-      </div>
     </div>
   )
   }

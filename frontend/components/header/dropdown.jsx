@@ -53,9 +53,10 @@ class Dropdown extends React.Component{
         return(
         <div className='header-dropdown-container'>
             <div className = 'ball-hoversquare-container'>
-            <div className = 'ball-hoversquare'>
+            <div className = 'ball-hoversquare'
+           onClick = {this.clickBall} >
             <div className='ball'
-            onClick = {this.clickBall}></div>
+            ></div>
             </div>
             </div>
             {this.renderDropdown()}

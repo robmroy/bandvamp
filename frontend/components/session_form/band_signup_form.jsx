@@ -66,6 +66,8 @@ class BandSignupForm extends React.Component {
   render() {
     return (
       <div className="modal-form">
+        <span className='x'
+        onClick={this.props.closeModal}>{'\u2715'}</span>
         <div className="signup-header">Sign up for a Bandvamp artist account</div>
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <br />
