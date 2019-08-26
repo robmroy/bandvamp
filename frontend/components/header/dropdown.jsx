@@ -15,14 +15,13 @@ class Dropdown extends React.Component{
         app.removeEventListener("click", this.outsideClickCallback)
     }
     clickBall(){
-        console.log('clickball')
         this.setState({toggled: true})
         const app = document.getElementById('App')
         app.addEventListener("click", this.outsideClickCallback)
     }
 
     outsideClickCallback(e){
-        if (e.target.parentNode.className !== 'header-dropdown') this.setState({toggled: false});
+        if (!e.target.parentNode.className.startsWith('header-dropdown')) this.setState({toggled: false});
     }
 
     clickLink(url){
@@ -35,10 +34,17 @@ class Dropdown extends React.Component{
         const user = this.props.user;
         if(this.state.toggled)return(
             <div className='header-dropdown'>
-                {user.band_name ? <div onClick={this.clickLink(`/band/${this.props.user.id}`)}>
-                    band page</div> 
+                {user.band_name ? 
+                <div onClick={this.clickLink(`/band/${user.id}`)}
+                className='header-dropdown-cmpd'>
+                     <div className='dropdown-name'>{user.band_name}</div> 
+                     <div className = 'header-dropdown-secondary'>view site</div></div> 
                     : null}
-                <div onClick={this.clickLink(`/user/${this.props.user.id}`)}>collection</div>
+                <div onClick={this.clickLink(`/user/${user.id}`)} 
+                className='header-dropdown-cmpd'>
+                    <div className='dropdown-name'>{user.username}</div> 
+                    <div className = 'header-dropdown-secondary'>view collection</div>
+                    </div>
                 <div onClick={this.props.logout}>log out</div>
             </div>
         )
@@ -46,8 +52,12 @@ class Dropdown extends React.Component{
     render(){
         return(
         <div className='header-dropdown-container'>
+            <div className = 'ball-hoversquare-container'>
+            <div className = 'ball-hoversquare'>
             <div className='ball'
             onClick = {this.clickBall}></div>
+            </div>
+            </div>
             {this.renderDropdown()}
         </div>)
     }

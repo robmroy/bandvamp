@@ -84,9 +84,11 @@ class User extends React.Component {
             return   <div className ='fanpage-about'>{fan.user_description} </div>
         }
         if(!this.state.editing){
+
             return   <div className ='fanpage-about'>{fan.user_description}
                 </div>
         }
+
         return <div className ='fanpage-about'>
             <div className='hint about-you'>about you</div>
         <textarea className = 'desc-text' onChange = {e=> {this.setState({desc: e.target.value})}} value={this.state.desc || ''}
@@ -123,6 +125,7 @@ class User extends React.Component {
     render(){
         const props = this.props;
         const {fan, user} = props;
+        const ownPage = user && user.id === fan.id;
         if (!fan) return '';
         if (this.state.desc === undefined) return '';
         return <div> 
@@ -142,8 +145,11 @@ class User extends React.Component {
             
             <div className = 'fan-bio-right'>
                 <span className='fanpage-name'>{fan.username}</span>            
+                 
+                 {ownPage ? 
                  <span className = 'link edit-profile' onClick={() => this.setState({editing: true})}> 
-            <i className = 'far fa-edit'></i>Edit Profile</span>
+            <i className = 'far fa-edit'></i>Edit Profile</span> : null}
+
             {this.renderDesc()}
             </div>
             </div>

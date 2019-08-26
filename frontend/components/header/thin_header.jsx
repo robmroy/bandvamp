@@ -41,9 +41,9 @@ const dropdown =
     <div className={"thin-header-nav"+this.props.suffix}>
       {logoElement}
       <div className="header-nav-right">
-        {props.user ? <span className = 'collection-topper black-link'
+        {/* {props.user ? <span className = 'collection-topper black-link'
         onClick = {() => this.props.history.push(`/user/${props.user.id}`)}>
-        Collection</span> : ''}
+        Collection</span> : ''} */}
       <div className = 'search-logout'>
         <SearchContainer />       
         {!props.user ?  auth : ""}

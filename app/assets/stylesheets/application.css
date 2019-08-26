@@ -87,6 +87,37 @@ body{
 .header-dropdown{
   position: absolute;
   background: white;
+  width: 220px;
+  right: 12px;
+  top: 44px;
+  font-size: 15px;
+  border: #EEE 1px solid;
+  box-shadow: 0px 1px 4px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+.header-dropdown > *{
+  line-height: 32px;
+  /* height: 32px; */
+  padding: 0 20px;
+  cursor: default;
+}
+
+.header-dropdown>*:hover{
+  background: #EEEEEE;
+}
+
+.header-dropdown-cmpd{
+  line-height: 20px;
+  padding-top: 10px;
+}
+
+.header-dropdown-secondary{
+  font-size: 12px;
+}
+
+.dropdown-name{
+  font-weight: bold;
 }
 
 .header-logo{
@@ -750,8 +781,21 @@ margin-top: 16px;}
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    margin-left: 40px;
-    margin-top: 3px;
+    position: relative;
+    top: 2px;
+    right: 1px;}
+
+.ball-hoversquare{
+  margin: -10px -15px;
+  padding: 10px 15px;
+}
+
+.ball-hoversquare:hover{
+  background-color:#e1eef2;
+}
+
+.ball-hoversquare-container{
+  margin-left: 40px;
 }
 
 .read-more-container{
