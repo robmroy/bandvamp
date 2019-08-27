@@ -20,8 +20,12 @@ class Showcase extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchAllAlbums();
+    const {fetchAllAlbums, location, openModal} = this.props;
+    fetchAllAlbums();
     window.scrollTo(0,0);
+    if(location.pathname.startsWith('/signup')){
+      openModal(location.pathname.slice(1));
+    }
 }
   featureClickHandler(album, faveTrackNum){
     this.props.history.push({pathname: `/band/${album.band_id}`,
@@ -34,7 +38,6 @@ class Showcase extends React.Component {
     const wtc = albums.find(alb =>
       alb.name === "Bach: Well​-​Tempered Clavier, Book 1")
       if (!wtc) return '';
-    const faveTrackNum = 5;
    
     const [brighten, darken]=[this.brighten.bind(this), this.darken.bind(this)];
 

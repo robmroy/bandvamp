@@ -65,30 +65,33 @@ class LoginForm extends React.Component {
           <div className="login-divider"></div>
          
           <form onSubmit={this.handleSubmit} className="login-form">
-            <br />
 
-            <label className="input-wrapper">
+            <div className="input-wrapper">
               <span className="login-label">Username</span>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="login-input"
               />
-            </label>
-            <br />
-            <label className="input-wrapper">
+             <span className="login-label"></span>
+
+            </div>
+            
+            <div className="input-wrapper">
               <span className="login-label">Password</span>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
               />
-            </label>
-            <br />
+             <span className="login-label"></span>
+            </div>
+
+          {this.props.errors.login ? 
             <span className="input-wrapper errors">
             {this.props.errors.login}
-            </span>
-            <br />
+            </span> : null}
+
             <div className="input-wrapper">
               <input className="login-submit" type="submit" value={this.props.formType} />
             </div>
