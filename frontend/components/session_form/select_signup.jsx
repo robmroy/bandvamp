@@ -26,12 +26,12 @@ class selectSignup extends React.Component {
             Sign up for a Bandvamp account</div>
         <div className="height-33-wrapper">
         <div onClick = {() => this.props.openModal('signup/band')} className="button-link a1c6">
-          Signup as an artist</div>
+          Sign up as an artist</div>
         </div>
         <div className="pad60"></div>
         <div className="height-33-wrapper">
         <div onClick = {() => this.props.openModal('signup/fan')} 
-        className="button-link pea-green" >Signup as a fan</div>
+        className="button-link pea-green" >Sign up as a fan</div>
         </div>
       </div>
     )

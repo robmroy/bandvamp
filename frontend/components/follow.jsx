@@ -19,19 +19,19 @@ class Follow extends React.Component {
       band_id
   ))
   return (
-    <div className = {`follow-${ver}`} 
+    <div  
     onMouseEnter={()=>this.setState({hover: true})}
     onMouseLeave={()=>this.setState({hover: false})}
     onClick = {() => deleteFollow({band_id, fan_id: user.id})}>
-      {ver === '1' && !hover ? <i className = 'fas fa-check'></i> : null}
-      {hover ? <span className = {`unfollow-${ver}`}>Unfollow </span> :  <span className = {`following-${ver}`}>Following</span>}
+      {hover ? <span className = {`unfollow-${ver}`}>Unfollow </span> :  <span className = {`following-${ver}`}>
+      {ver === '1' ? <i className = 'fas fa-check'></i> : null} Following</span>}
     </div>
   );
   else return <div className = {`follow-${ver}`} 
   onClick = {()=> {
     if (user) {createFollow({band_id, fan_id: user.id})}
     else {openModal('to-follow')}}}>
-              Follow
+             {ver === '1' ? <span className='follow-plus'>+</span>   : null } Follow
             </div>
   }
 }

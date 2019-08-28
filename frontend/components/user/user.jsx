@@ -8,7 +8,8 @@ class User extends React.Component {
       super(props);
         const fan = props.fan;
       this.state = {editing: false,
-        desc: fan && fan.purchased_albums ? fan.user_description : undefined
+        desc: fan && fan.followed_bands ? fan.user_description : undefined,
+        follows: fan && fan.followed_bands ? fan.followed_bands : undefined
     }
     
       this.renderDesc = this.renderDesc.bind(this);
@@ -17,9 +18,10 @@ class User extends React.Component {
     componentDidMount(){
         window.scrollTo(0,0);
         const {user, fan, fetchUser, wildcard} = this.props;
-        if(user && !user.purchased_albums) fetchUser(user.id);
-        if (!fan || !fan.purchased_albums){fetchUser(wildcard, 
-            (fan) => this.setState({desc: fan.user_description}));}
+        if(user && !user.followed_bands) fetchUser(user.id);
+        if (!fan || !fan.followed_bands){fetchUser(wildcard, 
+            fan => this.setState({desc: fan.user_description,
+            follows: fan.followed_bands}));}
     }
 
     componentDidUpdate(prevProps){
@@ -53,12 +55,11 @@ class User extends React.Component {
     renderFollows(){
         const props = this.props;
         const {fan, user} = props;
-        if (!fan.followed_bands.length && user && fan.id ===user.id){
-            return  <div className = 'center-500 bottom-50 hint'>No followed bands... try the homepage or search bar to find some.</div>
-            
+        if (!this.state.follows.length && user && fan.id ===user.id){
+            return  <div className = 'center-500 bottom-50 hint'>No followed bands... try the homepage or search bar to find some.</div> 
         }
       return  <div className = 'follows-container'> 
-      {fan.followed_bands.map(band =>{
+      {this.state.follows.map(band =>{
             const name = band.band_name;
           return (<div key ={band.id} className='follow-item'> 
           <div className = 'follow-item-pic-wrapper'> 

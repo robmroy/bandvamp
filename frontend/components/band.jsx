@@ -14,6 +14,7 @@ class Band extends React.Component {
   }
 
   componentDidMount(){
+    window.scrollTo(0,0);
       this.props.fetchBand();
       const user = this.props.user;
       if (user && !user.followed_bands){

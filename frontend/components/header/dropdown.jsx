@@ -15,13 +15,20 @@ class Dropdown extends React.Component{
         app.removeEventListener("click", this.outsideClickCallback)
     }
     clickBall(){
-        this.setState({toggled: true})
-        const app = document.getElementById('App')
-        app.addEventListener("click", this.outsideClickCallback)
+        if(!this.state.toggled){
+            console.dir(this.state)
+            const app = document.getElementById('App')
+        this.setState({toggled: true}, 
+           () => app.addEventListener("click", this.outsideClickCallback)
+            )
+        }
+        else {
+        this.setState({toggled: false});}
     }
 
     outsideClickCallback(e){
-        if (!e.target.parentNode.className.startsWith('header-dropdown')) this.setState({toggled: false});
+        if (!e.target.parentNode.className.startsWith('header-dropdown')
+        && !e.target.parentNode.className.startsWith('ball')) this.setState({toggled: false});
     }
 
     clickLink(url){

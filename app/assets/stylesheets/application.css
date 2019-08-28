@@ -1200,7 +1200,7 @@ margin-top: 16px;}
     display: flex;
   }
 
-  .follow-1{
+  .following-1{
     font-weight: bold;
     text-transform: uppercase;
     font-size: 11px;
@@ -1208,7 +1208,37 @@ margin-top: 16px;}
     cursor: pointer;
   }
 
-  .following-2, .follow-2{
+  .unfollow-1{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #828282;
+    cursor: pointer;
+    border: 1px #828282 solid;
+    padding: 6px 10px 5px 5px;
+    display: inline-block;
+    border-radius: 2px;
+  }
+
+  .follow-1 {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #00A1C6;
+    cursor: pointer;
+    border: 1px #00A1C6 solid;
+    border-radius: 2px;
+    padding: 0px 12px 3px 6px;
+    display: inline-block;
+  }
+
+  .follow-1 *{
+    color: #00A1C6;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .following-2, .follow-2, .unfollow-2{
     font-weight: bold;
     font-size: 12px;
     cursor: pointer;
@@ -1217,11 +1247,16 @@ margin-top: 16px;}
     border-radius: 3px;
     padding: 6px 5px 5px 5px;
     text-align: center;
+    width: 120px;
+    display: inline-block;
+    box-sizing: border-box;
   }
 
-   .unfollow-2{
-    color: #fff;
+  .follow-plus{
+    font-size: 18px;
   }
+
+  
 
   .fan-follow-name{
     font-size: 14px;
@@ -1234,12 +1269,7 @@ margin-top: 16px;}
     width: 135px;
   }
 
-  .unfollow-1{
-    border-radius: 5px;
-    padding: 7px;
-    border: 1px solid #939497;
-    padding: 7px 10px 6px 10px;
-  }
+  
 
   .sign-log-wrapper{
     display: flex;
@@ -1411,6 +1441,10 @@ margin-top: 16px;}
 
 .fa-heart{
   color: #b51414
+}
+
+.fa-check{
+  color: inherit;
 }
 
 .you-own-this{
