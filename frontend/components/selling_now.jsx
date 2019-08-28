@@ -20,8 +20,8 @@ class SellingNow extends React.Component {
     });
         this.state = { idx: -1}
         this.rotate = this.rotate.bind(this);
-        this.mouseOverHandler = this.mouseOverHandler.bind(this);
-        this.mouseOutHandler = this.mouseOutHandler.bind(this);
+        this.mouseEnterHandler = this.mouseEnterHandler.bind(this);
+        this.mouseLeaveHandler = this.mouseLeaveHandler.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.idx = 0;
         this.intervalId = React.createRef();
@@ -58,11 +58,11 @@ class SellingNow extends React.Component {
         state: {albumId: album.id}});   
     }
 
-    mouseOverHandler(){
+    mouseEnterHandler(){
         this.setState({pauseIdx: this.state.idx});
     }
 
-    mouseOutHandler(){
+    mouseLeaveHandler(){
         this.setState({pauseIdx: undefined});
     }
 
@@ -93,8 +93,8 @@ class SellingNow extends React.Component {
                 <span className='splash-section-header'>Selling Right Now</span>
                 {paused ? <span className='paused'>paused</span> : null}
             </div>
-        <div className = "carousel" onMouseOver = {this.mouseOverHandler}
-        onMouseOut = {this.mouseOutHandler} >
+        <div className = "carousel" onMouseEnter = {this.mouseEnterHandler}
+        onMouseLeave = {this.mouseLeaveHandler} >
             {albums.map((alb, i) => {
                      const time = Math.ceil(alb.timeLength);
                      const timeStr = time + (time === 1 ? ' second ago' : ' seconds ago');

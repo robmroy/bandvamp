@@ -30,33 +30,38 @@ const App = ({session}) => (
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <>
-        <Switch>
-          {session.id ? 
+        
+          {!session.id ? 
 
-            <Route component = { () => <>
+            
+            <Switch>
+          <Route exact path="/" component = {
+            () => <>
+        <HeaderNavContainer   suffix=''/>
+        <HeaderNavContainer   suffix='-dummy'/>
+        </>
+        } />
+
+        <Route path="/signup" component = {
+          () => <>
+      <HeaderNavContainer   suffix=''/>
+      <HeaderNavContainer   suffix='-dummy'/>
+      </>
+      } />
+
+          <Route component = { () => <>
             <ThinHeaderContainer  suffix=''/>
             <ThinHeaderContainer   suffix='-dummy'/></>
             }/>
-
-            :
-
-          <Route exact path="/" component = {
-            () => <>
-        <HeaderNavContainer  suffix=''/>
-        <HeaderNavContainer exact path="/"  suffix='-dummy'/>
-        </>
-        } />
+        </Switch> : 
+        <Route component = { () => <>
+            <ThinHeaderContainer  suffix=''/>
+            <ThinHeaderContainer   suffix='-dummy'/></>
+            }/>
+        
       }
         
-        <Route component = { () => <>
-        <ThinHeaderContainer  suffix=''/>
-        <ThinHeaderContainer   suffix='-dummy'/></>
-        }/>
-      
-        </Switch>
-        {/* <AuthRoute exact path="/signup" component={SelectSignup} />
-        <AuthRoute  path="/signup/band" component={BandSignupContainer} />
-        <AuthRoute  path="/signup/fan" component={FanSignupContainer} /> */}
+       
       <Switch>
         <Route path='/user/:fanId' component = {UserContainer}/>
         <Route path="/band/:bandId" component={BandContainer}/>

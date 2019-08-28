@@ -2,8 +2,8 @@
 import { connect } from 'react-redux';
 import { signup, clearErrors } from '../../actions/session_actions';
 import BandSignupForm from './band_signup_form';
-import {closeModal} from '../../actions/modal_actions';
-
+import {closeModal, openModal} from '../../actions/modal_actions';
+import {withRouter} from 'react-router';
 
 const mapStateToProps = ({ errors }) => {
   return {
@@ -16,8 +16,9 @@ const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
     processForm: (user) => dispatch(signup(user)),
-    clearErrors: () => dispatch(clearErrors())
+    clearErrors: () => dispatch(clearErrors()),
+    openModal: () => dispatch(openModal('signup/fan'))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BandSignupForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BandSignupForm));

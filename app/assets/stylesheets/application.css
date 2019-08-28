@@ -196,9 +196,12 @@ body{
 
 
 .login-form{
-  padding: 0px 40px;
   color: #333;
   align-items: center;
+}
+
+.modal-form .login-form{
+  padding: 0 40px;
 }
 
 .login-page{
@@ -221,7 +224,7 @@ body{
   color: #c43329;
   width: 430px;
   display: block;
-  margin-top: auto;
+  margin-top: 2px;
 }
 
 .red-border {
@@ -250,7 +253,7 @@ input:focus{
   font-weight: bold;
   font-size: 16px;
   box-sizing: border-box;
-  margin: 15px 0px;
+  margin: 10px 0px;
 }
 
 .login-hint {
@@ -305,10 +308,7 @@ input:focus{
 
 .outer-input-wrapper{
   width: 100%;
-  vertical-align: top;
-  margin: 10px 0 10px 0;
-  display: flex;
-  flex-direction: column;
+  margin: 20px 0px;
 }
 .inner-input-wrapper{
   width: 100%;
@@ -848,7 +848,7 @@ margin-top: 16px;}
 .small-pic{
   height: 12.9vw;
   background-size: auto 13vw;
-  filter: brightness(74%);
+  filter: brightness(70%);
 }
 
 .small-pic-bright{
@@ -857,9 +857,6 @@ margin-top: 16px;}
   filter: brightness(80%);
 }
 
-/* .small-pic:hover{
-  filter: brightness(80%);
-} */
 
 .small-pic-item{
   height: 13vw;
@@ -869,10 +866,10 @@ margin-top: 16px;}
 .small-pic-text{
   position: relative;
   color: white;
-  bottom: 75px;
+  bottom: 9vw;
   font-weight: 600;
   padding: 0px 9px;
-  font-size: 15px;
+  font-size: 1.7vw;
   cursor: default;
 }
   
@@ -973,7 +970,7 @@ margin-top: 16px;}
 
   .blue-body{
     background-color: #eef2f3;
-    padding: 36px 0px;
+    padding: 2vw 0vw;
   }
 
   .fave-title{
@@ -1373,6 +1370,8 @@ margin-top: 16px;}
     height: .1px;
     z-index: -1;
     bottom: 0;
+    padding: 0;
+    position: absolute;
   }
 
   .replace-photo{
@@ -1500,9 +1499,9 @@ margin-top: 16px;}
   max-width: 1106px;
   margin: 0 auto;
   overflow: hidden;
-  min-height: 180px;
+  min-height: 10vw;
   white-space: nowrap;
-  padding-bottom: 30px;
+  padding-bottom: 2vw;
 }
 
 .carousel *{
@@ -1519,7 +1518,7 @@ margin-top: 16px;}
 }
 
 .showcase-section-2{
-  padding-top: 36px;
+  padding-top: 3vw;
 }
 
 .x{

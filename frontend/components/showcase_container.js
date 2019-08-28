@@ -5,7 +5,8 @@ import {withRouter} from 'react-router-dom';
 import {openModal} from '../actions/modal_actions';
 
 const mapStateToProps = (state) => {
-    return {albums: state.entities.albums}
+    return {albums: state.entities.albums,
+    modal: state.ui.modal}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

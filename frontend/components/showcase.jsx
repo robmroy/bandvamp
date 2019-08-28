@@ -27,6 +27,19 @@ class Showcase extends React.Component {
       openModal(location.pathname.slice(1));
     }
 }
+
+componentDidUpdate(prevProps){
+  const pathname = this.props.location.pathname;
+  if (prevProps.location.pathname !== pathname
+    && pathname.startsWith('/signup')){
+   return this.props.openModal(pathname.slice(1));
+  }
+
+  if (prevProps.modal && !this.props.modal){
+    this.props.history.push('/');
+  }
+
+}
   featureClickHandler(album, faveTrackNum){
     this.props.history.push({pathname: `/band/${album.band_id}`,
         state: {albumId: album.album_id,

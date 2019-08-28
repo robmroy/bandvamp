@@ -15,6 +15,9 @@ class LoginForm extends React.Component {
 
   componentDidMount(){
     window.scrollTo(0,0);
+    if (this.props.modal){
+      this.props.closeModal();
+    }
   }
 
   update(field) {

@@ -65,40 +65,39 @@ class FanSignupForm extends React.Component {
         onClick={this.props.closeModal}>{'\u2715'}</span>
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <div className="signup-header">Sign up for a Bandvamp fan account</div>
-          <br />
+          
           <div className="login-form">
-            <br />
             <div className="outer-input-wrapper">
-            <label>Username <br/>
+            <label>Username 
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                   className={this.hasErr('username') ? "red-border" : ""}
               />
             </label>
-              <br />
+              
             {this.errorArray("username").map(ele =>
               <div className="errors">username {ele}</div>)}
-            <br />
+            
             </div>
 
             <div className="outer-input-wrapper">
-            <label>Email <br />
+            <label>Email 
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className={this.hasErr('email') ? "red-border" : ""}
               />
             </label>
-              <br />
+              
             {this.errorArray("email").map(ele =>
               <div className="errors">email {ele}</div>)}
-            <br />
+            
             </div>
 
             <div className="outer-input-wrapper">
             
-            <label>Password <br />
+            <label>Password 
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
@@ -106,10 +105,10 @@ class FanSignupForm extends React.Component {
               />
             </label>
           
-              <br />
+              
             {this.errorArray("password").map(ele =>
               (<div className="errors">password {ele}</div>))}
-            <br />
+            
             </div>
            
           <div className="input-wrapper">

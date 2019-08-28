@@ -5,10 +5,10 @@ class BandSignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
-      email: '',
-      band_name: '',
+      username: props.username || '',
+      password: props.password || '',
+      email: props.email || '',
+      band_name: props.band_name || '',
       toggled: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,19 +47,19 @@ class BandSignupForm extends React.Component {
     return (this.state.band_name.length === 0);
   }
   emptyBandNameMessage (){
-    const that = this;
     if (!this.emptyBandName() || !this.state.toggled){
       return;
     }
     else {
       return (<><span className="errors"> 
-      <br/> 
-      Please enter your band name.</span> 
-      <br/> 
-        <div> (Or, <Link to=
-       {{pathname: "/signup/fan",
-       state: that.state
-      }}> sign up as a fan</Link>.) </div>
+      
+      Please enter your band name,  
+      
+        or <span 
+        className = 'link link-color'
+        onClick={()=>{this.props.openModal();
+        this.props.history.replace({ state: {email: this.state.email,
+        username: this.state.username}})}}>sign up as a fan</span>. </span>
        </>);
     }
   }
@@ -70,14 +70,13 @@ class BandSignupForm extends React.Component {
         onClick={this.props.closeModal}>{'\u2715'}</span>
         <div className="signup-header">Sign up for a Bandvamp artist account</div>
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <br />
+   
           
           <div className="login-form">
-            <br />
 
             <div className="outer-input-wrapper">
               <label>Band Name
-              <br />
+              
                 <input type="text"
                   value={this.state.band_name}
                   onChange={this.update('band_name')}
@@ -89,7 +88,7 @@ class BandSignupForm extends React.Component {
             </div>
           <div className="outer-input-wrapper">
             <label >Username
-              <br/>
+             
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
@@ -97,12 +96,12 @@ class BandSignupForm extends React.Component {
               />
             </label>
               {this.errorArray("username").map(ele =>
-                <span className="errors"><br />username {ele}</span>)}
+                <span className="errors">username {ele}</span>)}
           </div>
 
           <div className="outer-input-wrapper">
             <label>Email
-              <br/>
+              
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
@@ -112,14 +111,14 @@ class BandSignupForm extends React.Component {
             {
               // !this.errorArray("email") ? " " : 
               this.errorArray("email").map(ele =>
-              <span className="errors"><br />email {ele}</span>)}
+              <span className="errors">email {ele}</span>)}
             
             </div>
 
           
           <div className="outer-input-wrapper">
             <label>Password
-              <br/>
+             
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
@@ -127,7 +126,7 @@ class BandSignupForm extends React.Component {
               />
             </label>
             { this.errorArray("password").map(ele =>
-              <span className="errors"><br />password {ele}</span>)}
+              <span className="errors">password {ele}</span>)}
           </div>
 
             <div className="input">
