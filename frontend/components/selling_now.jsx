@@ -1,8 +1,8 @@
 import React from 'react';
 class SellingNow extends React.Component {
     constructor(props) {
-
       super(props);
+      this.allAlbums = props.albums.slice().sort( () => Math.random() - .5);
      
       this.n = 10;
       const codes = ['us', 'gb', 'ca', 'de', 'it', 'se', 'fr', 'es', 'jp', 'pt', 'ch']
@@ -10,7 +10,6 @@ class SellingNow extends React.Component {
     ca: 'Canada', de: 'Germany', it: 'Italy', se: 'Sweden',
     fr: 'France', es: 'Spain', jp: 'Japan', pt: 'Portugal', ch: 'Switzerland'};
     
-    this.allAlbums = props.albums.slice().sort( () => Math.random() - .5);
       
     this.allAlbums.forEach(album => {
         let flagIdx = Math.floor(
@@ -98,7 +97,7 @@ class SellingNow extends React.Component {
             {albums.map((alb, i) => {
                      const time = Math.ceil(alb.timeLength);
                      const timeStr = time + (time === 1 ? ' second ago' : ' seconds ago');
-                    return <div key={idx + i} 
+                    return <div key={alb.id} 
                     className = {`carousel-item${i<2 ? ` ${arr[i]}` : ''}`}
                  >
                      <div className = 'carousel-item-inner'

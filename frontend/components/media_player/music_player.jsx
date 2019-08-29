@@ -86,17 +86,24 @@ class MusicPlayer extends Component {
   }
 
   sliderClick(e){
-    const app = this.app;
-    app.addEventListener('mousemove', this.handleMouseMove);
-    app.addEventListener('mouseup', this.handleMouseUp);
+    this.app.addEventListener('mousemove', this.handleMouseMove);
+    this.app.addEventListener('mouseup', this.handleMouseUp);
   }
 
   handleMouseMove(e){
-    const mpc = document.getElementById('progress-bar-container');
-    const x = Math.min(e.clientX - mpc.offsetLeft, 
-      this.progBarWidth - this.sliderWidth); 
+    const pbc = document.getElementById('progress-bar-container');
+    const x = Math.min(e.clientX - pbc.offsetLeft, 
+    this.progBarWidth - this.sliderWidth); 
     this.setState({sliderPos: x, handlingMouseMove: true});
+  }
 
+  handleMouseUp(e){
+    const ac = this.audio.current;
+    this.app.removeEventListener('mousemove',this.handleMouseMove)
+    this.app.removeEventListener('mouseup',this.handleMouseUp)
+    ac.currentTime = this.state.sliderPos * 
+    ac.duration /(this.progBarWidth-this.sliderWidth);
+    this.setState({handlingMouseMove: false})
   }
 
   secondsToMinutes(floatStr){
@@ -106,14 +113,7 @@ class MusicPlayer extends Component {
     if (secs < 10){secs = '0'+secs;}
     return mins + ':' + secs;
   }
-  handleMouseUp(e){
-    const ac = this.audio.current;
-    this.app.removeEventListener('mousemove',this.handleMouseMove)
-    this.app.removeEventListener('mouseup',this.handleMouseUp)
-    ac.currentTime = this.state.sliderPos * 
-    ac.duration /(this.progBarWidth-this.sliderWidth);
-    this.setState({handlingMouseMove: false})
-  }
+  
 
   nextSong(){
     const songs = this.props.songs;
