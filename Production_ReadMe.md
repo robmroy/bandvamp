@@ -11,7 +11,8 @@ Bandvamp, a bandcamp clone, is a music application that allows users to share or
 
 ## Features
 ### User Authentication
-Secure user authentication using BCrypt. A user can sign up as an artist or a fan. The 'sign up' button in the header brings up a modal, rather than making the user leave whatever page they're visiting.
+The app has secure user authentication, using Rails and BCrypt. 
+A user can sign up as an artist or a fan. The 'sign up' button in the header brings up a modal, rather than making the user leave whatever page they're visiting.
 
 ### Splash Page
 
@@ -89,7 +90,7 @@ If the user is not logged in, or has not purchased the given album, there is a '
 
 ### User Page
 
-The User Page contains a bio section and a tabbed lower section with user's album collection and followed artists. When logged in, the user can navigate to their user page via the colored nav button at the right end of the header.
+The User Page contains a bio section and a tabbed lower section with the user's album collection and followed artists. When logged in, the user can navigate to their user page via the colored nav button at the right end of the header.
 
 #### Collection
 The Collection tab contains the user's purchased albums (linking to the corresponding Artist Page, with correct album selected), which by definition have been 'purchased' by the user at an Artist Page.
