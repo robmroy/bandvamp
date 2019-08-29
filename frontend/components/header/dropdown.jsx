@@ -16,7 +16,6 @@ class Dropdown extends React.Component{
     }
     clickBall(){
         if(!this.state.toggled){
-            console.dir(this.state)
             const app = document.getElementById('App')
         this.setState({toggled: true}, 
            () => app.addEventListener("click", this.outsideClickCallback)

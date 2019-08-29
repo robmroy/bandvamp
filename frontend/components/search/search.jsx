@@ -22,7 +22,6 @@ class Search extends React.Component{
         () => document.getElementById('App').removeEventListener(
           'click',  this.handleOutsideClick
         )),10);
-      console.dir(e);
     }
     handleClick(){
       this.setState({dropdown: true},

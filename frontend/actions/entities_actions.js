@@ -34,8 +34,6 @@ export const fetchAllAlbums = () => dispatch => (
   )
 );
   export const createSong = (song, callback) => dispatch => {
-    console.log(`dispatch: `);
-    console.dir(dispatch);
     const formData = new FormData();
     formData.append('song[name]', 
     song.name);

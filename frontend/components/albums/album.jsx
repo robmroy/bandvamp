@@ -23,8 +23,6 @@ class Album extends React.Component{
         }
     }
     render(){
-        console.log('album render. props:');
-        console.log(this.props);
         let songs = this.props.songs || [];
         const currentSong=songs[this.state.currentTrackNumber - 1] || {};
         const album = this.props.album;

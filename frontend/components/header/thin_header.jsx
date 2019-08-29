@@ -10,6 +10,7 @@ class ThinHeader extends React.Component{
   }
 
   ownBand(){
+    if (!this.props.user) return false;
     const path = this.props.location.pathname;
     if (!path.startsWith('/band')){return false;}
     const wildcard = path.split('/')[2];
@@ -19,7 +20,6 @@ class ThinHeader extends React.Component{
   render(){
     let props = this.props;
     const {user, logout} = props;
-    console.dir(props);
   const logoElement = (
   <Link className="header-logo" to="/">
     <img src={window.parallelogram} 

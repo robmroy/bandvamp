@@ -51,8 +51,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           username: "VocalVamp123", 
           password: "pass123" 
         },  user => {
-          console.log('ownprops:')
-          console.dir(ownProps);
           ownProps.history.push(`/user/${user.id}`)}
           ),)
   };
