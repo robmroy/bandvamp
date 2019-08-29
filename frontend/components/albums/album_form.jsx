@@ -104,13 +104,15 @@ class AlbumForm extends React.Component{
        const album = this.state.album;
         const tracks = (<div>
             {this.state.tracks.map( (track, idx) => (
-                <div key={idx}>
+                <div key={idx}> {idx+1}.
             <input type="text" 
+            className = 'track-input'
             value={track.name}
             onChange={(e)=> {this.handleTrackText(e, idx);
             }} 
             />
-            <a type="file" onClick={e => this.trigger(e,idx + 1)}>Upload audio</a>
+            <a className='upload-audio' onClick={e => this.trigger(e,idx + 1)}>
+                {track.songUrl ? "change audio" : "add audio"}</a>
             </div>)
             )}
         </div>);

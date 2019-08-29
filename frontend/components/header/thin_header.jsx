@@ -6,12 +6,20 @@ class ThinHeader extends React.Component{
   constructor(props){
     super(props);
     this.state = {clickedDemo: false}
+    this.ownBand = this.ownBand.bind(this);
   }
 
+  ownBand(){
+    const path = this.props.location.pathname;
+    if (!path.startsWith('/band')){return false;}
+    const wildcard = path.split('/')[2];
+    return wildcard === this.props.user.id + '';
+  }
 
   render(){
     let props = this.props;
     const {user, logout} = props;
+    console.dir(props);
   const logoElement = (
   <Link className="header-logo" to="/">
     <img src={window.parallelogram} 
@@ -39,11 +47,11 @@ const dropdown =
 
   return (
     <div className={"thin-header-nav"+this.props.suffix}>
-      {logoElement}
+      <div>{logoElement} 
+      {this.ownBand() ? <span className='add-album'
+      onClick={()=>this.props.history.push('/album')}>+ add album</span> : null}
+      </div>
       <div className="header-nav-right">
-        {/* {props.user ? <span className = 'collection-topper black-link'
-        onClick = {() => this.props.history.push(`/user/${props.user.id}`)}>
-        Collection</span> : ''} */}
       <div className = 'search-logout'>
         <SearchContainer />       
         {!props.user ?  auth : ""}
