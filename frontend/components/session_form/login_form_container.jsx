@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
 import LoginForm from './login_form';
-import {closeModal} from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => {
   return {
@@ -19,9 +19,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     processForm: user => {
       dispatch(login(user, user => ownProps.history.push(
-        `user/${user.id}`) ))},
-    closeModal: () => dispatch(closeModal()) 
-    }
+        `user/${user.id}`)))
+    },
+    closeModal: () => dispatch(closeModal())
+  }
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));

@@ -3,7 +3,7 @@ import ReactHowler from 'ReactHowler'
 import raf from 'raf' // requestAnimationFrame polyfill
 
 class FullControl extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -23,38 +23,38 @@ class FullControl extends React.Component {
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.clearRAF()
   }
 
-  handleToggle () {
+  handleToggle() {
     this.setState({
       playing: !this.state.playing
     })
   }
 
-  handleOnLoad () {
+  handleOnLoad() {
     this.setState({
       loaded: true,
       duration: this.player.duration()
     })
   }
 
-  handleOnPlay () {
+  handleOnPlay() {
     this.setState({
       playing: true
     })
     this.renderSeekPos()
   }
 
-  handleOnEnd () {
+  handleOnEnd() {
     this.setState({
       playing: false
     })
     this.clearRAF()
   }
 
-  handleStop () {
+  handleStop() {
     this.player.stop()
     this.setState({
       playing: false // Need to update our local state so we don't immediately invoke autoplay
@@ -62,19 +62,19 @@ class FullControl extends React.Component {
     this.renderSeekPos()
   }
 
-  handleLoopToggle () {
+  handleLoopToggle() {
     this.setState({
       loop: !this.state.loop
     })
   }
 
-  handleMuteToggle () {
+  handleMuteToggle() {
     this.setState({
       mute: !this.state.mute
     })
   }
 
-  renderSeekPos () {
+  renderSeekPos() {
     this.setState({
       seek: this.player.seek()
     })
@@ -83,11 +83,11 @@ class FullControl extends React.Component {
     }
   }
 
-  clearRAF () {
+  clearRAF() {
     raf.cancel(this._raf)
   }
 
-  render () {
+  render() {
     return (
       <div className='full-control'>
         <ReactHowler
@@ -140,8 +140,8 @@ class FullControl extends React.Component {
                 max='1'
                 step='.05'
                 value={this.state.volume}
-                onChange={e => this.setState({volume: parseFloat(e.target.value)})}
-                style={{verticalAlign: 'bottom'}}
+                onChange={e => this.setState({ volume: parseFloat(e.target.value) })}
+                style={{ verticalAlign: 'bottom' }}
               />
             </span>
             {this.state.volume.toFixed(2)}

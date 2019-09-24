@@ -1,9 +1,8 @@
-
 import { connect } from 'react-redux';
 import { signup, clearErrors } from '../../actions/session_actions';
 import BandSignupForm from './band_signup_form';
-import {closeModal, openModal} from '../../actions/modal_actions';
-import {withRouter} from 'react-router';
+import { closeModal, openModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router';
 
 const mapStateToProps = ({ errors }) => {
   return {

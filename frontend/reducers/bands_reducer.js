@@ -1,7 +1,7 @@
 
 import merge from 'lodash/merge';
 
-import { RECEIVE_BAND} from '../actions/entities_actions';
+import { RECEIVE_BAND } from '../actions/entities_actions';
 
 const bandsReducer = (state = {}, action) => {
   Object.freeze(state);

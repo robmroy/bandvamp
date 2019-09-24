@@ -2,8 +2,8 @@
 import { connect } from 'react-redux';
 import { signup, clearErrors } from '../../actions/session_actions';
 import FanSignupForm from './fan_signup_form';
-import {withRouter} from 'react-router';
-import {closeModal} from '../../actions/modal_actions';
+import { withRouter } from 'react-router';
+import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {

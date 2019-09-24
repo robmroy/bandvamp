@@ -8,7 +8,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import ToFollow from './session_form/to_follow';
 import ToPurchase from './session_form/to_purchase';
 
-function Modal({modal, closeModal}) {
+function Modal({ modal, closeModal }) {
   if (!modal) {
     return null;
   }
@@ -21,14 +21,14 @@ function Modal({modal, closeModal}) {
       component = <SelectSignupContainer />;
       break;
     case 'signup/fan':
-      component = <FanSignupContainer/>;
+      component = <FanSignupContainer />;
       break;
     case 'signup/band':
       component = <BandSignupContainer />;
       break;
     case 'to-follow':
-        component = <ToFollow />;
-        break;
+      component = <ToFollow />;
+      break;
     case 'to-purchase':
       component = <ToPurchase />;
       break;
@@ -36,8 +36,8 @@ function Modal({modal, closeModal}) {
       return null;
   }
   return (
-    <div className = 'overlay' onClick={closeModal}>
-      <div onClick={e=>e.stopPropagation()}>{component}</div>
+    <div className='overlay' onClick={closeModal}>
+      <div onClick={e => e.stopPropagation()}>{component}</div>
     </div>
   );
 }

@@ -14,15 +14,15 @@ export const signup = user => (
   })
 );
 
-export const editUser = ({formData, id}) => {
+export const editUser = ({ formData, id }) => {
   return (
-  $.ajax({
-    method: 'PATCH',
-    url: `/api/users/${id}`,
-    data: formData,
-    contentType: false,
-    processData: false,
-  }));
+    $.ajax({
+      method: 'PATCH',
+      url: `/api/users/${id}`,
+      data: formData,
+      contentType: false,
+      processData: false,
+    }));
 }
 
 export const editBand = band => (
@@ -63,7 +63,7 @@ export const postAlbum = formData => (
     processData: false
   })
 );
-export const postSong= formData => (
+export const postSong = formData => (
   $.ajax({
     method: "post",
     url: '/api/songs',
@@ -87,26 +87,26 @@ export const fetchUser = id => (
   })
 )
 
-export const createFollow = ({band_id, fan_id}) => (
+export const createFollow = ({ band_id, fan_id }) => (
   $.ajax({
     method: "post",
     url: `/api/follows`,
-    data: {follow: {band_id, fan_id}}
+    data: { follow: { band_id, fan_id } }
   })
 )
 
-export const deleteFollow = ({band_id, fan_id}) => (
+export const deleteFollow = ({ band_id, fan_id }) => (
   $.ajax({
     method: "delete",
     url: `/api/follows/${fan_id}`,
-    data: {follow: {band_id, fan_id}}
+    data: { follow: { band_id, fan_id } }
   })
 )
 
-export const createPurchase = ({album_id, user_id}) => (
+export const createPurchase = ({ album_id, user_id }) => (
   $.ajax({
     method: "post",
     url: '/api/purchases',
-    data: {purchase: {album_id, user_id}}
+    data: { purchase: { album_id, user_id } }
   })
 )

@@ -1,37 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {createFollow, deleteFollow} from '../actions/follow_actions';
-import {openModal} from '../actions/modal_actions';
+import { createFollow, deleteFollow } from '../actions/follow_actions';
+import { openModal } from '../actions/modal_actions';
 
 class Follow extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {hover: false}
+    this.state = { hover: false }
   }
 
 
-  render(){
-    const {user, band_id, ver, deleteFollow, createFollow, openModal} = this.props;
+  render() {
+    const { user, band_id, ver, deleteFollow, createFollow, openModal } = this.props;
     if (user && !user.followed_bands) return '';
-  const followed_bands = user ? user.followed_bands : [];
-  const {hover} = this.state;
-  if (followed_bands.map(band => band.id).includes(
+    const followed_bands = user ? user.followed_bands : [];
+    const { hover } = this.state;
+    if (followed_bands.map(band => band.id).includes(
       band_id
-  ))
-  return (
-    <div  
-    onMouseEnter={()=>this.setState({hover: true})}
-    onMouseLeave={()=>this.setState({hover: false})}
-    onClick = {() => deleteFollow({band_id, fan_id: user.id})}>
-      {hover ? <span className = {`unfollow-${ver}`}>Unfollow </span> :  <span className = {`following-${ver}`}>
-      {ver === '1' ? <i className = 'fas fa-check'></i> : null} Following</span>}
-    </div>
-  );
-  else return <div className = {`follow-${ver}`} 
-  onClick = {()=> {
-    if (user) {createFollow({band_id, fan_id: user.id})}
-    else {openModal('to-follow')}}}>
-             {ver === '1' ? <span className='follow-plus'>+</span>   : null } Follow
+    ))
+      return (
+        <div
+          onMouseEnter={() => this.setState({ hover: true })}
+          onMouseLeave={() => this.setState({ hover: false })}
+          onClick={() => deleteFollow({ band_id, fan_id: user.id })}>
+          {hover ? <span className={`unfollow-${ver}`}>Unfollow </span> : <span className={`following-${ver}`}>
+            {ver === '1' ? <i className='fas fa-check'></i> : null} Following</span>}
+        </div>
+      );
+    else return <div className={`follow-${ver}`}
+      onClick={() => {
+        if (user) { createFollow({ band_id, fan_id: user.id }) }
+        else { openModal('to-follow') }
+      }}>
+      {ver === '1' ? <span className='follow-plus'>+</span> : null} Follow
             </div>
   }
 }

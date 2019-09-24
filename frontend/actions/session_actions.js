@@ -26,10 +26,11 @@ export const clearErrors = () => ({
 
 export const signup = (user, cb) => dispatch => {
   return (
-  APIUtil.signup(user).then(user => 
-    {dispatch(receiveCurrentUser(user));
-      if(cb) cb(user)}, 
-    err => dispatch(receiveErrors(err.responseJSON)))
+    APIUtil.signup(user).then(user => {
+      dispatch(receiveCurrentUser(user));
+      if (cb) cb(user)
+    },
+      err => dispatch(receiveErrors(err.responseJSON)))
   );
 };
 
@@ -37,7 +38,7 @@ export const signup = (user, cb) => dispatch => {
 export const login = (user, callback) => dispatch => (
   APIUtil.login(user).then(user => {
     dispatch(receiveCurrentUser(user));
-    if(callback) callback(user);
+    if (callback) callback(user);
   }, err => (
     dispatch(receiveErrors(err.responseJSON))
   ))

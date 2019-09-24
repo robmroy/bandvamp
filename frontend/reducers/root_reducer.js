@@ -5,10 +5,12 @@ import errors from './errors_reducer';
 import search from './search_reducer';
 import ui from './ui_reducer';
 const rootReducer = combineReducers(
-  {entities, 
+  {
+    entities,
     session,
-  errors,
-  search, ui}
+    errors,
+    search, ui
+  }
 );
 
 export default rootReducer;

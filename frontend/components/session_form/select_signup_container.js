@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
-import React from 'react';
-import { Link } from 'react-router-dom';
 import SelectSignup from './select_signup';
-import {openModal, closeModal} from '../../actions/modal_actions';
-import {withRouter} from 'react-router';
+import { openModal, closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router';
 
 
 
