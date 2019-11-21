@@ -19,6 +19,7 @@ class Search extends React.Component {
     this.props.search(val);
   }
   handleOutsideClick(e) {
+    console.log('outisde')
     setTimeout(() => this.setState({ dropdown: false },
       () => document.getElementById('App').removeEventListener(
         'click', this.handleOutsideClick
@@ -39,6 +40,7 @@ class Search extends React.Component {
     const pathname = this.props.history.location.pathname;
     const push = this.props.history.push;
     return e => {
+    this.setState({dropdown: false});
       if (result.type === "artist") {
         push(`/band/${result.id}`)
       }

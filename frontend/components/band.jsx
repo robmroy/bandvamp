@@ -4,10 +4,8 @@ import Follow from './follow';
 class Band extends React.Component {
   constructor(props) {
     super(props);
-    const lstate = props.location.state || {};
-    const { albumId, songId, faveTrackNum } = lstate;
+    
     this.state = {
-      albumId, songId, faveTrackNum,
       fullDesc: false
     }
     this.renderDesc = this.renderDesc.bind(this);
@@ -21,12 +19,15 @@ class Band extends React.Component {
     if (user && !user.followed_bands) {
       this.props.fetchUser(user.id);
     }
+    const lstate = this.props.location.state || {};
+    const { albumId, songId, faveTrackNum } = lstate;
+    this.setState({albumId, songId, faveTrackNum});
+    this.props.history.replace({state: {}});
   }
 
   componentDidUpdate(prevProps) {
     const lstate = this.props.location.state || {};
     const { albumId, songId } = lstate;
-
     const plstate = prevProps.location.state || {};
 
     if (this.props.wildcard !== prevProps.wildcard
@@ -34,10 +35,22 @@ class Band extends React.Component {
       return this.props.fetchBand();
     }
 
-    if (albumId !== plstate.albumId ||
-      songId !== plstate.songId) {
-      this.setState({ songId, albumId });
-    }
+    // if (albumId !== plstate.albumId ||
+    //   songId !== plstate.songId) {
+    //   this.setState({ songId, albumId });
+    // }
+    if(albumId && this.state.albumId !== albumId){
+      if(songId && this.state.songId !== songId){
+        this.setState({songId, albumId})}
+        else{
+      this.setState({albumId})}
+        }
+      else{
+        if(songId && this.state.songId !== songId){
+          this.setState({songId})}
+      }
+    
+      if(albumId || songId) this.props.history.replace({state: {}});
 
   }
   renderDesc() {

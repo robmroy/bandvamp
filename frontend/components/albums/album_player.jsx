@@ -4,17 +4,8 @@ import { Link } from 'react-router-dom';
 class AlbumPlayer extends React.Component {
     constructor(props) {
         super(props);
-        let currentTrackNumber = 1;
-        const { songId, faveTrackNum } = props;
-        if (songId) {
-            currentTrackNumber = props.album.songs.find(s => (s.id === songId)).track_number;
-        }
-        else if (faveTrackNum) {
-            currentTrackNumber = faveTrackNum;
-        }
-        this.state = {
-            currentTrackNumber
-        }
+        
+        this.state={};
         this.musicPlayer = React.createRef();
         this.nextSong = this.nextSong.bind(this);
         this.prevSong = this.prevSong.bind(this);
@@ -22,14 +13,31 @@ class AlbumPlayer extends React.Component {
         this.handleBuyAlbum = this.handleBuyAlbum.bind(this);
 
     }
-
+    componentDidMount(){
+        const { songId, faveTrackNum } = this.props;
+        let currentTrackNumber = 1;
+        if (songId) {
+            let song = this.props.album.songs.find(s => (s.id === songId)) || {};
+            console.log(`songs: ${this.props.album.songs}`)
+            console.log(`songId in alb player constru: ${songId}`)
+            currentTrackNumber = song.track_number || 1;
+        }
+        else if (faveTrackNum) {
+            currentTrackNumber = faveTrackNum;
+        }
+        this.setState({currentTrackNumber});
+        
+    }
 
     componentDidUpdate(prevProps) {
         const { songId, album } = this.props;
         if (prevProps.songId !== songId ||
             album.id !== prevProps.album.id) {
+                
             if (songId) {
-                this.setState({ currentTrackNumber: album.songs.find(s => (s.id === songId)).track_number })
+                let song = album.songs.find(s => (s.id === songId)) || {};
+
+                this.setState({ currentTrackNumber: song.track_number || 1})
             }
             else this.setState({ currentTrackNumber: 1 });
         }
@@ -76,6 +84,7 @@ class AlbumPlayer extends React.Component {
         const band = this.props.band;
         const songs = album.songs;
         const currentTrackNumber = this.state.currentTrackNumber;
+        if (!currentTrackNumber) return '';
         const photoUrl = album ? album.photoUrl : null;
         const image = !photoUrl || photoUrl.endsWith("345892746528734589234728") ?
             "" : <img src={photoUrl} className="album-cover" />;
